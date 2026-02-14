@@ -1,0 +1,79 @@
+# =========================
+# WordPress / Theme basics
+# =========================
+# WP core / installs (only if theme lives in a repo that might contain WP)
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/backups-dup-pro/
+wp-content/ai1wm-backups/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.tmp
+
+# =========================
+# Node / Vite / Tailwind
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+pnpm-store/
+.pnpm-store/
+
+# Vite caches
+.vite/
+.vite-cache/
+
+# Tailwind caches (if any tooling writes here)
+.tailwind/
+
+# =========================
+# Build output
+# =========================
+# If you deploy builds via CI/CD, ignore dist output in git:
+assets/dist/
+
+# If you instead COMMIT compiled assets (common for WP themes),
+# comment the line above and ignore only sourcemaps:
+# assets/dist/**/*.map
+
+# =========================
+# Env files / secrets
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# PHP tooling (optional)
+# =========================
+vendor/
+composer.lock
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# Testing / Coverage (optional)
+# =========================
+coverage/
+.nyc_output/
+
+# =========================
+# IDE configs
+# =========================
+.idea/
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/tasks.json

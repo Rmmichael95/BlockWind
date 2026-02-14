@@ -1,0 +1,12 @@
+/* ==========================================================
+   MODULE: tw.css
+   Purpose: Tailwind v4 utilities only (no Preflight), FSE-first.
+   Import this only when you need Tailwind utilities at all.
+   ========================================================== */
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+
+/* Only generate utilities referenced in templates/parts/patterns */
+@import "tailwindcss/utilities.css" layer(utilities)
+  source("../../{templates,parts,patterns}/**/*.{html,php}");
