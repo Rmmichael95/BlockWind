@@ -3,23 +3,43 @@
    Purpose: Bootstrap-ish cards
    Depends on Tailwind utilities (import tw.base.css before this)
    ========================================================== */
+@reference "./tw.reference.css";
+
 @layer components {
   .card {
     @apply relative flex flex-col min-w-0 break-words rounded-lg border border-black/10 bg-white;
   }
 
-  .card-body { @apply flex-[1_1_auto] p-4; }
-  .card-title { @apply mb-2 font-semibold leading-snug; }
-  .card-subtitle { @apply mb-2 text-black/60; }
-  .card-text { @apply mb-0; }
+  .card-body {
+    @apply flex-[1_1_auto] p-4;
+  }
+  .card-title {
+    @apply mb-2 font-semibold leading-snug;
+  }
+  .card-subtitle {
+    @apply mb-2 text-black/60;
+  }
+  .card-text {
+    @apply mb-0;
+  }
 
-  .card-header { @apply border-b border-black/10 bg-black/5 px-4 py-3 font-medium; }
-  .card-footer { @apply border-t border-black/10 bg-black/5 px-4 py-3; }
+  .card-header {
+    @apply border-b border-black/10 bg-black/5 px-4 py-3 font-medium;
+  }
+  .card-footer {
+    @apply border-t border-black/10 bg-black/5 px-4 py-3;
+  }
 
-  .card-img-top { @apply w-full rounded-t-lg object-cover; }
-  .card-img-bottom { @apply w-full rounded-b-lg object-cover; }
+  .card-img-top {
+    @apply w-full rounded-t-lg object-cover;
+  }
+  .card-img-bottom {
+    @apply w-full rounded-b-lg object-cover;
+  }
 
-  .card-group { @apply flex flex-col gap-4 md:flex-row md:gap-4; }
+  .card-group {
+    @apply flex flex-col gap-4 md:flex-row md:gap-4;
+  }
 
   .card.card-hover {
     @apply transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md;

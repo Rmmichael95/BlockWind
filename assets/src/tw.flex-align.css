@@ -3,41 +3,93 @@
    Purpose: Bootstrap-ish flex directions, wrap, alignment
    Depends on Tailwind utilities (import tw.base.css before this)
    ========================================================== */
+@reference "./tw.reference.css";
+
 @layer components {
   /* Directions */
-  .flex-row { @apply flex flex-row; }
-  .flex-row-reverse { @apply flex flex-row-reverse; }
-  .flex-column { @apply flex flex-col; }
-  .flex-column-reverse { @apply flex flex-col-reverse; }
+  .flex-row {
+    @apply flex flex-row;
+  }
+  .flex-row-reverse {
+    @apply flex flex-row-reverse;
+  }
+  .flex-column {
+    @apply flex flex-col;
+  }
+  .flex-column-reverse {
+    @apply flex flex-col-reverse;
+  }
 
   /* Responsive examples */
-  .md\:flex-row { @apply md:flex md:flex-row; }
-  .lg\:flex-column { @apply lg:flex lg:flex-col; }
+  .md\:flex-row {
+    @apply md:flex md:flex-row;
+  }
+  .lg\:flex-column {
+    @apply lg:flex lg:flex-col;
+  }
 
   /* Wrap */
-  .flex-wrap { @apply flex flex-wrap; }
-  .flex-nowrap { @apply flex flex-nowrap; }
-  .flex-wrap-reverse { @apply flex flex-wrap-reverse; }
+  .flex-wrap {
+    @apply flex flex-wrap;
+  }
+  .flex-nowrap {
+    @apply flex flex-nowrap;
+  }
+  .flex-wrap-reverse {
+    @apply flex flex-wrap-reverse;
+  }
 
   /* Justify */
-  .justify-content-start { @apply justify-start; }
-  .justify-content-end { @apply justify-end; }
-  .justify-content-center { @apply justify-center; }
-  .justify-content-between { @apply justify-between; }
-  .justify-content-around { @apply justify-around; }
-  .justify-content-evenly { @apply justify-evenly; }
+  .justify-content-start {
+    @apply justify-start;
+  }
+  .justify-content-end {
+    @apply justify-end;
+  }
+  .justify-content-center {
+    @apply justify-center;
+  }
+  .justify-content-between {
+    @apply justify-between;
+  }
+  .justify-content-around {
+    @apply justify-around;
+  }
+  .justify-content-evenly {
+    @apply justify-evenly;
+  }
 
   /* Align items */
-  .align-items-start { @apply items-start; }
-  .align-items-end { @apply items-end; }
-  .align-items-center { @apply items-center; }
-  .align-items-baseline { @apply items-baseline; }
-  .align-items-stretch { @apply items-stretch; }
+  .align-items-start {
+    @apply items-start;
+  }
+  .align-items-end {
+    @apply items-end;
+  }
+  .align-items-center {
+    @apply items-center;
+  }
+  .align-items-baseline {
+    @apply items-baseline;
+  }
+  .align-items-stretch {
+    @apply items-stretch;
+  }
 
   /* Align self */
-  .align-self-start { @apply self-start; }
-  .align-self-end { @apply self-end; }
-  .align-self-center { @apply self-center; }
-  .align-self-baseline { @apply self-baseline; }
-  .align-self-stretch { @apply self-stretch; }
+  .align-self-start {
+    @apply self-start;
+  }
+  .align-self-end {
+    @apply self-end;
+  }
+  .align-self-center {
+    @apply self-center;
+  }
+  .align-self-baseline {
+    @apply self-baseline;
+  }
+  .align-self-stretch {
+    @apply self-stretch;
+  }
 }

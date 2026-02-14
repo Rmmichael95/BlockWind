@@ -1,0 +1,7 @@
+@layer theme, base, components, utilities;
+
+/* Theme (breakpoints, etc.) */
+@import "tailwindcss/theme.css" layer(theme);
+
+/* Utilities exist only so @apply candidates are “known” */
+@import "tailwindcss/utilities.css" layer(utilities) source(none);

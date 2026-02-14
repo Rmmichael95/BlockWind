@@ -7,6 +7,10 @@
 
 @import "tailwindcss/theme.css" layer(theme);
 
-/* Only generate utilities referenced in templates/parts/patterns */
-@import "tailwindcss/utilities.css" layer(utilities)
-  source("../../{templates,parts,patterns}/**/*.{html,php}");
+/* Directory-only scanning (Tailwind v4 requirement) */
+@source "../../templates";
+@source "../../parts";
+@source "../../patterns";
+
+/* Generate only needed utilities based on the sources above */
+@import "tailwindcss/utilities.css" layer(utilities);

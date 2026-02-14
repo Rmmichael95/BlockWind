@@ -3,16 +3,38 @@
    Purpose: Bootstrap-ish order utilities (subset)
    Depends on Tailwind utilities (import tw.base.css before this)
    ========================================================== */
-@layer components {
-  .order-first { @apply order-first; }
-  .order-last  { @apply order-last; }
-  .order-0 { @apply order-0; }
-  .order-1 { @apply order-1; }
-  .order-2 { @apply order-2; }
-  .order-3 { @apply order-3; }
-  .order-4 { @apply order-4; }
-  .order-5 { @apply order-5; }
+@reference "./tw.reference.css";
 
-  .md\:order-1 { @apply md:order-1; }
-  .lg\:order-2 { @apply lg:order-2; }
+@layer components {
+  .order-first {
+    @apply order-first;
+  }
+  .order-last {
+    @apply order-last;
+  }
+  .order-0 {
+    @apply order-0;
+  }
+  .order-1 {
+    @apply order-1;
+  }
+  .order-2 {
+    @apply order-2;
+  }
+  .order-3 {
+    @apply order-3;
+  }
+  .order-4 {
+    @apply order-4;
+  }
+  .order-5 {
+    @apply order-5;
+  }
+
+  .md\:order-1 {
+    @apply md:order-1;
+  }
+  .lg\:order-2 {
+    @apply lg:order-2;
+  }
 }

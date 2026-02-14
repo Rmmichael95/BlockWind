@@ -6,7 +6,7 @@
 // Tailwind utilities (no preflight) + only the modules you need:
 // FSE-first: if you don't import anything, you get no CSS output.
 // Uncomment only when you need them:
-// import "./tw.css";
+// import "./tw.base.css";
 // import "./tw.grid.css";
 // import "./tw.flex-align.css";
 // import "./tw.spacing.css";

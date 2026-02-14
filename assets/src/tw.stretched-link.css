@@ -3,8 +3,12 @@
    Purpose: Bootstrap-ish stretched link
    Depends on Tailwind utilities (import tw.base.css before this)
    ========================================================== */
+@reference "./tw.reference.css";
+
 @layer components {
-  .stretched-link { @apply relative z-10; }
+  .stretched-link {
+    @apply relative z-10;
+  }
 
   .stretched-link::after {
     content: "";
