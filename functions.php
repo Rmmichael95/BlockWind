@@ -31,3 +31,13 @@ add_action(
 		// }
 	}
 );
+
+/**
+ * Load ACF Blocks
+ */
+function dhali_register_acf_blocks() {
+	foreach ( glob( __DIR__ . '/acf-blocks/*', GLOB_ONLYDIR ) as $block_dir ) {
+		register_block_type( $block_dir );
+	}
+}
+add_action( 'init', 'dhali_register_acf_blocks' );
