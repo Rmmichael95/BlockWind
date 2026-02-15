@@ -40,7 +40,7 @@
     button.wp-block-navigation-item__content,
     a.wp-block-pages-list__item__link
   ) {
-  @apply text-inherit;
+  @apply no-underline text-inherit;
 }
 
 /* Make WP “current” not fight theme.json */
@@ -78,8 +78,7 @@
       ul.wp-block-navigation__submenu-container,
       ul.wp-block-pages-list__submenu-container
     ) {
-    @apply hidden absolute left-0 top-full mt-2 min-w-60 rounded-lg p-2 shadow-lg;
-    border-color: color-mix(in oklab, currentColor 12%, transparent);
+    @apply hidden absolute left-0 top-full mt-2 min-w-60 rounded-lg border border-black/10 p-2 shadow-lg;
     background-color: var(--wp--preset--color--base, #fff);
     color: inherit;
   }
@@ -169,59 +168,6 @@
     ) {
     @apply rotate-180;
   }
-
-  /* -------------------------------------------------------
-     ✅ Desktop hover persistence (ONLY when offcanvas NOT open)
-     - Adds a hover "bridge" above the submenu to prevent hover gaps
-     - Adds a small fade so it doesn't feel instant
-     - Keeps your existing block/hidden logic intact
-  -------------------------------------------------------- */
-  :root:not(.has-modal-open)
-    .site-nav
-    :is(
-      ul.wp-block-navigation__submenu-container,
-      ul.wp-block-pages-list__submenu-container
-    ) {
-    /* fade in/out; still driven by your display:block/hidden rules */
-    opacity: 0;
-    transform: translateY(2px);
-    transition:
-      opacity 160ms ease,
-      transform 160ms ease;
-  }
-
-  :root:not(.has-modal-open)
-    .site-nav
-    :is(
-      li.wp-block-navigation-item.has-child:hover,
-      li.wp-block-navigation-item.has-child:focus-within
-    )
-    > ul.wp-block-navigation__submenu-container,
-  :root:not(.has-modal-open)
-    .site-nav
-    :is(
-      li.wp-block-pages-list__item.has-child:hover,
-      li.wp-block-pages-list__item.has-child:focus-within
-    )
-    > ul.wp-block-pages-list__submenu-container {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Hover bridge: covers the mt-2 gap so cursor can travel into the menu */
-  :root:not(.has-modal-open)
-    .site-nav
-    :is(
-      ul.wp-block-navigation__submenu-container,
-      ul.wp-block-pages-list__submenu-container
-    )::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: -0.5rem; /* matches mt-2 */
-    height: 0.5rem; /* bridge height */
-  }
 }
 
 /* -------------------------
@@ -233,7 +179,7 @@
   .site-nav
     .wp-block-navigation__responsive-container.is-menu-open
     .wp-block-navigation__container {
-    @apply flex flex-col gap-2 w-full;
+    @apply flex flex-col items-stretch justify-start gap-2 w-full;
   }
 
   .site-nav
@@ -262,6 +208,19 @@
     overflow-wrap: anywhere;
   }
 
+  /* ✅ Baseline: every TOP-LEVEL row gets padding (fixes “no padding / break out”) */
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    :is(.wp-block-navigation__container, .wp-block-pages-list)
+    > :is(li.wp-block-navigation-item, li.wp-block-pages-list__item)
+    > :is(
+      a.wp-block-navigation-item__content,
+      button.wp-block-navigation-item__content,
+      a.wp-block-pages-list__item__link
+    ) {
+    @apply block w-full text-left font-medium px-5 py-3;
+  }
+
   /* ----- Parent rows: label + chevron inline, submenu wraps below ----- */
   .site-nav
     .wp-block-navigation__responsive-container.is-menu-open
@@ -272,7 +231,7 @@
     @apply flex flex-row flex-wrap items-center justify-start;
   }
 
-  /* Parent clickable label: auto width so chevron can sit immediately after it */
+  /* Parent clickable label: auto width so chevron preventing right-justify */
   .site-nav
     .wp-block-navigation__responsive-container.is-menu-open
     li.wp-block-navigation-item.has-child
@@ -353,25 +312,23 @@
     @apply rotate-180;
   }
 
-  /* ----- Submenu panel: bootstrap-like “boxed” dropdown inside overlay ----- */
+  /* ----- Submenu panel: boxed dropdown inside overlay ----- */
   .site-nav
     .wp-block-navigation__responsive-container.is-menu-open
     :is(
       ul.wp-block-navigation__submenu-container,
       ul.wp-block-pages-list__submenu-container
     ) {
-    @apply hidden basis-full w-full mt-2 mx-5 rounded-lg p-3 shadow max-w-full min-w-0;
-    border-color: color-mix(in oklab, currentColor 12%, transparent);
+    @apply hidden basis-full w-full mt-2 mx-5 rounded-lg border border-black/15 p-3 shadow max-w-full min-w-0;
     background-color: var(--wp--preset--color--base, #fff);
     color: inherit;
 
-    /* ensure it behaves like a normal block in overlay */
     position: static;
     inset: auto;
     visibility: visible;
   }
 
-  /* Open states: WP uses li.is-open, plus sometimes aria-expanded on toggle */
+  /* Open states */
   .site-nav
     .wp-block-navigation__responsive-container.is-menu-open
     :is(
@@ -419,8 +376,7 @@
       button.wp-block-navigation-item__content,
       a.wp-block-pages-list__item__link
     ):is(:hover, :focus-visible) {
-    @apply outline-none;
-    background-color: color-mix(in oklab, currentColor 5%, transparent);
+    @apply bg-black/5 outline-none;
   }
 
   /* Nested indent inside the boxed panel */

@@ -68,9 +68,3 @@
   /* responsive + safe for huge uploads */
   height: clamp(2.25rem, 7vw, 3.5rem);
 }
-
-/* Optional: lock scroll */
-:root.has-modal-open,
-:root.has-modal-open body {
-  overflow: hidden;
-}

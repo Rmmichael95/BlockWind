@@ -14,18 +14,23 @@ The theme is designed to be **usable with zero compiled CSS** (pure FSE + `theme
 ## Goals
 
 ### ✅ FSE-first
+
 Blockwind prioritizes WordPress core block theming:
+
 - Templates, parts, and patterns define layout and “component library”
 - `theme.json` controls the editor experience and global styling
 - Minimal PHP (mostly enqueue + theme support)
 
 ### ✅ No bloat, no unused CSS by default
+
 - If you **do not import Tailwind/SCSS modules**, Vite will **not produce CSS output**
 - Your theme runs on `theme.json` and block markup alone
 - When enabled, CSS compiles into **one minified file**: `assets/dist/theme.min.css`
 
 ### ✅ Migration-friendly
+
 A modular Tailwind `@apply` layer can mimic common Bootstrap patterns:
+
 - `.container`, `.row`, `.col-*`
 - spacing utilities
 - flex alignment / ordering
@@ -34,6 +39,7 @@ A modular Tailwind `@apply` layer can mimic common Bootstrap patterns:
 Modules are split so you can **import only what you need** during migration.
 
 ### ✅ Single source of truth for tokens
+
 - Tokens live in `theme.json`
 - Tailwind/SCSS should reference WordPress CSS variables (`--wp--preset--*`) rather than redefining colors/type/spacing
 
@@ -84,15 +90,19 @@ blockwind/
 ## How Styling Works
 
 ### 1) `theme.json` (always on)
+
 `theme.json` is the **contract**:
+
 - design tokens (colors, typography, spacing)
 - editor capabilities (what controls editors see)
 - baseline global + block styles
 
-This is the *preferred* styling system for core blocks and editor consistency.
+This is the _preferred_ styling system for core blocks and editor consistency.
 
 ### 2) Tailwind (optional, modular)
+
 Tailwind is used as a **minimal responsive framework** when needed:
+
 - layout helpers
 - semantic classes built with `@apply`
 - migration layer for Bootstrap-like class names (optional modules)
@@ -100,7 +110,9 @@ Tailwind is used as a **minimal responsive framework** when needed:
 **Preflight is intentionally disabled** to avoid fighting WordPress and `theme.json`.
 
 ### 3) SCSS (optional)
+
 SCSS is allowed for:
+
 - partial organization (`components/`, `utilities/`)
 - mixins/functions
 - cleaner code structure
@@ -126,6 +138,7 @@ npm install
 ```
 
 ### Dev dependencies used
+
 - `vite` (build)
 - `tailwindcss` + `@tailwindcss/vite` (optional CSS framework)
 - `sass-embedded` (optional SCSS compiler)
@@ -135,7 +148,9 @@ npm install
 ## Development Workflow
 
 ### A) FSE-only mode (default, no compiled CSS)
+
 Blockwind can run purely on:
+
 - `theme.json`
 - templates/parts/patterns
 
@@ -153,6 +168,7 @@ In this mode, `npm run build` produces no `theme.min.css`, and the theme stays c
 ---
 
 ### B) Enable Tailwind modules (migration or utility framework)
+
 To opt in, import only what you need.
 
 Example: Bootstrap-ish grid + cards only:
@@ -170,9 +186,10 @@ export {};
 ---
 
 ### C) Enable SCSS (organization only)
+
 ```js
-import "./tw.base.css";      // optional if you also use @apply in SCSS
-import "./scss/app.scss";    // optional
+import "./tw.base.css"; // optional if you also use @apply in SCSS
+import "./scss/app.scss"; // optional
 export {};
 ```
 
@@ -183,15 +200,18 @@ export {};
 ## Build
 
 ### Production build
+
 ```bash
 npm run build
 ```
 
 Outputs (when CSS is imported):
+
 - `assets/dist/theme.min.css` (single file, minified)
 - `assets/dist/theme.min.js` (tiny, optional)
 
 ### Dev server (optional)
+
 ```bash
 npm run dev
 ```
@@ -206,6 +226,7 @@ The theme enqueues `assets/dist/theme.min.css` **only if it exists and has conte
 This preserves the **no-bloat** default behavior.
 
 Typical enqueue logic:
+
 - `style.css` is header-only for compliance
 - `theme.min.css` is the real stylesheet when present
 
@@ -248,4 +269,4 @@ Example `package.json` scripts:
 
 ## License
 
-Add your license here (e.g., MIT, GPL-2.0+, proprietary).
+![License: GPL v2](https://img.shields.io)
