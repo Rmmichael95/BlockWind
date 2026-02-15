@@ -1,3 +1,10 @@
+/* ==========================================================
+   MODULE: tw.dropdown.css
+   Purpose: Navigation dropdown styling for BlockWind / core Navigation block.
+            Tailwind v4 utilities only (no Preflight), scoped to .site-nav.
+            Desktop: stable hover/focus dropdowns (no “disappear instantly”).
+            Mobile overlay: keep WP behavior; only style/layout.
+   ========================================================== */
 @reference "./tw.reference.css";
 
 /* =========================================================
@@ -160,6 +167,57 @@
       button.wp-block-navigation__submenu-icon[aria-expanded="true"] svg
     ) {
     @apply rotate-180;
+  }
+
+  /* -------------------------------------------------------
+     ✅ Desktop hover persistence (ONLY when offcanvas NOT open)
+     - Adds a hover "bridge" above the submenu to prevent hover gaps
+     - Adds a small fade so it doesn't feel instant
+     - Keeps your existing block/hidden logic intact
+  -------------------------------------------------------- */
+  :root:not(.has-modal-open)
+    .site-nav
+    :is(
+      ul.wp-block-navigation__submenu-container,
+      ul.wp-block-pages-list__submenu-container
+    ) {
+    /* fade in/out; still driven by your display:block/hidden rules */
+    opacity: 0;
+    transform: translateY(2px);
+    transition: opacity 160ms ease, transform 160ms ease;
+  }
+
+  :root:not(.has-modal-open)
+    .site-nav
+    :is(
+      li.wp-block-navigation-item.has-child:hover,
+      li.wp-block-navigation-item.has-child:focus-within
+    )
+    > ul.wp-block-navigation__submenu-container,
+  :root:not(.has-modal-open)
+    .site-nav
+    :is(
+      li.wp-block-pages-list__item.has-child:hover,
+      li.wp-block-pages-list__item.has-child:focus-within
+    )
+    > ul.wp-block-pages-list__submenu-container {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Hover bridge: covers the mt-2 gap so cursor can travel into the menu */
+  :root:not(.has-modal-open)
+    .site-nav
+    :is(
+      ul.wp-block-navigation__submenu-container,
+      ul.wp-block-pages-list__submenu-container
+    )::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -0.5rem;   /* matches mt-2 */
+    height: 0.5rem; /* bridge height */
   }
 }
 
