@@ -1,0 +1,116 @@
+/* ==========================================================
+   MODULE: tw.tokens.css
+   Purpose: Map Tailwind v4 runtime tokens (no Preflight) to
+            WordPress theme.json presets. Tokens only — no styling.
+            Safe to load globally; keeps WP/theme.json as source of truth.
+   ========================================================== */
+
+/* -------------------------
+   Core Tailwind v4 tokens
+   ------------------------- */
+:root {
+  /* Tailwind v4 spacing unit (used by p-*, m-*, gap-*, etc.) */
+  --spacing: var(--wp--preset--spacing--1, 0.25rem);
+
+  /* Tailwind v4 radius tokens (used by rounded-*) */
+  --radius-none: var(--wp--preset--radius--none, 0px);
+  --radius-xs: var(--wp--preset--radius--xs, 0.125rem);
+  --radius-sm: var(--wp--preset--radius--sm, 0.25rem);
+  --radius-md: var(--wp--preset--radius--md, 0.375rem);
+  --radius-lg: var(--wp--preset--radius--lg, 0.5rem);
+  --radius-xl: var(--wp--preset--radius--xl, 0.75rem);
+  --radius-2xl: var(--wp--preset--radius--2xl, 1rem);
+  --radius-3xl: var(--wp--preset--radius--3xl, 1.5rem);
+  --radius-4xl: var(--wp--preset--radius--4xl, 2rem);
+  --radius-full: var(--wp--preset--radius--full, 100vw);
+
+  /* Common alias some Tailwind builds/utilities expect */
+  --radius: var(--radius-md);
+
+  /* Tailwind v4 shadow tokens (used by shadow-*) */
+  --shadow-none: var(--wp--preset--shadow--none, none);
+  --shadow-2xs: var(--wp--preset--shadow--2xs, 0 1px rgb(0 0 0 / 0.05));
+  --shadow-xs: var(--wp--preset--shadow--xs, 0 1px 2px 0 rgb(0 0 0 / 0.05));
+  --shadow-sm: var(
+    --wp--preset--shadow--sm,
+    0 1px 3px 0 rgb(0 0 0 / 0.1),
+    0 1px 2px -1px rgb(0 0 0 / 0.1)
+  );
+  --shadow-md: var(
+    --wp--preset--shadow--md,
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1)
+  );
+  --shadow-lg: var(
+    --wp--preset--shadow--lg,
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1)
+  );
+  --shadow-xl: var(
+    --wp--preset--shadow--xl,
+    0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1)
+  );
+  --shadow-2xl: var(
+    --wp--preset--shadow--2xl,
+    0 25px 50px -12px rgb(0 0 0 / 0.25)
+  );
+  --shadow-inner: var(
+    --wp--preset--shadow--inner,
+    inset 0 2px 4px 0 rgb(0 0 0 / 0.05)
+  );
+
+  /* Alias often used by `shadow` (non-sized) utilities */
+  --shadow: var(--shadow-sm);
+
+  /* Tailwind v4 text size tokens (used by text-*) */
+  --text-xs: var(--wp--preset--font-size--xs, 0.75rem);
+  --text-sm: var(--wp--preset--font-size--sm, 0.875rem);
+  --text-base: var(--wp--preset--font-size--default, 1rem);
+  --text-lg: var(--wp--preset--font-size--lg, 1.125rem);
+  --text-xl: var(--wp--preset--font-size--xl, 1.25rem);
+  --text-2xl: var(--wp--preset--font-size--2xl, 1.5rem);
+  --text-3xl: var(--wp--preset--font-size--3xl, 1.875rem);
+  --text-4xl: var(--wp--preset--font-size--4xl, 2.25rem);
+  --text-5xl: var(--wp--preset--font-size--5xl, 3rem);
+  --text-6xl: var(--wp--preset--font-size--6xl, 3.75rem);
+  --text-7xl: var(--wp--preset--font-size--7xl, 4.5rem);
+  --text-8xl: var(--wp--preset--font-size--8xl, 6rem);
+  --text-9xl: var(--wp--preset--font-size--9xl, 8rem);
+}
+
+/* -------------------------
+   Optional “bridge” tokens
+   (nice for authoring custom CSS without memorizing WP var names)
+   ------------------------- */
+:root {
+  /* Global layout widths from theme.json (your settings.layout) */
+  --bw-content-size: var(--wp--style--global--content-size, 640px);
+  --bw-wide-size: var(--wp--style--global--wide-size, 1280px);
+
+  /* Common WP spacing aliases (useful for calc() / custom rules) */
+  --bw-space-0: var(--wp--preset--spacing--0, 0px);
+  --bw-space-px: var(--wp--preset--spacing--px, 1px);
+  --bw-space-0-5: var(--wp--preset--spacing--0-5, 0.125rem);
+  --bw-space-1: var(--wp--preset--spacing--1, 0.25rem);
+  --bw-space-1-5: var(--wp--preset--spacing--1-5, 0.375rem);
+  --bw-space-2: var(--wp--preset--spacing--2, 0.5rem);
+  --bw-space-2-5: var(--wp--preset--spacing--2-5, 0.625rem);
+  --bw-space-3: var(--wp--preset--spacing--3, 0.75rem);
+  --bw-space-3-5: var(--wp--preset--spacing--3-5, 0.875rem);
+  --bw-space-4: var(--wp--preset--spacing--4, 1rem);
+  --bw-space-5: var(--wp--preset--spacing--5, 1.25rem);
+  --bw-space-6: var(--wp--preset--spacing--6, 1.5rem);
+  --bw-space-8: var(--wp--preset--spacing--8, 2rem);
+  --bw-space-10: var(--wp--preset--spacing--10, 2.5rem);
+  --bw-space-12: var(--wp--preset--spacing--12, 3rem);
+  --bw-space-16: var(--wp--preset--spacing--16, 4rem);
+  --bw-space-20: var(--wp--preset--spacing--20, 5rem);
+
+  /* Fluid spacing presets (present in your theme.json) */
+  --bw-space-fluid-40: var(--wp--preset--spacing--fluid-40, 1.75rem);
+  --bw-space-fluid-50: var(--wp--preset--spacing--fluid-50, 2rem);
+  --bw-space-fluid-60: var(--wp--preset--spacing--fluid-60, 2rem);
+  --bw-space-fluid-70: var(--wp--preset--spacing--fluid-70, 3rem);
+  --bw-space-fluid-80: var(--wp--preset--spacing--fluid-80, 4rem);
+}

@@ -7,8 +7,8 @@
     "layout": {
       "contentSize": "640px",
       "wideSize": "1280px",
-      "allowEditing": true,
-      "allowCustomContentAndWideSize": true
+      "allowEditing": false,
+      "allowCustomContentAndWideSize": false
     },
     "background": {
       "backgroundImage": true,
@@ -160,7 +160,7 @@
       "padding": true,
       "margin": true,
       "blockGap": true,
-      "customSpacingSize": true,
+      "customSpacingSize": false,
       "defaultSpacingSizes": false,
       "spacingSizes": [
         {
@@ -379,7 +379,7 @@
     "typography": {
       "fluid": true,
       "defaultFontSizes": false,
-      "customFontSize": true,
+      "customFontSize": false,
       "fontStyle": true,
       "fontWeight": true,
       "letterSpacing": true,

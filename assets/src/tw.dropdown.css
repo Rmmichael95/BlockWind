@@ -78,7 +78,8 @@
       ul.wp-block-navigation__submenu-container,
       ul.wp-block-pages-list__submenu-container
     ) {
-    @apply hidden absolute left-0 top-full mt-2 min-w-60 rounded-lg border p-2 shadow-lg;
+    @apply hidden absolute left-0 top-full mt-2 min-w-60 rounded-lg p-2 shadow-lg;
+    border-color: color-mix(in oklab, currentColor 12%, transparent);
     background-color: var(--wp--preset--color--base, #fff);
     color: inherit;
   }
@@ -279,7 +280,7 @@
       a.wp-block-navigation-item__content,
       button.wp-block-navigation-item__content
     ) {
-    @apply inline-flex w-auto flex-none items-center text-left px-5 py-3 pr-1;
+    @apply inline-flex w-auto flex-none items-center text-left font-medium px-5 py-3 pr-1;
   }
 
   .site-nav
@@ -359,7 +360,8 @@
       ul.wp-block-navigation__submenu-container,
       ul.wp-block-pages-list__submenu-container
     ) {
-    @apply hidden basis-full w-full mt-2 mx-5 rounded-lg border p-3 shadow max-w-full min-w-0;
+    @apply hidden basis-full w-full mt-2 mx-5 rounded-lg p-3 shadow max-w-full min-w-0;
+    border-color: color-mix(in oklab, currentColor 12%, transparent);
     background-color: var(--wp--preset--color--base, #fff);
     color: inherit;
 
@@ -418,6 +420,7 @@
       a.wp-block-pages-list__item__link
     ):is(:hover, :focus-visible) {
     @apply outline-none;
+    background-color: color-mix(in oklab, currentColor 5%, transparent);
   }
 
   /* Nested indent inside the boxed panel */
