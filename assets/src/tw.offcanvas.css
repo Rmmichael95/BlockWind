@@ -1,3 +1,4 @@
+
 /* ==========================================================
    MODULE: tw.offcanvas.css
    Purpose: BlockWind off-canvas navigation overlay styling (FSE Navigation).
@@ -26,10 +27,16 @@
   background: rgb(0 0 0 / 0.5);
 }
 
-/* Drawer panel */
+/* Drawer panel (ONLY change: width behavior) */
 :root.has-modal-open .site-nav .wp-block-navigation__responsive-dialog {
-  @apply absolute top-0 right-0 h-full w-80 max-w-[85vw];
+  @apply absolute top-0 right-0 h-full;
   @apply bg-white shadow-2xl;
+
+  /* Mobile-first: full width */
+  width: 100vw;
+
+  /* Cap at 448px once viewport is 448px+ */
+  max-width: 448px;
 }
 
 /* Scroll area (leave room for logo + close “row”) */
@@ -67,3 +74,4 @@
 :root.has-modal-open body {
   overflow: hidden;
 }
+
