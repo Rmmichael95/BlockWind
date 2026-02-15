@@ -1,3 +1,9 @@
+/* ==========================================================
+   MODULE: tw.offcanvas.css
+   Purpose: BlockWind off-canvas navigation overlay styling (FSE Navigation).
+            Tailwind v4 utilities only (no Preflight), scoped to .site-nav
+            and ONLY while the overlay is open (is-menu-open + has-modal-open).
+   ========================================================== */
 @reference "./tw.reference.css";
 
 /* ✅ Do NOT style dialog/close/content globally.
@@ -26,7 +32,7 @@
   @apply bg-white shadow-2xl;
 }
 
-/* Scroll area */
+/* Scroll area (leave room for logo + close “row”) */
 :root.has-modal-open
   .site-nav
   .wp-block-navigation__responsive-container-content {
@@ -37,20 +43,27 @@
 :root.has-modal-open
   .site-nav
   .wp-block-navigation__responsive-container-close {
-  @apply absolute top-4 right-4 inline-flex items-center justify-center;
-  @apply p-2 rounded-md;
+  @apply absolute top-4 right-4 z-20 inline-flex items-center justify-center;
+  @apply p-2 rounded-md bg-white/95 shadow ring-1 ring-black/10;
+}
+
+/* Logo: top-left, same edge spacing as the close “X”, sized safely */
+:root.has-modal-open .site-nav .offcanvas-site-logo {
+  @apply absolute top-4 left-4 z-10 flex items-center;
+  /* reserve space so the logo never runs under the close button */
+  padding-right: 3.5rem;
+  max-width: calc(100% - 3.5rem);
+}
+
+:root.has-modal-open .site-nav .offcanvas-site-logo img,
+:root.has-modal-open .site-nav .offcanvas-site-logo svg {
+  @apply block w-auto max-w-full object-contain;
+  /* responsive + safe for huge uploads */
+  height: clamp(2.25rem, 7vw, 3.5rem);
 }
 
 /* Optional: lock scroll */
 :root.has-modal-open,
 :root.has-modal-open body {
   overflow: hidden;
-}
-
-:root.has-modal-open .site-nav .offcanvas-site-logo {
-  @apply mb-4;
-}
-
-:root.has-modal-open .site-nav .offcanvas-site-logo img {
-  @apply h-14 w-auto;
 }
