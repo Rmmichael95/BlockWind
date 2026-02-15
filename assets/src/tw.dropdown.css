@@ -1,0 +1,374 @@
+@reference "./tw.reference.css";
+
+/* =========================================================
+   tw.dropdown.css (FULL REWRITE)
+   Scope: add class "site-nav" on the core Navigation block.
+
+   Goals:
+   - Desktop: clean dropdown panels (hover + focus-within)
+   - Mobile overlay (is-menu-open): stacked items + expandable submenus
+   - Chevron sits immediately next to its label (not right-justified, not below)
+   - No text breakout (long labels wrap inside boxes)
+   - Supports BOTH markup styles:
+     - Navigation/Submenu: button.wp-block-navigation-item__content
+     - Page List: a.wp-block-pages-list__item__link
+   ========================================================= */
+
+/* -------------------------
+   Base (scoped)
+   ------------------------- */
+.site-nav
+  :is(
+    .wp-block-navigation__container,
+    .wp-block-navigation__submenu-container,
+    .wp-block-pages-list,
+    .wp-block-pages-list__submenu-container
+  ) {
+  @apply list-none m-0 p-0;
+}
+
+.site-nav
+  :is(
+    a.wp-block-navigation-item__content,
+    button.wp-block-navigation-item__content,
+    a.wp-block-pages-list__item__link
+  ) {
+  @apply no-underline text-inherit;
+}
+
+/* Make WP “current” not fight theme.json */
+.site-nav
+  :is(
+    .current-menu-item,
+    .current_page_item,
+    .current-menu-ancestor,
+    .current_page_ancestor
+  )
+  > :is(
+    a.wp-block-navigation-item__content,
+    button.wp-block-navigation-item__content,
+    a.wp-block-pages-list__item__link
+  ) {
+  @apply font-medium;
+}
+
+/* -------------------------
+   Desktop dropdowns
+   WP breakpoint ~782px
+   ------------------------- */
+@media (min-width: 783px) {
+  .site-nav
+    :is(
+      li.wp-block-navigation-item.has-child,
+      li.wp-block-pages-list__item.has-child
+    ) {
+    @apply relative;
+  }
+
+  /* submenu panel */
+  .site-nav
+    :is(
+      ul.wp-block-navigation__submenu-container,
+      ul.wp-block-pages-list__submenu-container
+    ) {
+    @apply hidden absolute left-0 top-full mt-2 min-w-60 rounded-lg border border-black/10 p-2 shadow-lg;
+    background-color: var(--wp--preset--color--base, #fff);
+    color: inherit;
+  }
+
+  /* show on hover/focus */
+  .site-nav
+    :is(
+      li.wp-block-navigation-item.has-child:hover,
+      li.wp-block-navigation-item.has-child:focus-within
+    )
+    > ul.wp-block-navigation__submenu-container {
+    @apply block;
+  }
+
+  .site-nav
+    :is(
+      li.wp-block-pages-list__item.has-child:hover,
+      li.wp-block-pages-list__item.has-child:focus-within
+    )
+    > ul.wp-block-pages-list__submenu-container {
+    @apply block;
+  }
+
+  /* flyout for nested */
+  .site-nav
+    :is(
+      ul.wp-block-navigation__submenu-container
+        ul.wp-block-navigation__submenu-container,
+      ul.wp-block-pages-list__submenu-container
+        ul.wp-block-pages-list__submenu-container
+    ) {
+    @apply left-full top-0 mt-0 ml-2;
+  }
+
+  /* submenu items */
+  .site-nav
+    :is(
+      ul.wp-block-navigation__submenu-container,
+      ul.wp-block-pages-list__submenu-container
+    )
+    :is(
+      a.wp-block-navigation-item__content,
+      button.wp-block-navigation-item__content,
+      a.wp-block-pages-list__item__link
+    ) {
+    @apply block w-full rounded-md px-3 py-2 text-left;
+  }
+
+  .site-nav
+    :is(
+      ul.wp-block-navigation__submenu-container,
+      ul.wp-block-pages-list__submenu-container
+    )
+    :is(
+      a.wp-block-navigation-item__content,
+      button.wp-block-navigation-item__content,
+      a.wp-block-pages-list__item__link
+    ):is(:hover, :focus-visible) {
+    @apply bg-black/5 outline-none;
+  }
+
+  /* desktop chevrons (keep simple; WP injects svg) */
+  .site-nav
+    :is(
+      button.wp-block-navigation-submenu__toggle,
+      button.wp-block-navigation__submenu-icon
+    ) {
+    @apply inline-flex items-center justify-center w-6 h-6 ml-1 opacity-70;
+    position: static;
+    transform: none;
+  }
+
+  .site-nav
+    :is(
+      button.wp-block-navigation-submenu__toggle,
+      button.wp-block-navigation__submenu-icon
+    )
+    svg {
+    @apply w-4 h-4 transition-transform;
+  }
+
+  /* rotate when expanded (some WP builds add aria-expanded) */
+  .site-nav
+    :is(
+      button.wp-block-navigation-submenu__toggle[aria-expanded="true"] svg,
+      button.wp-block-navigation__submenu-icon[aria-expanded="true"] svg
+    ) {
+    @apply rotate-180;
+  }
+}
+
+/* -------------------------
+   Mobile overlay menu
+   .is-menu-open + .is-modal-open present on html/body
+   ------------------------- */
+@media (max-width: 782px) {
+  /* container stack */
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    .wp-block-navigation__container {
+    @apply flex flex-col gap-2 w-full;
+  }
+
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    :is(li.wp-block-navigation-item, li.wp-block-pages-list__item) {
+    @apply w-full;
+  }
+
+  /* ----- Critical: prevent flex overflow issues ----- */
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    :is(
+      a.wp-block-navigation-item__content,
+      button.wp-block-navigation-item__content,
+      a.wp-block-pages-list__item__link
+    ) {
+    @apply max-w-full min-w-0 whitespace-normal break-words;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    .wp-block-navigation-item__label {
+    @apply max-w-full min-w-0 whitespace-normal break-words;
+    overflow-wrap: anywhere;
+  }
+
+  /* ----- Parent rows: label + chevron inline, submenu wraps below ----- */
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    :is(
+      li.wp-block-navigation-item.has-child,
+      li.wp-block-pages-list__item.has-child
+    ) {
+    @apply flex flex-row flex-wrap items-center justify-start;
+  }
+
+  /* Parent clickable label: auto width so chevron can sit immediately after it */
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    li.wp-block-navigation-item.has-child
+    > :is(
+      a.wp-block-navigation-item__content,
+      button.wp-block-navigation-item__content
+    ) {
+    @apply inline-flex w-auto flex-none items-center text-left font-medium px-5 py-3 pr-1;
+  }
+
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    li.wp-block-pages-list__item.has-child
+    > a.wp-block-pages-list__item__link {
+    @apply inline-flex w-auto flex-none items-center text-left font-medium px-5 py-3 pr-1;
+  }
+
+  /* Non-parents: full width rows */
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    li.wp-block-navigation-item:not(.has-child)
+    > :is(
+      a.wp-block-navigation-item__content,
+      button.wp-block-navigation-item__content
+    ),
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    li.wp-block-pages-list__item:not(.has-child)
+    > a.wp-block-pages-list__item__link {
+    @apply block w-full text-left font-medium px-5 py-3;
+  }
+
+  /* Chevron toggle sits immediately after label */
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    :is(
+      button.wp-block-navigation-submenu__toggle,
+      button.wp-block-navigation__submenu-icon
+    ) {
+    @apply inline-flex flex-none items-center justify-center w-6 h-6 ml-1 p-0 opacity-70 cursor-pointer;
+    align-self: center;
+    position: static;
+    transform: none;
+  }
+
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    :is(
+      button.wp-block-navigation-submenu__toggle,
+      button.wp-block-navigation__submenu-icon
+    ):hover {
+    @apply opacity-100;
+  }
+
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    :is(
+      button.wp-block-navigation-submenu__toggle,
+      button.wp-block-navigation__submenu-icon
+    )
+    svg {
+    @apply w-4 h-4 transition-transform fill-current;
+  }
+
+  /* Rotate chevron when open */
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    :is(
+      button.wp-block-navigation-submenu__toggle[aria-expanded="true"] svg,
+      button.wp-block-navigation__submenu-icon[aria-expanded="true"] svg
+    ),
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    :is(
+      li.is-open > button.wp-block-navigation-submenu__toggle svg,
+      li.is-open > button.wp-block-navigation__submenu-icon svg
+    ) {
+    @apply rotate-180;
+  }
+
+  /* ----- Submenu panel: bootstrap-like “boxed” dropdown inside overlay ----- */
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    :is(
+      ul.wp-block-navigation__submenu-container,
+      ul.wp-block-pages-list__submenu-container
+    ) {
+    @apply hidden basis-full w-full mt-2 mx-5 rounded-lg border border-black/15 p-3 shadow max-w-full min-w-0;
+    background-color: var(--wp--preset--color--base, #fff);
+    color: inherit;
+
+    /* ensure it behaves like a normal block in overlay */
+    position: static;
+    inset: auto;
+    visibility: visible;
+  }
+
+  /* Open states: WP uses li.is-open, plus sometimes aria-expanded on toggle */
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    :is(
+      li.is-open > ul.wp-block-navigation__submenu-container,
+      li.is-open > ul.wp-block-pages-list__submenu-container
+    ) {
+    @apply block;
+  }
+
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    :is(
+      button.wp-block-navigation-submenu__toggle[aria-expanded="true"] + ul,
+      button.wp-block-navigation__submenu-icon[aria-expanded="true"] + ul,
+      button.wp-block-navigation-submenu__toggle[aria-expanded="true"] ~ ul,
+      button.wp-block-navigation__submenu-icon[aria-expanded="true"] ~ ul
+    ) {
+    @apply block;
+  }
+
+  /* Submenu item links/buttons */
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    :is(
+      ul.wp-block-navigation__submenu-container,
+      ul.wp-block-pages-list__submenu-container
+    )
+    :is(
+      a.wp-block-navigation-item__content,
+      button.wp-block-navigation-item__content,
+      a.wp-block-pages-list__item__link
+    ) {
+    @apply block w-full rounded-md px-4 py-2 text-left font-normal max-w-full min-w-0;
+    overflow-wrap: anywhere;
+  }
+
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    :is(
+      ul.wp-block-navigation__submenu-container,
+      ul.wp-block-pages-list__submenu-container
+    )
+    :is(
+      a.wp-block-navigation-item__content,
+      button.wp-block-navigation-item__content,
+      a.wp-block-pages-list__item__link
+    ):is(:hover, :focus-visible) {
+    @apply bg-black/5 outline-none;
+  }
+
+  /* Nested indent inside the boxed panel */
+  .site-nav
+    .wp-block-navigation__responsive-container.is-menu-open
+    :is(
+      ul.wp-block-navigation__submenu-container
+        ul.wp-block-navigation__submenu-container,
+      ul.wp-block-pages-list__submenu-container
+        ul.wp-block-pages-list__submenu-container
+    ) {
+    @apply mt-2 ml-4;
+  }
+}

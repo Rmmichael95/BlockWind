@@ -6,7 +6,9 @@
 // Tailwind utilities (no preflight) + only the modules you need:
 // FSE-first: if you don't import anything, you get no CSS output.
 // Uncomment only when you need them:
-// import "./tw.base.css";
+import "./tw.base.css";
+import "./tw.dropdown.css";
+import "./tw.offcanvas.css";
 // import "./tw.grid.css";
 // import "./tw.flex-align.css";
 // import "./tw.spacing.css";
@@ -16,5 +18,8 @@
 
 // Optional SCSS (organization only) – uncomment only if used.
 // import "./scss/app.scss";
+
+// add your JS here
+import "./js/offcanvas-logo.js";
 
 export {};

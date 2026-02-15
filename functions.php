@@ -20,15 +20,15 @@ add_action(
 		$js_abs = get_theme_file_path( $js_rel );
 
 		// If you want truly zero JS on the frontend, keep this disabled.
-		// if (file_exists($js_abs) && filesize($js_abs) > 20) {
-		// wp_enqueue_script(
-		// 'mytheme-theme',
-		// get_theme_file_uri($js_rel),
-		// [],
-		// filemtime($js_abs),
-		// true
-		// );
-		// }
+		if ( file_exists( $js_abs ) && filesize( $js_abs ) > 20 ) {
+			wp_enqueue_script(
+				'mytheme-theme',
+				get_theme_file_uri( $js_rel ),
+				array(),
+				filemtime( $js_abs ),
+				true
+			);
+		}
 	}
 );
 

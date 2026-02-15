@@ -1,130 +1,484 @@
 {
-	"$schema": "https://schemas.wp.org/wp/6.9/theme.json",
-	"version": 3,
-
-	"settings": {
-		"appearanceTools": true,
-		"useRootPaddingAwareAlignments": true,
-
-		"layout": {
-			"contentSize": "",
-			"wideSize": "",
-			"allowEditing": true,
-			"allowCustomContentAndWideSize": true
-		},
-
-		"background": {
-			"backgroundImage": true,
-			"backgroundSize": true
-		},
-
-		"border": {
-			"color": true,
-			"radius": true,
-			"style": true,
-			"width": true,
-			"radiusSizes": []
-		},
-
-		"color": {
-			"background": true,
-			"text": true,
-			"link": true,
-			"heading": true,
-			"button": true,
-			"caption": true,
-
-			"defaultPalette": true,
-			"defaultGradients": true,
-			"defaultDuotone": true,
-
-			"custom": true,
-			"customGradient": true,
-			"customDuotone": true,
-
-			"palette": [],
-			"gradients": [],
-			"duotone": []
-		},
-
-		"dimensions": {
-			"aspectRatio": true,
-			"defaultAspectRatios": true,
-			"aspectRatios": [],
-			"height": true,
-			"minHeight": true,
-			"width": true,
-			"dimensionSizes": []
-		},
-
-		"lightbox": {
-			"enabled": true,
-			"allowEditing": true
-		},
-
-		"position": {
-			"sticky": true
-		},
-
-		"shadow": {
-			"defaultPresets": true,
-			"presets": []
-		},
-
-		"spacing": {
-			"blockGap": true,
-			"margin": true,
-			"padding": true,
-			"units": [ "px", "em", "rem", "vh", "vw", "%" ],
-			"customSpacingSize": true,
-			"defaultSpacingSizes": true,
-
-			"spacingSizes": [],
-			"spacingScale": {}
-		},
-
-		"typography": {
-			"defaultFontSizes": true,
-			"customFontSize": true,
-
-			"fontStyle": true,
-			"fontWeight": true,
-			"letterSpacing": true,
-			"lineHeight": true,
-			"textAlign": true,
-			"textColumns": true,
-			"textDecoration": true,
-			"textTransform": true,
-			"writingMode": true,
-
-			"textIndent": true,
-			"dropCap": true,
-
-			"fluid": {},
-
-			"fontFamilies": [],
-			"fontSizes": []
-		},
-
-		"custom": {},
-
-		"blocks": {}
-	},
-
-	"styles": {
-		"color": {},
-		"typography": {},
-		"spacing": {},
-		"border": {},
-		"dimensions": {},
-		"shadow": {},
-		"elements": {},
-		"blocks": {},
-		"outline": {},
-		"css": ""
-	},
-
-	"customTemplates": [],
-	"templateParts": [],
-	"patterns": []
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "useRootPaddingAwareAlignments": true,
+    "layout": {
+      "contentSize": "640px",
+      "wideSize": "1280px",
+      "allowEditing": true,
+      "allowCustomContentAndWideSize": true
+    },
+    "background": {
+      "backgroundImage": true,
+      "backgroundSize": true
+    },
+    "border": {
+      "color": true,
+      "radius": true,
+      "style": true,
+      "width": true,
+      "radiusSizes": [
+        {
+          "name": "none",
+          "slug": "none",
+          "size": "0px"
+        },
+        {
+          "name": "xs",
+          "slug": "xs",
+          "size": "0.125rem"
+        },
+        {
+          "name": "sm",
+          "slug": "sm",
+          "size": "0.25rem"
+        },
+        {
+          "name": "md",
+          "slug": "md",
+          "size": "0.375rem"
+        },
+        {
+          "name": "lg",
+          "slug": "lg",
+          "size": "0.5rem"
+        },
+        {
+          "name": "xl",
+          "slug": "xl",
+          "size": "0.75rem"
+        },
+        {
+          "name": "2xl",
+          "slug": "2xl",
+          "size": "1rem"
+        },
+        {
+          "name": "3xl",
+          "slug": "3xl",
+          "size": "1.5rem"
+        },
+        {
+          "name": "4xl",
+          "slug": "4xl",
+          "size": "2rem"
+        },
+        {
+          "name": "full",
+          "slug": "full",
+          "size": "100vw"
+        }
+      ]
+    },
+    "color": {
+      "defaultPalette": false,
+      "palette": [],
+      "custom": true,
+      "defaultGradients": false,
+      "gradients": [],
+      "customGradient": true,
+      "defaultDuotone": false,
+      "duotone": [],
+      "customDuotone": true,
+      "background": true,
+      "text": true,
+      "link": true,
+      "heading": true,
+      "button": true,
+      "caption": true
+    },
+    "dimensions": {
+      "aspectRatio": true,
+      "defaultAspectRatios": true,
+      "aspectRatios": [],
+      "height": true,
+      "minHeight": true,
+      "width": true,
+      "dimensionSizes": []
+    },
+    "lightbox": {
+      "enabled": true,
+      "allowEditing": true
+    },
+    "position": {
+      "sticky": true
+    },
+    "shadow": {
+      "defaultPresets": false,
+      "presets": [
+        {
+          "name": "none",
+          "slug": "none",
+          "shadow": "none"
+        },
+        {
+          "name": "2xs",
+          "slug": "2xs",
+          "shadow": "0 1px rgb(0 0 0 / 0.05)"
+        },
+        {
+          "name": "xs",
+          "slug": "xs",
+          "shadow": "0 1px 2px 0 rgb(0 0 0 / 0.05)"
+        },
+        {
+          "name": "sm",
+          "slug": "sm",
+          "shadow": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)"
+        },
+        {
+          "name": "md",
+          "slug": "md",
+          "shadow": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)"
+        },
+        {
+          "name": "lg",
+          "slug": "lg",
+          "shadow": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"
+        },
+        {
+          "name": "xl",
+          "slug": "xl",
+          "shadow": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)"
+        },
+        {
+          "name": "2xl",
+          "slug": "2xl",
+          "shadow": "0 25px 50px -12px rgb(0 0 0 / 0.25)"
+        },
+        {
+          "name": "inner",
+          "slug": "inner",
+          "shadow": "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)"
+        }
+      ]
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true,
+      "blockGap": true,
+      "customSpacingSize": true,
+      "defaultSpacingSizes": false,
+      "spacingSizes": [
+        {
+          "name": "0",
+          "slug": "0",
+          "size": "0px"
+        },
+        {
+          "name": "px",
+          "slug": "px",
+          "size": "1px"
+        },
+        {
+          "name": "0.5",
+          "slug": "0-5",
+          "size": "0.125rem"
+        },
+        {
+          "name": "1",
+          "slug": "1",
+          "size": "0.25rem"
+        },
+        {
+          "name": "1.5",
+          "slug": "1-5",
+          "size": "0.375rem"
+        },
+        {
+          "name": "2",
+          "slug": "2",
+          "size": "0.5rem"
+        },
+        {
+          "name": "2.5",
+          "slug": "2-5",
+          "size": "0.625rem"
+        },
+        {
+          "name": "3",
+          "slug": "3",
+          "size": "0.75rem"
+        },
+        {
+          "name": "3.5",
+          "slug": "3-5",
+          "size": "0.875rem"
+        },
+        {
+          "name": "4",
+          "slug": "4",
+          "size": "1rem"
+        },
+        {
+          "name": "5",
+          "slug": "5",
+          "size": "1.25rem"
+        },
+        {
+          "name": "6",
+          "slug": "6",
+          "size": "1.5rem"
+        },
+        {
+          "name": "7",
+          "slug": "7",
+          "size": "1.75rem"
+        },
+        {
+          "name": "8",
+          "slug": "8",
+          "size": "2rem"
+        },
+        {
+          "name": "9",
+          "slug": "9",
+          "size": "2.25rem"
+        },
+        {
+          "name": "10",
+          "slug": "10",
+          "size": "2.5rem"
+        },
+        {
+          "name": "11",
+          "slug": "11",
+          "size": "2.75rem"
+        },
+        {
+          "name": "12",
+          "slug": "12",
+          "size": "3rem"
+        },
+        {
+          "name": "14",
+          "slug": "14",
+          "size": "3.5rem"
+        },
+        {
+          "name": "16",
+          "slug": "16",
+          "size": "4rem"
+        },
+        {
+          "name": "20",
+          "slug": "20",
+          "size": "5rem"
+        },
+        {
+          "name": "24",
+          "slug": "24",
+          "size": "6rem"
+        },
+        {
+          "name": "28",
+          "slug": "28",
+          "size": "7rem"
+        },
+        {
+          "name": "32",
+          "slug": "32",
+          "size": "8rem"
+        },
+        {
+          "name": "36",
+          "slug": "36",
+          "size": "9rem"
+        },
+        {
+          "name": "40",
+          "slug": "40",
+          "size": "10rem"
+        },
+        {
+          "name": "44",
+          "slug": "44",
+          "size": "11rem"
+        },
+        {
+          "name": "48",
+          "slug": "48",
+          "size": "12rem"
+        },
+        {
+          "name": "52",
+          "slug": "52",
+          "size": "13rem"
+        },
+        {
+          "name": "56",
+          "slug": "56",
+          "size": "14rem"
+        },
+        {
+          "name": "60",
+          "slug": "60",
+          "size": "15rem"
+        },
+        {
+          "name": "64",
+          "slug": "64",
+          "size": "16rem"
+        },
+        {
+          "name": "72",
+          "slug": "72",
+          "size": "18rem"
+        },
+        {
+          "name": "80",
+          "slug": "80",
+          "size": "20rem"
+        },
+        {
+          "name": "96",
+          "slug": "96",
+          "size": "24rem"
+        },
+        {
+          "name": "Fluid Tiny",
+          "slug": "fluid-20",
+          "size": "clamp(0.625rem, calc(0.625rem + 0.25rem * ((100vw - 20rem) / 70)), 0.875rem)"
+        },
+        {
+          "name": "Fluid X-Small",
+          "slug": "fluid-30",
+          "size": "clamp(1.25rem, calc(1.25rem + 0.25rem * ((100vw - 20rem) / 70)), 1.5rem)"
+        },
+        {
+          "name": "Fluid Small",
+          "slug": "fluid-40",
+          "size": "clamp(1.75rem, calc(1.75rem + 0.5rem * ((100vw - 20rem) / 70)), 2.25rem)"
+        },
+        {
+          "name": "Fluid Regular",
+          "slug": "fluid-50",
+          "size": "clamp(2rem, calc(2rem + 1rem * ((100vw - 20rem) / 70)), 3rem)"
+        },
+        {
+          "name": "Fluid Large",
+          "slug": "fluid-60",
+          "size": "clamp(2rem, calc(2rem + 2rem * ((100vw - 20rem) / 70)), 4rem)"
+        },
+        {
+          "name": "Fluid X-Large",
+          "slug": "fluid-70",
+          "size": "clamp(3rem, calc(3rem + 3rem * ((100vw - 20rem) / 70)), 6rem)"
+        },
+        {
+          "name": "Fluid XX-Large",
+          "slug": "fluid-80",
+          "size": "clamp(4rem, calc(4rem + 5rem * ((100vw - 20rem) / 70)), 9rem)"
+        }
+      ],
+      "units": ["px", "em", "rem", "vh", "vw", "%"]
+    },
+    "typography": {
+      "fluid": true,
+      "defaultFontSizes": false,
+      "customFontSize": true,
+      "fontStyle": true,
+      "fontWeight": true,
+      "letterSpacing": true,
+      "lineHeight": true,
+      "textIndent": "subsequent",
+      "textAlign": true,
+      "textColumns": false,
+      "textDecoration": true,
+      "writingMode": false,
+      "textTransform": true,
+      "dropCap": true,
+      "fontFamilies": [],
+      "fontSizes": [
+        {
+          "name": "xs",
+          "slug": "xs",
+          "size": "0.75rem"
+        },
+        {
+          "name": "sm",
+          "slug": "sm",
+          "size": "0.875rem"
+        },
+        {
+          "name": "default",
+          "slug": "default",
+          "size": "1rem"
+        },
+        {
+          "name": "lg",
+          "slug": "lg",
+          "size": "1.125rem"
+        },
+        {
+          "name": "xl",
+          "slug": "xl",
+          "size": "1.25rem"
+        },
+        {
+          "name": "2xl",
+          "slug": "2xl",
+          "size": "1.5rem"
+        },
+        {
+          "name": "3xl",
+          "slug": "3xl",
+          "size": "1.875rem"
+        },
+        {
+          "name": "4xl",
+          "slug": "4xl",
+          "size": "2.25rem"
+        },
+        {
+          "name": "5xl",
+          "slug": "5xl",
+          "size": "3rem"
+        },
+        {
+          "name": "6xl",
+          "slug": "6xl",
+          "size": "3.75rem"
+        },
+        {
+          "name": "7xl",
+          "slug": "7xl",
+          "size": "4.5rem"
+        },
+        {
+          "name": "8xl",
+          "slug": "8xl",
+          "size": "6rem"
+        },
+        {
+          "name": "9xl",
+          "slug": "9xl",
+          "size": "8rem"
+        }
+      ]
+    },
+    "custom": {
+      "tokens": {}
+    },
+    "blocks": {}
+  },
+  "styles": {
+    "background": {},
+    "border": {},
+    "color": {},
+    "css": "",
+    "dimensions": {},
+    "filter": {},
+    "outline": {},
+    "shadow": {},
+    "spacing": {},
+    "typography": {},
+    "elements": {},
+    "blocks": {}
+  },
+  "templateParts": [],
+  "customTemplates": [],
+  "patterns": []
 }
