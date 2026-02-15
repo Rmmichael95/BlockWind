@@ -155,6 +155,7 @@
         }
       ]
     },
+
     "spacing": {
       "padding": true,
       "margin": true,
@@ -340,37 +341,37 @@
         {
           "name": "Fluid Tiny",
           "slug": "fluid-20",
-          "size": "clamp(0.625rem, calc(0.625rem + 0.25rem * ((100vw - 20rem) / 70)), 0.875rem)"
+          "size": "clamp(0.625rem, calc(0.5536rem + 0.3571vw), 0.875rem)"
         },
         {
           "name": "Fluid X-Small",
           "slug": "fluid-30",
-          "size": "clamp(1.25rem, calc(1.25rem + 0.25rem * ((100vw - 20rem) / 70)), 1.5rem)"
+          "size": "clamp(1.25rem, calc(1.1786rem + 0.3571vw), 1.5rem)"
         },
         {
           "name": "Fluid Small",
           "slug": "fluid-40",
-          "size": "clamp(1.75rem, calc(1.75rem + 0.5rem * ((100vw - 20rem) / 70)), 2.25rem)"
+          "size": "clamp(1.75rem, calc(1.6071rem + 0.7143vw), 2.25rem)"
         },
         {
           "name": "Fluid Regular",
           "slug": "fluid-50",
-          "size": "clamp(2rem, calc(2rem + 1rem * ((100vw - 20rem) / 70)), 3rem)"
+          "size": "clamp(2rem, calc(1.7143rem + 1.4286vw), 3rem)"
         },
         {
           "name": "Fluid Large",
           "slug": "fluid-60",
-          "size": "clamp(2rem, calc(2rem + 2rem * ((100vw - 20rem) / 70)), 4rem)"
+          "size": "clamp(2rem, calc(1.4286rem + 2.8571vw), 4rem)"
         },
         {
           "name": "Fluid X-Large",
           "slug": "fluid-70",
-          "size": "clamp(3rem, calc(3rem + 3rem * ((100vw - 20rem) / 70)), 6rem)"
+          "size": "clamp(3rem, calc(2.1429rem + 4.2857vw), 6rem)"
         },
         {
           "name": "Fluid XX-Large",
           "slug": "fluid-80",
-          "size": "clamp(4rem, calc(4rem + 5rem * ((100vw - 20rem) / 70)), 9rem)"
+          "size": "clamp(4rem, calc(2.5714rem + 7.1429vw), 9rem)"
         }
       ],
       "units": ["px", "em", "rem", "vh", "vw", "%"]
@@ -473,7 +474,13 @@
     "filter": {},
     "outline": {},
     "shadow": {},
-    "spacing": {},
+    "spacing": {
+      "blockGap": "var(--wp--preset--spacing--6)",
+      "padding": {
+        "right": "var(--wp--preset--spacing--fluid-30)",
+        "left": "var(--wp--preset--spacing--fluid-30)"
+      }
+    },
     "typography": {},
     "elements": {},
     "blocks": {}
