@@ -30,13 +30,18 @@
 :root.has-modal-open .site-nav .wp-block-navigation__responsive-dialog {
   @apply absolute top-0 right-0 h-full;
   @apply shadow-2xl;
-  background-color: var(--wp--preset--color--base, #fff);
+  background-color: var(--bw-color-bg);
+  color: var(--bw-color-text);
+  font-family: var(--bw-font-body);
 
   /* Mobile-first: full width */
-  width: 100vw;
+  width: 100%;
+  height: 100%;
 
   /* Cap at 448px once viewport is 448px+ */
-  max-width: 448px;
+  max-width: min(var(--bw-offcanvas-max-width), 100vw);
+
+  box-sizing: border-box;
 }
 
 /* Scroll area (leave room for logo + close “row”) */

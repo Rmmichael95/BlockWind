@@ -114,3 +114,38 @@
   --bw-space-fluid-70: var(--wp--preset--spacing--fluid-70, 3rem);
   --bw-space-fluid-80: var(--wp--preset--spacing--fluid-80, 4rem);
 }
+
+/* --------------------------------------------------------------------------
+   Semantic theme tokens
+   Priority: theme.json presets → core WP vars → BlockWind tokens → fallbacks.
+   Define slugs in theme.json with: body-font, header-font, base-color, bg-color,
+   accent-color (and optionally surface-color, border-color, hover-color).
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Fonts */
+  --bw-font-body: var(--wp--preset--font-family--body-font, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif);
+  --bw-font-heading: var(--wp--preset--font-family--header-font, var(--bw-font-body));
+
+  /* Colors */
+  --bw-color-text: var(--wp--preset--color--base-color, #111827); /* tailwind slate-900-ish */
+  --bw-color-bg: var(--wp--preset--color--bg-color, #ffffff);
+  --bw-color-accent: var(--wp--preset--color--accent-color, #2563eb); /* tailwind blue-600-ish */
+
+  /* Derived/optional */
+  --bw-color-surface: var(--wp--preset--color--surface-color, var(--bw-color-bg));
+  --bw-color-border: var(--wp--preset--color--border-color, rgb(0 0 0 / 0.15));
+  --bw-color-hover: var(--wp--preset--color--hover-color, rgb(0 0 0 / 0.05));
+
+  /* Offcanvas sizing + spacing (kept generic; can be overridden via theme.json custom props later) */
+  --bw-offcanvas-width: var(--wp--custom--offcanvas--width, 20rem);
+  --bw-offcanvas-max-width: var(--wp--custom--offcanvas--max-width, 28rem);
+  --bw-offcanvas-pad-x: var(--wp--custom--offcanvas--pad-x, var(--bw-space-6));
+  --bw-offcanvas-pad-y: var(--wp--custom--offcanvas--pad-y, var(--bw-space-6));
+  --bw-offcanvas-top-pad: var(--wp--custom--offcanvas--top-pad, var(--bw-space-16));
+
+  /* Layering */
+  --bw-z-offcanvas: var(--wp--custom--z-index--offcanvas, 100000);
+  --bw-z-offcanvas-overlay: var(--wp--custom--z-index--offcanvas-overlay, 99999);
+}
