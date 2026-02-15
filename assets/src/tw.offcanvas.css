@@ -1,16 +1,19 @@
-
 @reference "./tw.reference.css";
 
 /* ✅ Do NOT style dialog/close/content globally.
    Only style them while the overlay is OPEN. */
 
-:root.has-modal-open .site-nav .wp-block-navigation__responsive-container.is-menu-open {
+:root.has-modal-open
+  .site-nav
+  .wp-block-navigation__responsive-container.is-menu-open {
   @apply fixed inset-0 z-[100000] p-0;
   background: transparent;
 }
 
 /* Backdrop */
-:root.has-modal-open .site-nav .wp-block-navigation__responsive-container.is-menu-open::before {
+:root.has-modal-open
+  .site-nav
+  .wp-block-navigation__responsive-container.is-menu-open::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -24,12 +27,16 @@
 }
 
 /* Scroll area */
-:root.has-modal-open .site-nav .wp-block-navigation__responsive-container-content {
+:root.has-modal-open
+  .site-nav
+  .wp-block-navigation__responsive-container-content {
   @apply h-full overflow-y-auto p-6 pt-16;
 }
 
 /* Close button */
-:root.has-modal-open .site-nav .wp-block-navigation__responsive-container-close {
+:root.has-modal-open
+  .site-nav
+  .wp-block-navigation__responsive-container-close {
   @apply absolute top-4 right-4 inline-flex items-center justify-center;
   @apply p-2 rounded-md;
 }
@@ -40,11 +47,10 @@
   overflow: hidden;
 }
 
-:root.has-modal-open .site-nav .offcanvas-site-logo{
+:root.has-modal-open .site-nav .offcanvas-site-logo {
   @apply mb-4;
 }
 
-:root.has-modal-open .site-nav .offcanvas-site-logo img{
+:root.has-modal-open .site-nav .offcanvas-site-logo img {
   @apply h-14 w-auto;
 }
-
