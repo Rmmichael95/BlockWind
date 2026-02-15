@@ -40,7 +40,7 @@
     button.wp-block-navigation-item__content,
     a.wp-block-pages-list__item__link
   ) {
-  @apply no-underline text-inherit;
+  @apply text-inherit;
 }
 
 /* Make WP “current” not fight theme.json */
@@ -78,7 +78,7 @@
       ul.wp-block-navigation__submenu-container,
       ul.wp-block-pages-list__submenu-container
     ) {
-    @apply hidden absolute left-0 top-full mt-2 min-w-60 rounded-lg border border-black/10 p-2 shadow-lg;
+    @apply hidden absolute left-0 top-full mt-2 min-w-60 rounded-lg border p-2 shadow-lg;
     background-color: var(--wp--preset--color--base, #fff);
     color: inherit;
   }
@@ -184,7 +184,9 @@
     /* fade in/out; still driven by your display:block/hidden rules */
     opacity: 0;
     transform: translateY(2px);
-    transition: opacity 160ms ease, transform 160ms ease;
+    transition:
+      opacity 160ms ease,
+      transform 160ms ease;
   }
 
   :root:not(.has-modal-open)
@@ -216,7 +218,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: -0.5rem;   /* matches mt-2 */
+    top: -0.5rem; /* matches mt-2 */
     height: 0.5rem; /* bridge height */
   }
 }
@@ -277,7 +279,7 @@
       a.wp-block-navigation-item__content,
       button.wp-block-navigation-item__content
     ) {
-    @apply inline-flex w-auto flex-none items-center text-left font-medium px-5 py-3 pr-1;
+    @apply inline-flex w-auto flex-none items-center text-left px-5 py-3 pr-1;
   }
 
   .site-nav
@@ -357,7 +359,7 @@
       ul.wp-block-navigation__submenu-container,
       ul.wp-block-pages-list__submenu-container
     ) {
-    @apply hidden basis-full w-full mt-2 mx-5 rounded-lg border border-black/15 p-3 shadow max-w-full min-w-0;
+    @apply hidden basis-full w-full mt-2 mx-5 rounded-lg border p-3 shadow max-w-full min-w-0;
     background-color: var(--wp--preset--color--base, #fff);
     color: inherit;
 
@@ -415,7 +417,7 @@
       button.wp-block-navigation-item__content,
       a.wp-block-pages-list__item__link
     ):is(:hover, :focus-visible) {
-    @apply bg-black/5 outline-none;
+    @apply outline-none;
   }
 
   /* Nested indent inside the boxed panel */
