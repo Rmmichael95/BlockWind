@@ -5,20 +5,6 @@
             Desktop: stable hover/focus dropdowns (no “disappear instantly”).
             Mobile overlay: keep WP behavior; only style/layout.
    ========================================================== */
-
-/* ==========================================================
-   MODULE: tw.nav-items.css
-   Purpose: Navigation list-items (li) + top-level item content (li > a) + chevrons.
-            Tailwind v4 utilities only (no Preflight), scoped to .site-nav.
-
-   Why this module exists:
-   - Keeps ALL list-item row layout + hit-area padding in one place.
-   - Alignment fixes belong here (row problem), not in submenu panel styling.
-
-   Separation of concerns:
-   - Submenu "windows" (submenu UL panels) live in tw.dropdowns.css
-   - The responsive overlay/drawer container lives in tw.offcanvas.css
-   ========================================================== */
 @reference "./tw.reference.css";
 
 /* -------------------------
@@ -31,7 +17,7 @@
     a.wp-block-navigation-item__content,
     a.wp-block-pages-list__item__link
   ) {
-  @apply px-5 py-3;
+  @apply rounded-md px-5 py-3;
 }
 
 .site-nav
@@ -50,13 +36,13 @@
    - DO NOT control submenu UL styling here (that's tw.dropdowns.css)
    ------------------------- */
 .site-nav
-  .wp-block-navigation__responsive-container.is-menu-open
+  .wp-block-navigation__responsive-container
   :is(li.wp-block-navigation-item, li.wp-block-pages-list__item)
   > :is(
     a.wp-block-navigation-item__content,
     a.wp-block-pages-list__item__link
   ) {
-  @apply block rounded-md px-3 py-2 text-left;
+  @apply rounded-md px-3 py-2;
 }
 
 .site-nav

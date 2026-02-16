@@ -7,7 +7,7 @@
     "layout": {
       "contentSize": "640px",
       "wideSize": "1280px",
-      "allowEditing": false,
+      "allowEditing": true,
       "allowCustomContentAndWideSize": false
     },
     "background": {
@@ -457,6 +457,60 @@
           "name": "9xl",
           "slug": "9xl",
           "size": "8rem"
+        },
+        {
+          "name": "fluid-default",
+          "slug": "fluid-default",
+          "size": "1.125rem",
+          "fluid": { "min": "1rem", "max": "1.125rem" }
+        },
+        {
+          "name": "fluid-xl",
+          "slug": "fluid-xl",
+          "size": "1.5rem",
+          "fluid": { "min": "1.25rem", "max": "1.5rem" }
+        },
+        {
+          "name": "fluid-2xl",
+          "slug": "fluid-2xl",
+          "size": "2.25rem",
+          "fluid": { "min": "1.5rem", "max": "2.25rem" }
+        },
+        {
+          "name": "fluid-3xl",
+          "slug": "fluid-3xl",
+          "size": "3rem",
+          "fluid": { "min": "1.875rem", "max": "3rem" }
+        },
+        {
+          "name": "fluid-4xl",
+          "slug": "fluid-4xl",
+          "size": "3.75rem",
+          "fluid": { "min": "2.25rem", "max": "3.75rem" }
+        },
+        {
+          "name": "fluid-5xl",
+          "slug": "fluid-5xl",
+          "size": "4.5rem",
+          "fluid": { "min": "3rem", "max": "4.5rem" }
+        },
+        {
+          "name": "fluid-6xl",
+          "slug": "fluid-6xl",
+          "size": "6rem",
+          "fluid": { "min": "3.75rem", "max": "6rem" }
+        },
+        {
+          "name": "fluid-7xl",
+          "slug": "fluid-7xl",
+          "size": "7rem",
+          "fluid": { "min": "4.5rem", "max": "7rem" }
+        },
+        {
+          "name": "fluid-8xl",
+          "slug": "fluid-8xl",
+          "size": "8rem",
+          "fluid": { "min": "6rem", "max": "8rem" }
         }
       ]
     },
