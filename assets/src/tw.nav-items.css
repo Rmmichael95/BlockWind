@@ -1,0 +1,8 @@
+/* ==========================================================
+   MODULE: tw.nav-items.css
+   Purpose: Navigation dropdown styling for BlockWind / core Navigation block.
+            Tailwind v4 utilities only (no Preflight), scoped to .site-nav.
+            Desktop: stable hover/focus dropdowns (no “disappear instantly”).
+            Mobile overlay: keep WP behavior; only style/layout.
+   ========================================================== */
+@reference "./tw.reference.css";

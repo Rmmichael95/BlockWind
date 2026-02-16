@@ -8,7 +8,8 @@
 // Uncomment only when you need them:
 import "./tw.base.css";
 import "./tw.tokens.css";
-import "./tw.dropdown.css";
+import "./tw.nav-items.css";
+import "./tw.dropdowns.css";
 import "./tw.offcanvas.css";
 // import "./tw.grid.css";
 // import "./tw.flex-align.css";
@@ -22,5 +23,6 @@ import "./tw.offcanvas.css";
 
 // add your JS here
 import "./js/offcanvas-logo.js";
+import "./js/offcanvas-devtools-guard.js";
 
 export {};
