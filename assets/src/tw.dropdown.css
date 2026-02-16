@@ -64,9 +64,8 @@
       ul.wp-block-navigation__submenu-container,
       ul.wp-block-pages-list__submenu-container
     ) {
-    @apply hidden absolute left-0 top-full mt-2 min-w-60 rounded-lg border p-2 shadow-lg;
-    background-color: var(--bw-color-surface);
-    border-color: var(--bw-color-border);
+    @apply hidden absolute left-0 top-full mt-2 min-w-60 rounded-lg border border-black/10 p-2 shadow-lg;
+    background-color: var(--wp--preset--color--base, #fff);
     color: inherit;
   }
 
@@ -124,8 +123,7 @@
       button.wp-block-navigation-item__content,
       a.wp-block-pages-list__item__link
     ):is(:hover, :focus-visible) {
-    @apply outline-none;
-  background-color: var(--bw-color-hover);
+    @apply bg-black/5 outline-none;
   }
 
   /* desktop chevrons (keep simple; WP injects svg) */
@@ -307,9 +305,8 @@
       ul.wp-block-navigation__submenu-container,
       ul.wp-block-pages-list__submenu-container
     ) {
-    @apply hidden basis-full w-full mt-2 rounded-lg border p-3 shadow max-w-full min-w-0;
-    background-color: var(--bw-color-surface);
-    border-color: var(--bw-color-border);
+    @apply hidden basis-full w-full mt-2 mx-5 rounded-lg border border-black/15 p-3 shadow max-w-full min-w-0;
+    background-color: var(--wp--preset--color--base, #fff);
     color: inherit;
 
     position: static;
@@ -365,8 +362,7 @@
       button.wp-block-navigation-item__content,
       a.wp-block-pages-list__item__link
     ):is(:hover, :focus-visible) {
-    @apply outline-none;
-  background-color: var(--bw-color-hover);
+    @apply bg-black/5 outline-none;
   }
 
   /* Nested indent inside the boxed panel */
@@ -380,32 +376,4 @@
     ) {
     @apply mt-2 ml-4;
   }
-}
-
-
-.site-nav
-  .wp-block-navigation__responsive-container.is-menu-open
-  .wp-block-navigation__submenu-container
-  .wp-block-navigation-item__content:hover {
-  background-color: var(--bw-color-hover);
-}
-
-
-
-.site-nav
-  .wp-block-navigation__responsive-container.is-menu-open
-  .wp-block-navigation-item.has-child
-  > button.wp-block-navigation__submenu-icon[aria-expanded="true"]
-  ~ ul.wp-block-navigation__submenu-container {
-  display: block;
-}
-
-
-
-.site-nav
-  .wp-block-navigation__responsive-container.is-menu-open
-  .wp-block-pages-list__item.has-child
-  > button.wp-block-navigation__submenu-icon[aria-expanded="true"]
-  ~ ul.wp-block-pages-list__submenu-container {
-  display: block;
 }
