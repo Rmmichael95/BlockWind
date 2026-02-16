@@ -1,6 +1,6 @@
-# Blockwind
+# BlockWind
 
-**Blockwind** is an **FSE-first (Full Site Editing)** WordPress block theme built around a clean separation of concerns:
+**BlockWind** is an **FSE-first (Full Site Editing)** WordPress block theme built around a clean separation of concerns:
 
 - **`theme.json`** = design tokens + editor capabilities + baseline styles (**source of truth**)
 - **Tailwind (optional)** = minimal responsive utility framework + migration helpers (**implementation layer when needed**)
@@ -15,7 +15,7 @@ The theme is designed to be **usable with zero compiled CSS** (pure FSE + `theme
 
 ### ✅ FSE-first
 
-Blockwind prioritizes WordPress core block theming:
+BlockWind prioritizes WordPress core block theming:
 
 - Templates, parts, and patterns define layout and “component library”
 - `theme.json` controls the editor experience and global styling
@@ -23,7 +23,7 @@ Blockwind prioritizes WordPress core block theming:
 
 ### ✅ No bloat, no unused CSS by default
 
-- If you **do not import Tailwind/SCSS modules**, Vite will **not produce CSS output**
+- If you **do not import TailWind/SCSS modules**, Vite will **not produce CSS output**
 - Your theme runs on `theme.json` and block markup alone
 - When enabled, CSS compiles into **one minified file**: `assets/dist/theme.min.css`
 
@@ -170,7 +170,7 @@ npm install
 
 ### A) FSE-only mode (default, no compiled CSS)
 
-Blockwind can run purely on:
+BlockWind can run purely on:
 
 - `theme.json`
 - templates/parts/patterns
@@ -283,7 +283,7 @@ Example `package.json` scripts:
 
 ---
 
-## Suggested Migration Approach (Bootstrap → Blockwind)
+## Suggested Migration Approach (Bootstrap → BlockWind)
 
 1. Start with file-based templates/parts/patterns using familiar `.container/.row/.col-*`.
 2. Import only the necessary Tailwind modules to support those classes.
