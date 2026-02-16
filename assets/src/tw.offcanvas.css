@@ -26,10 +26,9 @@
   background: rgb(0 0 0 / 0.5);
 }
 
-/* Drawer panel (ONLY change: width behavior) */
+/* Drawer panel (responsive container modal) */
 :root.has-modal-open .site-nav .wp-block-navigation__responsive-dialog {
-  @apply absolute top-0 right-0 h-full;
-  @apply shadow-2xl;
+  @apply absolute top-0 right-0 h-full shadow-2xl;
   background-color: var(--bw-color-bg);
   color: var(--bw-color-text);
   font-family: var(--bw-font-body);
@@ -51,6 +50,14 @@
   @apply h-full overflow-y-auto p-6 pt-16;
 }
 
+/* Menu list stack (inside the drawer) */
+:root.has-modal-open
+  .site-nav
+  .wp-block-navigation__responsive-container.is-menu-open
+  .wp-block-navigation__container {
+  @apply flex flex-col items-stretch justify-start gap-2 w-full;
+}
+
 /* Close button */
 :root.has-modal-open
   .site-nav
@@ -59,7 +66,7 @@
   @apply p-2 rounded-md bg-white/95 shadow ring-1 ring-black/10;
 }
 
-/* Logo: top-left, same edge spacing as the close “X”, sized safely */
+/* Logo: top-left, same edge spacing as close “X”, sized safely */
 :root.has-modal-open .site-nav .offcanvas-site-logo {
   @apply absolute top-4 left-4 z-10 flex items-center;
   /* reserve space so the logo never runs under the close button */
@@ -72,48 +79,4 @@
   @apply block w-auto max-w-full object-contain;
   /* responsive + safe for huge uploads */
   height: clamp(2.25rem, 7vw, 3.5rem);
-}
-
-.site-nav
-  .wp-block-navigation__responsive-container.is-menu-open
-  li.wp-block-navigation-item.has-child
-  > :is(
-    a.wp-block-navigation-item__content,
-    button.wp-block-navigation-item__content
-  ) {
-  /* @apply inline-flex w-auto flex-none items-center text-left font-medium px-5 py-3 pr-1; */
-  @apply py-3;
-}
-
-.site-nav
-  .wp-block-navigation__responsive-container.is-menu-open
-  li.wp-block-pages-list__item.has-child
-  > a.wp-block-pages-list__item__link {
-  /* @apply inline-flex w-auto flex-none items-center text-left font-medium px-5 py-3 pr-1; */
-  @apply py-3;
-}
-
-.site-nav
-  .wp-block-navigation__container
-  .wp-block-navigation-item
-  > .wp-block-navigation-item__content {
-  @apply px-8;
-}
-
-.site-nav
-  .wp-block-navigation__container
-  .wp-block-navigation-item.has-child
-  > .wp-block-navigation-item__content {
-  @apply px-8;
-}
-
-.site-nav
-  .wp-block-navigation__responsive-container.is-menu-open
-  li.wp-block-navigation-item:not(.has-child)
-  > :is(
-    a.wp-block-navigation-item__content,
-    button.wp-block-navigation-item__content
-  ) {
-  /* @apply block w-full text-left font-medium px-5 py-3; */
-  @apply w-full py-3;
 }
