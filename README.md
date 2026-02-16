@@ -1,6 +1,6 @@
-# BlockWind
+# Blockwind
 
-**BlockWind** is an **FSE-first (Full Site Editing)** WordPress block theme built around a clean separation of concerns:
+**Blockwind** is an **FSE-first (Full Site Editing)** WordPress block theme built around a clean separation of concerns:
 
 - **`theme.json`** = design tokens + editor capabilities + baseline styles (**source of truth**)
 - **Tailwind (optional)** = minimal responsive utility framework + migration helpers (**implementation layer when needed**)
@@ -15,7 +15,7 @@ The theme is designed to be **usable with zero compiled CSS** (pure FSE + `theme
 
 ### ✅ FSE-first
 
-BlockWind prioritizes WordPress core block theming:
+Blockwind prioritizes WordPress core block theming:
 
 - Templates, parts, and patterns define layout and “component library”
 - `theme.json` controls the editor experience and global styling
@@ -23,7 +23,7 @@ BlockWind prioritizes WordPress core block theming:
 
 ### ✅ No bloat, no unused CSS by default
 
-- If you **do not import TailWind/SCSS modules**, Vite will **not produce CSS output**
+- If you **do not import Tailwind/SCSS modules**, Vite will **not produce CSS output**
 - Your theme runs on `theme.json` and block markup alone
 - When enabled, CSS compiles into **one minified file**: `assets/dist/theme.min.css`
 
@@ -51,7 +51,7 @@ Modules are split so you can **import only what you need** during migration.
 
 ## Theme Structure
 
-````
+```
 blockwind/
   style.css
   theme.json
@@ -74,7 +74,7 @@ blockwind/
       js/                      # all theme JS modules live here (optional)
         offcanvas-logo.js      # small JS module(s) (optional)
       tw.base.css              # Tailwind v4 utilities only (no Preflight)
-      tw.tokens.css            # tokens exported from theme.json (overrides some Tailwind defaults)
+      tw.tokens.css            # tokens exported from theme.json (overrides some Tailwind defaults); define vars as WP-first with Tailwind fallback
       tw.grid.css              # Bootstrap-ish container/row/col
       tw.flex-align.css        # flex directions + alignment
       tw.spacing.css           # spacing subset (m/p)
@@ -112,12 +112,16 @@ If you need those tokens available to build layers, export/derive them from `the
 - `assets/src/tw.tokens.css` (Tailwind)
 - `assets/src/scss/_tokens.scss` (SCSS)
 
+When exporting/deriving tokens into those files, write them as **aliases** to WordPress variables (with Tailwind fallback), not as a new source of truth.
+
 ### 2) Tailwind (optional, modular)
 
 Tailwind is used as a **minimal responsive framework** when needed:
 
 
 **Load order (when opting in):** import `tw.base.css` first, then `tw.tokens.css` (which can override some Tailwind defaults to match `theme.json`), then any feature modules.
+
+In `assets/src/tw.tokens.css`, define token aliases using WordPress variables first and **always** include a fallback value (Tailwind v4 default) so the theme remains stable even if a preset isn’t defined.
 
 Tailwind is used as a **minimal responsive framework** when needed:
 
@@ -140,6 +144,8 @@ SCSS should **not** introduce a separate token system—reference `theme.json` C
 
 If you want token conveniences in SCSS (maps/variables), keep them derived from `theme.json` in `assets/src/scss/_tokens.scss` and import it into `app.scss`.
 
+In `assets/src/scss/_tokens.scss`, keep tokens aligned with `theme.json` by pointing to WordPress CSS variables and **always** providing a fallback (Tailwind v4 default) whenever you reference a variable that may not exist.
+
 ---
 
 ## Requirements
@@ -156,7 +162,7 @@ From the theme root:
 
 ```bash
 npm install
-````
+```
 
 ### Dev dependencies used
 
@@ -170,7 +176,7 @@ npm install
 
 ### A) FSE-only mode (default, no compiled CSS)
 
-BlockWind can run purely on:
+Blockwind can run purely on:
 
 - `theme.json`
 - templates/parts/patterns
@@ -217,6 +223,8 @@ export {};
 ```
 
 Recommended: import `assets/src/scss/_tokens.scss` inside `app.scss` so SCSS stays aligned with `theme.json` tokens.
+
+When you add variables there, **always include fallback values** so missing presets don’t break styling.
 
 > If your SCSS uses `@apply`, you must have Tailwind utilities available.
 
@@ -283,7 +291,7 @@ Example `package.json` scripts:
 
 ---
 
-## Suggested Migration Approach (Bootstrap → BlockWind)
+## Suggested Migration Approach (Bootstrap → Blockwind)
 
 1. Start with file-based templates/parts/patterns using familiar `.container/.row/.col-*`.
 2. Import only the necessary Tailwind modules to support those classes.
