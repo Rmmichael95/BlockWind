@@ -92,7 +92,8 @@ blockwind/
         utilities/
     dist/
       theme.min.css            # generated only when CSS modules are imported
-      theme.min.js             # tiny build artifact (enqueue optional)```
+      theme.min.js             # tiny build artifact (enqueue optional)
+```
 
 ---
 
@@ -109,6 +110,7 @@ blockwind/
 This is the _preferred_ styling system for core blocks and editor consistency.
 
 If you need those tokens available to build layers, export/derive them from `theme.json` into:
+
 - `assets/src/tw.tokens.css` (Tailwind)
 - `assets/src/scss/_tokens.scss` (SCSS)
 
@@ -117,7 +119,6 @@ When exporting/deriving tokens into those files, write them as **aliases** to Wo
 ### 2) Tailwind (optional, modular)
 
 Tailwind is used as a **minimal responsive framework** when needed:
-
 
 **Load order (when opting in):** import `tw.base.css` first, then `tw.tokens.css` (which can override some Tailwind defaults to match `theme.json`), then any feature modules.
 
@@ -141,7 +142,6 @@ SCSS is allowed for:
 
 SCSS should **not** introduce a separate token system—reference `theme.json` CSS vars instead.
 
-
 If you want token conveniences in SCSS (maps/variables), keep them derived from `theme.json` in `assets/src/scss/_tokens.scss` and import it into `app.scss`.
 
 In `assets/src/scss/_tokens.scss`, keep tokens aligned with `theme.json` by pointing to WordPress CSS variables and **always** providing a fallback (Tailwind v4 default) whenever you reference a variable that may not exist.
@@ -158,11 +158,9 @@ In `assets/src/scss/_tokens.scss`, keep tokens aligned with `theme.json` by poin
 
 ## Install
 
-From the theme root:
-
-```bash
 npm install
-```
+
+````
 
 ### Dev dependencies used
 
@@ -189,7 +187,7 @@ Blockwind can run purely on:
 // import "./tw.grid.css";
 // import "./scss/app.scss";
 export {};
-```
+````
 
 In this mode, `npm run build` produces no `theme.min.css` (JS output depends on whether you import any JS modules), and the theme stays clean.
 
