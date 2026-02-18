@@ -28,7 +28,7 @@
 
 /* Drawer panel (responsive container modal) */
 :root.has-modal-open .site-nav .wp-block-navigation__responsive-dialog {
-  @apply absolute top-0 right-0 h-full shadow-2xl;
+  @apply absolute top-0 right-0 h-full shadow-2xl !mt-0;
   background-color: var(--bw-color-bg);
   color: var(--bw-color-text);
   font-family: var(--bw-font-body);

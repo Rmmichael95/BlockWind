@@ -1,0 +1,89 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "title": "Dh Everforest Dark",
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "name": "DH Primary",
+          "slug": "dh-primary",
+          "color": "#141e1c"
+        },
+        {
+          "name": "DH Secondary",
+          "slug": "dh-secondary",
+          "color": "#1f2d2b"
+        },
+        {
+          "name": "DH Base",
+          "slug": "dh-base",
+          "color": "#1E2326"
+        },
+        {
+          "name": "DH Accent",
+          "slug": "dh-accent",
+          "color": "#d3a300"
+        },
+        {
+          "name": "DH Link",
+          "slug": "dh-link",
+          "color": "#a7c080"
+        },
+        {
+          "name": "DH Text",
+          "slug": "dh-text",
+          "color": "#d3c6aa"
+        },
+        {
+          "name": "DH Muted",
+          "slug": "dh-muted",
+          "color": "#859289"
+        },
+        {
+          "name": "DH Border",
+          "slug": "dh-border",
+          "color": "#2f383e"
+        },
+        {
+          "name": "DH Contrast",
+          "slug": "dh-contrast",
+          "color": "#1E2326"
+        }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "name": "Body",
+          "slug": "dh-body",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, \"Apple Color Emoji\", \"Segoe UI Emoji\""
+        },
+        {
+          "name": "Headings",
+          "slug": "dh-heading",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, \"Apple Color Emoji\", \"Segoe UI Emoji\""
+        }
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var:preset|color|dh-base",
+      "text": "var:preset|color|dh-text"
+    },
+    "elements": {
+      "link": {
+        "color": {
+          "text": "var:preset|color|dh-link"
+        }
+      },
+      "button": {
+        "color": {
+          "background": "var:preset|color|dh-accent",
+          "text": "var:preset|color|dh-contrast"
+        }
+      }
+    }
+  }
+}

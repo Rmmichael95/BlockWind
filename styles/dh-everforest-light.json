@@ -1,0 +1,89 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "title": "Dh Everforest Light",
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "name": "DH Primary",
+          "slug": "dh-primary",
+          "color": "#495c69"
+        },
+        {
+          "name": "DH Secondary",
+          "slug": "dh-secondary",
+          "color": "#97a47f"
+        },
+        {
+          "name": "DH Base",
+          "slug": "dh-base",
+          "color": "#fffbef"
+        },
+        {
+          "name": "DH Accent",
+          "slug": "dh-accent",
+          "color": "#d3a300"
+        },
+        {
+          "name": "DH Link",
+          "slug": "dh-link",
+          "color": "#495c69"
+        },
+        {
+          "name": "DH Text",
+          "slug": "dh-text",
+          "color": "#1E2326"
+        },
+        {
+          "name": "DH Muted",
+          "slug": "dh-muted",
+          "color": "#565c57"
+        },
+        {
+          "name": "DH Border",
+          "slug": "dh-border",
+          "color": "#d7d7d7"
+        },
+        {
+          "name": "DH Contrast",
+          "slug": "dh-contrast",
+          "color": "#ffffff"
+        }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "name": "Body",
+          "slug": "dh-body",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, \"Apple Color Emoji\", \"Segoe UI Emoji\""
+        },
+        {
+          "name": "Headings",
+          "slug": "dh-heading",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, \"Apple Color Emoji\", \"Segoe UI Emoji\""
+        }
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var:preset|color|dh-base",
+      "text": "var:preset|color|dh-text"
+    },
+    "elements": {
+      "link": {
+        "color": {
+          "text": "var:preset|color|dh-link"
+        }
+      },
+      "button": {
+        "color": {
+          "background": "var:preset|color|dh-primary",
+          "text": "var:preset|color|dh-contrast"
+        }
+      }
+    }
+  }
+}
