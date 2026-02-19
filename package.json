@@ -5,7 +5,15 @@
     "dev": "vite",
     "build": "vite build",
     "build:css": "vite build --emptyOutDir",
-    "preview": "vite preview"
+    "preview": "vite preview",
+
+    "build:blocks": "node scripts/blocks.mjs build",
+    "build:block": "node scripts/blocks.mjs build --name",
+    "dev:block": "node scripts/blocks.mjs start --name",
+    "install:blocks": "node scripts/blocks.mjs install",
+    "install:block": "node scripts/blocks.mjs install --name",
+
+    "build:all": "npm run build && npm run build:blocks"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.18",
@@ -14,3 +22,4 @@
     "vite": "^7.3.1"
   }
 }
+

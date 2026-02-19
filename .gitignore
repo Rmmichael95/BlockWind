@@ -1,7 +1,7 @@
 # =========================
 # WordPress / Theme basics
 # =========================
-# WP core / installs (only if theme lives in a repo that might contain WP)
+# Only relevant if this repo sometimes sits inside a WP install checkout
 wp-config.php
 wp-content/uploads/
 wp-content/cache/
@@ -9,12 +9,59 @@ wp-content/upgrade/
 wp-content/backups-dup-pro/
 wp-content/ai1wm-backups/
 
-# OS / editor junk
+# =========================
+# OS junk (macOS / Windows / Linux)
+# =========================
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.Trash-*
+.fseventsd
+
 Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux file manager metadata
+.directory
+
+# =========================
+# Editor junk (VS Code / Vim / Neovim)
+# =========================
+# Vim/Neovim swap/backup/undo files
 *.swp
 *.swo
+*.swn
+*.swm
+*.un~
+*~
 *.tmp
+*.bak
+*.orig
+
+# Vim/Neovim session files
+Session.vim
+Sessionx.vim
+
+# Optional: local vim/nvim config files people sometimes generate
+# (comment out if you intentionally commit these)
+# .vim/
+# .nvim/
+
+# VS Code: ignore the folder but allow sharing team settings
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# JetBrains
+.idea/
+*.iml
 
 # =========================
 # Node / Vite / Tailwind
@@ -27,17 +74,22 @@ pnpm-debug.log*
 pnpm-store/
 .pnpm-store/
 
-# Vite caches
+# Tool caches
 .vite/
 .vite-cache/
+.eslintcache
+.stylelintcache
 
-# Tailwind caches (if any tooling writes here)
+# Tailwind caches (rare, but safe)
 .tailwind/
+
+# Sass caches (if any tooling writes here)
+.sass-cache/
 
 # =========================
 # Build output
 # =========================
-# If you deploy builds via CI/CD, ignore dist output in git:
+# Theme build output (your Vite/Tailwind dist)
 assets/dist/
 
 # If you instead COMMIT compiled assets (common for WP themes),
@@ -58,22 +110,16 @@ vendor/
 composer.lock
 
 # =========================
-# Logs
+# Logs / Testing / Coverage
 # =========================
 *.log
-
-# =========================
-# Testing / Coverage (optional)
-# =========================
 coverage/
 .nyc_output/
 
 # =========================
-# IDE configs
+# IMPORTANT: Git submodules
 # =========================
-.idea/
-.vscode/
-!.vscode/extensions.json
-!.vscode/settings.json
-!.vscode/launch.json
-!.vscode/tasks.json
+# /assets/blocks/* are git submodules.
+# Do NOT ignore /assets/blocks/** here.
+# Each block repo should manage its own ignores (node_modules/, build/, etc.) within the submodule.
+
