@@ -4,16 +4,21 @@
             Tailwind v4 utilities only (no Preflight), scoped to .site-nav
             and ONLY while the overlay is open (is-menu-open + has-modal-open).
    ========================================================== */
+
 @reference "./tw.reference.css";
 
-/* ✅ Do NOT style dialog/close/content globally.
-   Only style them while the overlay is OPEN. */
-
+/* Only apply while modal is open */
 :root.has-modal-open
   .site-nav
   .wp-block-navigation__responsive-container.is-menu-open {
-  @apply fixed inset-0 z-[100000] p-0;
-  background: transparent;
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+
+  /* Flex layout allows modal alignment independent of desktop */
+  display: flex;
+  justify-content: flex-end; /* change to center or flex-start if desired */
+  align-items: stretch;
 }
 
 /* Backdrop */
@@ -23,60 +28,73 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgb(0 0 0 / 0.5);
+  background: color-mix(in oklab, var(--dh-black) 50%, transparent);
 }
 
-/* Drawer panel (responsive container modal) */
+/* Drawer panel */
 :root.has-modal-open .site-nav .wp-block-navigation__responsive-dialog {
-  @apply absolute top-0 right-0 h-full shadow-2xl !mt-0;
-  background-color: var(--bw-color-bg);
-  color: var(--bw-color-text);
-  font-family: var(--bw-font-body);
+  position: relative;
+  z-index: 1;
 
-  /* Mobile-first: full width */
-  width: 100%;
-  height: 100%;
+  block-size: 100%;
+  inline-size: min(100%, var(--dh-offcanvas-max-width));
 
-  /* Cap at 448px once viewport is 448px+ */
-  max-width: 448px;
+  background-color: var(--dh-offcanvas-bg);
+  border-inline-start: 1px solid var(--dh-offcanvas-border);
+  border-top-left-radius: var(--dh-offcanvas-radius);
+  border-bottom-left-radius: var(--dh-offcanvas-radius);
+  box-shadow: var(--dh-offcanvas-shadow);
 
+  padding: var(--wp--preset--spacing--dh-md);
   box-sizing: border-box;
+  overflow: hidden;
 }
 
-/* Scroll area (leave room for logo + close “row”) */
+/* Scroll area */
 :root.has-modal-open
   .site-nav
   .wp-block-navigation__responsive-container-content {
-  @apply h-full overflow-y-auto p-6 pt-16;
+  block-size: 100%;
+  overflow-y: auto;
+
+  /* Space for close button row */
+  padding-block-start: calc(
+    var(--wp--preset--spacing--dh-md) + var(--wp--preset--spacing--dh-sm)
+  );
 }
 
-/* Menu list stack (inside the drawer) */
+/* Modal-specific menu formatting (independent of desktop) */
+:root.has-modal-open .site-nav .wp-block-navigation__container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wp--style--block-gap, var(--wp--preset--spacing--dh-xs));
+  align-items: stretch;
+}
+
+/* Example: modal text alignment independent of desktop */
 :root.has-modal-open
   .site-nav
-  .wp-block-navigation__responsive-container.is-menu-open
-  .wp-block-navigation__container {
-  @apply flex flex-col items-stretch justify-start gap-2 w-full;
+  .wp-block-navigation__container
+  :is(a.wp-block-navigation-item__content, a.wp-block-pages-list__item__link) {
+  text-align: right;
 }
 
-/* Close button */
+/* Close button container (do not override focus outline) */
 :root.has-modal-open
   .site-nav
   .wp-block-navigation__responsive-container-close {
-  @apply absolute top-4 right-4 z-20 inline-flex items-center justify-center;
-  @apply p-2 rounded-md bg-white/95 shadow ring-1 ring-black/10;
-}
+  position: absolute;
+  inset-block-start: var(--wp--preset--spacing--dh-sm);
+  inset-inline-end: var(--wp--preset--spacing--dh-sm);
 
-/* Logo: top-left, same edge spacing as close “X”, sized safely */
-:root.has-modal-open .site-nav .offcanvas-site-logo {
-  @apply absolute top-4 left-4 z-10 flex items-center;
-  /* reserve space so the logo never runs under the close button */
-  padding-right: 3.5rem;
-  max-width: calc(100% - 3.5rem);
-}
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
 
-:root.has-modal-open .site-nav .offcanvas-site-logo img,
-:root.has-modal-open .site-nav .offcanvas-site-logo svg {
-  @apply block w-auto max-w-full object-contain;
-  /* responsive + safe for huge uploads */
-  height: clamp(2.25rem, 7vw, 3.5rem);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: var(--wp--preset--radius--dh-md);
+  border: 1px solid var(--dh-offcanvas-border);
+  background-color: var(--dh-surface);
 }

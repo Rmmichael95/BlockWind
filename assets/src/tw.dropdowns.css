@@ -5,57 +5,58 @@
             Desktop: stable hover/focus dropdowns (no “disappear instantly”).
             Mobile overlay: keep WP behavior; only style/layout.
    ========================================================== */
+
 @reference "./tw.reference.css";
 
-/* Shared item styling inside submenu panels */
-.site-nav
-  :is(
-    ul.wp-block-navigation__submenu-container,
-    ul.wp-block-pages-list__submenu-container
-  )
-  :is(
-    a.wp-block-navigation-item__content,
-    button.wp-block-navigation-item__content,
-    a.wp-block-pages-list__item__link
-  ) {
-  @apply block w-full rounded-md px-3 py-2 text-left;
-}
-
 /* -------------------------
-   Desktop dropdowns
-   WP breakpoint ~782px
+   Desktop dropdown panels
    ------------------------- */
 @media (min-width: 783px) {
-  /* submenu panel */
   .site-nav
     :is(
       ul.wp-block-navigation__submenu-container,
       ul.wp-block-pages-list__submenu-container
     ) {
-    @apply hidden absolute left-0 top-full mt-2 min-w-60 rounded-lg border border-black/10 p-2 shadow-md;
-    background-color: var(--wp--preset--color--base, #fff);
-    color: inherit;
+    background-color: var(--dh-dropdown-bg);
+    border: 1px solid var(--dh-dropdown-border);
+    border-radius: var(--dh-dropdown-radius);
+    box-shadow: var(--dh-dropdown-shadow);
+
+    padding: var(--wp--preset--spacing--dh-xs);
+
+    position: absolute;
+    inset-block-start: calc(100% + var(--wp--preset--spacing--dh-xs));
+    inset-inline-start: 0;
+
+    min-inline-size: 15rem;
+    z-index: 50;
+
+    display: none;
   }
 
-  /* Bridge the vertical gap created by mt-2 (between parent and submenu) */
+  /* Show submenu on hover + keyboard focus within */
   .site-nav
     :is(
-      li.wp-block-navigation-item.has-child
-        > ul.wp-block-navigation__submenu-container,
+      li.wp-block-navigation-item.has-child,
       li.wp-block-pages-list__item.has-child
-        > ul.wp-block-pages-list__submenu-container
-    )::before {
-    --bw-submenu-gap-y: calc(var(--spacing, 0.25rem) * 2); /* matches mt-2 */
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: calc(-1 * var(--bw-submenu-gap-y));
-    height: var(--bw-submenu-gap-y);
-    background: transparent;
+    ):hover
+    > :is(
+      ul.wp-block-navigation__submenu-container,
+      ul.wp-block-pages-list__submenu-container
+    ),
+  .site-nav
+    :is(
+      li.wp-block-navigation-item.has-child,
+      li.wp-block-pages-list__item.has-child
+    ):focus-within
+    > :is(
+      ul.wp-block-navigation__submenu-container,
+      ul.wp-block-pages-list__submenu-container
+    ) {
+    display: block;
   }
 
-  /* flyout for nested */
+  /* Nested flyouts */
   .site-nav
     :is(
       ul.wp-block-navigation__submenu-container
@@ -63,61 +64,59 @@
       ul.wp-block-pages-list__submenu-container
         ul.wp-block-pages-list__submenu-container
     ) {
-    @apply left-full top-0 mt-0 ml-2;
-  }
-
-  .site-nav
-    :is(
-      ul.wp-block-navigation__submenu-container,
-      ul.wp-block-pages-list__submenu-container
-    )
-    :is(
-      a.wp-block-navigation-item__content,
-      button.wp-block-navigation-item__content,
-      a.wp-block-pages-list__item__link
-    ):is(:hover, :focus-visible) {
-    @apply bg-black/5 outline-none;
+    inset-block-start: 0;
+    inset-inline-start: calc(100% + var(--wp--preset--spacing--dh-xs));
   }
 }
 
 /* -------------------------
-   Mobile overlay menu
-   - Only the submenu UL “box” lives here
+   Mobile submenu panel box
+   NOTE: This does NOT define modal alignment or overall menu formatting.
+         Offcanvas layout lives in tw.offcanvas.css
    ------------------------- */
 @media (max-width: 782px) {
-  /* Submenu panel: boxed dropdown inside overlay */
   .site-nav
-    .wp-block-navigation__responsive-container.is-menu-open
+    .wp-block-navigation__responsive-container
     :is(
       ul.wp-block-navigation__submenu-container,
       ul.wp-block-pages-list__submenu-container
     ) {
-    @apply hidden basis-full w-full mt-2 mx-5 rounded-lg border border-black/15 p-3 shadow max-w-full min-w-0;
-    background-color: var(--wp--preset--color--base, #fff);
-    color: inherit;
+    background-color: var(--dh-dropdown-bg);
+    border: 1px solid var(--dh-dropdown-border);
+    border-radius: var(--dh-dropdown-radius);
+    box-shadow: var(--dh-dropdown-shadow);
+
+    padding: var(--wp--preset--spacing--dh-xs);
+
     position: static;
-    inset: auto;
-    visibility: visible;
+    inline-size: 100%;
+    margin-block-start: var(--wp--preset--spacing--dh-xs);
+
+    display: none;
   }
 
-  /* Open states */
+  /* WP open states */
   .site-nav
-    .wp-block-navigation__responsive-container.is-menu-open
+    .wp-block-navigation__responsive-container
     :is(
       li.is-open > ul.wp-block-navigation__submenu-container,
       li.is-open > ul.wp-block-pages-list__submenu-container
     ) {
-    @apply block;
+    display: block;
   }
 
   .site-nav
-    .wp-block-navigation__responsive-container.is-menu-open
+    .wp-block-navigation__responsive-container
     :is(
-      button.wp-block-navigation-submenu__toggle[aria-expanded="true"] + ul,
-      button.wp-block-navigation__submenu-icon[aria-expanded="true"] + ul,
-      button.wp-block-navigation-submenu__toggle[aria-expanded="true"] ~ ul,
-      button.wp-block-navigation__submenu-icon[aria-expanded="true"] ~ ul
+      button.wp-block-navigation-submenu__toggle[aria-expanded="true"]
+        ~ ul.wp-block-navigation__submenu-container,
+      button.wp-block-navigation__submenu-icon[aria-expanded="true"]
+        ~ ul.wp-block-navigation__submenu-container,
+      button.wp-block-navigation-submenu__toggle[aria-expanded="true"]
+        ~ ul.wp-block-pages-list__submenu-container,
+      button.wp-block-navigation__submenu-icon[aria-expanded="true"]
+        ~ ul.wp-block-pages-list__submenu-container
     ) {
-    @apply block;
+    display: block;
   }
 }

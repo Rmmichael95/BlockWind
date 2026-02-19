@@ -5,176 +5,119 @@
             Safe to load globally; keeps WP/theme.json as source of truth.
    ========================================================== */
 
-/* -------------------------
-   Core Tailwind v4 tokens
-   ------------------------- */
+/* ==========================================================
+   tw.tokens.css (BlockWind)
+   Goal: WordPress-first tokens + self-documenting DH semantics
+   - Colors + fonts map to theme.json presets (style-variation safe)
+   - NO spacing mirror vars (use WP spacing vars directly in modules)
+   - Minimal Tailwind v4 runtime tokens (radius/shadow/text-size)
+   ========================================================== */
+
+/* ----------------------------------------------------------
+   Tailwind v4 minimal runtime tokens
+   (Keep only what your build/utilities actually expect)
+   ---------------------------------------------------------- */
 :root {
-  /* Tailwind v4 spacing unit (used by p-*, m-*, gap-*, etc.) */
-  --spacing: var(--wp--preset--spacing--1, 0.25rem);
+  /* Tailwind spacing unit (used in a few calc patterns; keep stable) */
+  --spacing: 0.25rem;
 
-  /* Tailwind v4 radius tokens (used by rounded-*) */
-  --radius-none: var(--wp--preset--radius--none, 0px);
-  --radius-xs: var(--wp--preset--radius--xs, 0.125rem);
-  --radius-sm: var(--wp--preset--radius--sm, 0.25rem);
-  --radius-md: var(--wp--preset--radius--md, 0.375rem);
-  --radius-lg: var(--wp--preset--radius--lg, 0.5rem);
-  --radius-xl: var(--wp--preset--radius--xl, 0.75rem);
-  --radius-2xl: var(--wp--preset--radius--2xl, 1rem);
-  --radius-3xl: var(--wp--preset--radius--3xl, 1.5rem);
-  --radius-4xl: var(--wp--preset--radius--4xl, 2rem);
-  --radius-full: var(--wp--preset--radius--full, 100vw);
+  /* Radius tokens -> theme.json radius presets */
+  --radius-none: var(--wp--preset--radius--dh-none);
+  --radius-xs: var(--wp--preset--radius--dh-xs);
+  --radius-sm: var(--wp--preset--radius--dh-sm);
+  --radius-md: var(--wp--preset--radius--dh-md);
+  --radius-lg: var(--wp--preset--radius--dh-lg);
+  --radius-xl: var(--wp--preset--radius--dh-xl);
+  --radius-2xl: var(--wp--preset--radius--dh-2xl);
+  --radius-3xl: var(--wp--preset--radius--dh-3xl);
+  --radius-4xl: var(--wp--preset--radius--dh-4xl);
+  --radius-full: var(--wp--preset--radius--dh-full);
 
-  /* Common alias some Tailwind builds/utilities expect */
+  /* Common alias */
   --radius: var(--radius-md);
 
-  /* Tailwind v4 shadow tokens (used by shadow-*) */
-  --shadow-none: var(--wp--preset--shadow--none, none);
-  --shadow-2xs: var(--wp--preset--shadow--2xs, 0 1px rgb(0 0 0 / 0.05));
-  --shadow-xs: var(--wp--preset--shadow--xs, 0 1px 2px 0 rgb(0 0 0 / 0.05));
-  --shadow-sm: var(
-    --wp--preset--shadow--sm,
-    0 1px 3px 0 rgb(0 0 0 / 0.1),
-    0 1px 2px -1px rgb(0 0 0 / 0.1)
-  );
-  --shadow-md: var(
-    --wp--preset--shadow--md,
-    0 4px 6px -1px rgb(0 0 0 / 0.1),
-    0 2px 4px -2px rgb(0 0 0 / 0.1)
-  );
-  --shadow-lg: var(
-    --wp--preset--shadow--lg,
-    0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1)
-  );
-  --shadow-xl: var(
-    --wp--preset--shadow--xl,
-    0 20px 25px -5px rgb(0 0 0 / 0.1),
-    0 8px 10px -6px rgb(0 0 0 / 0.1)
-  );
-  --shadow-2xl: var(
-    --wp--preset--shadow--2xl,
-    0 25px 50px -12px rgb(0 0 0 / 0.25)
-  );
-  --shadow-inner: var(
-    --wp--preset--shadow--inner,
-    inset 0 2px 4px 0 rgb(0 0 0 / 0.05)
-  );
-
-  /* Alias often used by `shadow` (non-sized) utilities */
+  /* Common alias */
   --shadow: var(--shadow-sm);
 
-  /* Tailwind v4 text size tokens (used by text-*) */
-  --text-xs: var(--wp--preset--font-size--xs, 0.75rem);
-  --text-sm: var(--wp--preset--font-size--sm, 0.875rem);
-  --text-base: var(--wp--preset--font-size--default, 1rem);
-  --text-lg: var(--wp--preset--font-size--lg, 1.125rem);
-  --text-xl: var(--wp--preset--font-size--xl, 1.25rem);
-  --text-2xl: var(--wp--preset--font-size--2xl, 1.5rem);
-  --text-3xl: var(--wp--preset--font-size--3xl, 1.875rem);
-  --text-4xl: var(--wp--preset--font-size--4xl, 2.25rem);
-  --text-5xl: var(--wp--preset--font-size--5xl, 3rem);
-  --text-6xl: var(--wp--preset--font-size--6xl, 3.75rem);
-  --text-7xl: var(--wp--preset--font-size--7xl, 4.5rem);
-  --text-8xl: var(--wp--preset--font-size--8xl, 6rem);
-  --text-9xl: var(--wp--preset--font-size--9xl, 8rem);
+  /* ----------------------------------------------------------
+   DH Semantic Tokens (self-documenting)
+   Rule: components should use --dh-* (not raw --wp--preset--)
+   ---------------------------------------------------------- */
+  /* Core palette semantics (from theme.json color palette dh-*) */
+  --dh-primary: var(--wp--preset--color--dh-primary);
+  --dh-secondary: var(--wp--preset--color--dh-secondary);
+  --dh-bg: var(--wp--preset--color--dh-base);
+  --dh-accent: var(--wp--preset--color--dh-accent);
+
+  --dh-text: var(--wp--preset--color--dh-text);
+  --dh-muted: var(--wp--preset--color--dh-muted);
+
+  --dh-border: var(--wp--preset--color--dh-border);
+  --dh-contrast: var(--wp--preset--color--dh-contrast);
+
+  --dh-link: var(--wp--preset--color--dh-link);
+
+  /* Explicit black/white (rarely needed; keep for overlays/icons) */
+  --dh-black: var(--wp--preset--color--dh-black);
+  --dh-white: var(--wp--preset--color--dh-white);
+
+  /* Surface semantics (choose sensible defaults for your palette) */
+  /* "surface" should generally be a panel color: contrast on base background */
+  --dh-surface: var(--dh-contrast);
+  /* "panel" can be used for dropdowns/offcanvas if you want a distinct layer */
+  --dh-panel: var(--dh-bg);
+
+  /* Hover surface (theme.json does not define a hover color preset)
+     Use a subtle, accessible neutral overlay derived from text. */
+  --dh-hover-surface: color-mix(in oklab, var(--dh-text) 8%, transparent);
+
+  /* Focus ring color should match theme.json navigation focus outline:
+     core/navigation uses dh-link for outline. */
+  --dh-focus-ring: var(--dh-link);
+  --dh-focus-ring-width: 2px;
+  --dh-focus-ring-offset: 2px;
 }
 
-/* -------------------------
-   Optional “bridge” tokens
-   (nice for authoring custom CSS without memorizing WP var names)
-   ------------------------- */
+/* ----------------------------------------------------------
+   Navigation + dropdown + offcanvas semantics
+   - Tailwind nav modules should use these only
+   - Let theme.json own link colors + text-decoration for core/navigation
+   ---------------------------------------------------------- */
 :root {
-  /* Global layout widths from theme.json (your settings.layout) */
-  --bw-content-size: var(--wp--style--global--content-size, 640px);
-  --bw-wide-size: var(--wp--style--global--wide-size, 1280px);
+  /* Nav container context */
+  --dh-nav-fg: var(--dh-text);
+  --dh-nav-bg: transparent;
 
-  /* Common WP spacing aliases (useful for calc() / custom rules) */
-  --bw-space-0: var(--wp--preset--spacing--0, 0px);
-  --bw-space-px: var(--wp--preset--spacing--px, 1px);
-  --bw-space-0-5: var(--wp--preset--spacing--0-5, 0.125rem);
-  --bw-space-1: var(--wp--preset--spacing--1, 0.25rem);
-  --bw-space-1-5: var(--wp--preset--spacing--1-5, 0.375rem);
-  --bw-space-2: var(--wp--preset--spacing--2, 0.5rem);
-  --bw-space-2-5: var(--wp--preset--spacing--2-5, 0.625rem);
-  --bw-space-3: var(--wp--preset--spacing--3, 0.75rem);
-  --bw-space-3-5: var(--wp--preset--spacing--3-5, 0.875rem);
-  --bw-space-4: var(--wp--preset--spacing--4, 1rem);
-  --bw-space-5: var(--wp--preset--spacing--5, 1.25rem);
-  --bw-space-6: var(--wp--preset--spacing--6, 1.5rem);
-  --bw-space-8: var(--wp--preset--spacing--8, 2rem);
-  --bw-space-10: var(--wp--preset--spacing--10, 2.5rem);
-  --bw-space-12: var(--wp--preset--spacing--12, 3rem);
-  --bw-space-16: var(--wp--preset--spacing--16, 4rem);
-  --bw-space-20: var(--wp--preset--spacing--20, 5rem);
+  /* Nav row hover background (does not fight theme.json link hover color) */
+  --dh-nav-hover-bg: var(--dh-hover-surface);
 
-  /* Fluid spacing presets (present in your theme.json) */
-  --bw-space-fluid-40: var(--wp--preset--spacing--fluid-40, 1.75rem);
-  --bw-space-fluid-50: var(--wp--preset--spacing--fluid-50, 2rem);
-  --bw-space-fluid-60: var(--wp--preset--spacing--fluid-60, 2rem);
-  --bw-space-fluid-70: var(--wp--preset--spacing--fluid-70, 3rem);
-  --bw-space-fluid-80: var(--wp--preset--spacing--fluid-80, 4rem);
+  /* Dropdown panel */
+  --dh-dropdown-bg: var(--dh-panel);
+  --dh-dropdown-fg: var(--dh-text);
+  --dh-dropdown-border: var(--dh-border);
+  --dh-dropdown-radius: var(--wp--preset--radius--dh-lg, 0.5rem);
+  --dh-dropdown-shadow: var(--wp--preset--shadow--dh-md, var(--shadow-md));
+
+  /* Offcanvas panel */
+  --dh-offcanvas-bg: var(--dh-panel);
+  --dh-offcanvas-fg: var(--dh-text);
+  --dh-offcanvas-border: var(--dh-border);
+  --dh-offcanvas-radius: var(--wp--preset--radius--dh-lg, 0.5rem);
+  --dh-offcanvas-shadow: var(--wp--preset--shadow--dh-2xl, var(--shadow-2xl));
+
+  /* Optional sizing knobs (you can set these via theme.json "custom" later) */
+  --dh-offcanvas-max-width: 448px;
 }
 
-/* --------------------------------------------------------------------------
-   Semantic theme tokens
-   Priority: theme.json presets → core WP vars → BlockWind tokens → fallbacks.
-   Define slugs in theme.json with: body-font, header-font, base-color, bg-color,
-   accent-color (and optionally surface-color, border-color, hover-color).
-   -------------------------------------------------------------------------- */
-
+/* ----------------------------------------------------------
+   Minimal compatibility aliases (if older modules still reference these)
+   Keep these ONLY if you still have bw-* usage elsewhere.
+   ---------------------------------------------------------- */
 :root {
-  /* Fonts */
-  --bw-font-body: var(
-    --wp--preset--font-family--body-font,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    "Segoe UI",
-    Roboto,
-    "Helvetica Neue",
-    Arial,
-    "Noto Sans",
-    "Liberation Sans",
-    sans-serif
-  );
-  --bw-font-heading: var(
-    --wp--preset--font-family--header-font,
-    var(--bw-font-body)
-  );
-
-  /* Colors */
-  --bw-color-text: var(
-    --wp--preset--color--base-color,
-    #111827
-  ); /* tailwind slate-900-ish */
-  --bw-color-bg: var(--wp--preset--color--bg-color, #ffffff);
-  --bw-color-accent: var(
-    --wp--preset--color--accent-color,
-    #2563eb
-  ); /* tailwind blue-600-ish */
-
-  /* Derived/optional */
-  --bw-color-surface: var(
-    --wp--preset--color--surface-color,
-    var(--bw-color-bg)
-  );
-  --bw-color-border: var(--wp--preset--color--border-color, rgb(0 0 0 / 0.15));
-  --bw-color-hover: var(--wp--preset--color--hover-color, rgb(0 0 0 / 0.05));
-
-  /* Offcanvas sizing + spacing (kept generic; can be overridden via theme.json custom props later) */
-  --bw-offcanvas-width: var(--wp--custom--offcanvas--width, 20rem);
-  --bw-offcanvas-max-width: var(--wp--custom--offcanvas--max-width, 28rem);
-  --bw-offcanvas-pad-x: var(--wp--custom--offcanvas--pad-x, var(--bw-space-6));
-  --bw-offcanvas-pad-y: var(--wp--custom--offcanvas--pad-y, var(--bw-space-6));
-  --bw-offcanvas-top-pad: var(
-    --wp--custom--offcanvas--top-pad,
-    var(--bw-space-16)
-  );
-
-  /* Layering */
-  --bw-z-offcanvas: var(--wp--custom--z-index--offcanvas, 100000);
-  --bw-z-offcanvas-overlay: var(
-    --wp--custom--z-index--offcanvas-overlay,
-    99999
-  );
+  --bw-color-bg: var(--dh-bg);
+  --bw-color-text: var(--dh-text);
+  --bw-color-accent: var(--dh-accent);
+  --bw-color-surface: var(--dh-surface);
+  --bw-color-border: var(--dh-border);
+  --bw-color-hover: var(--dh-hover-surface);
 }

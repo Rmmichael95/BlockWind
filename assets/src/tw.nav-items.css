@@ -5,11 +5,10 @@
             Desktop: stable hover/focus dropdowns (no “disappear instantly”).
             Mobile overlay: keep WP behavior; only style/layout.
    ========================================================== */
+
 @reference "./tw.reference.css";
 
-/* -------------------------
-   Base (desktop + non-modal)
-   ------------------------- */
+/* Desktop + general item spacing */
 .site-nav
   .wp-block-navigation__container
   :is(li.wp-block-navigation-item, li.wp-block-pages-list__item)
@@ -17,200 +16,64 @@
     a.wp-block-navigation-item__content,
     a.wp-block-pages-list__item__link
   ) {
-  @apply rounded-md px-5 py-3;
+  padding-block: var(--wp--preset--spacing--dh-xs);
+  padding-inline: var(--wp--preset--spacing--dh-sm);
+  border-radius: var(--wp--preset--radius--dh-md);
 }
 
+/* Background affordance only (does not fight theme.json hover styles) */
 .site-nav
   .wp-block-navigation__container
   :is(li.wp-block-navigation-item, li.wp-block-pages-list__item)
   > :is(
     a.wp-block-navigation-item__content,
     a.wp-block-pages-list__item__link
-  ):hover {
-  @apply bg-black/5 outline-none;
-}
-
-/* -------------------------
-   Overlay menu open (hamburger)
-   - Keep every top-level item feeling like a single "row button"
-   - DO NOT control submenu UL styling here (that's tw.dropdowns.css)
-   ------------------------- */
+  ):hover,
 .site-nav
-  .wp-block-navigation__responsive-container
+  .wp-block-navigation__container
   :is(li.wp-block-navigation-item, li.wp-block-pages-list__item)
   > :is(
     a.wp-block-navigation-item__content,
     a.wp-block-pages-list__item__link
+  ):focus-visible {
+  background-color: var(--dh-nav-hover-bg);
+}
+
+/* Chevron / submenu toggle: inherit currentColor (theme.json handles color) */
+.site-nav
+  :is(
+    button.wp-block-navigation-submenu__toggle,
+    button.wp-block-navigation__submenu-icon
   ) {
-  @apply rounded-md px-3 py-2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  margin-inline-start: 0.25rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 .site-nav
-  .wp-block-navigation__responsive-container.is-menu-open
-  :is(li.wp-block-navigation-item, li.wp-block-pages-list__item)
-  > :is(
-    a.wp-block-navigation-item__content,
-    a.wp-block-pages-list__item__link
+  :is(
+    button.wp-block-navigation-submenu__toggle,
+    button.wp-block-navigation__submenu-icon
   ):hover {
-  @apply bg-black/5 outline-none;
+  opacity: 1;
 }
 
-/* -------------------------
-   Desktop chevrons (WP breakpoint ~782px)
-   ------------------------- */
-@media (min-width: 783px) {
-  /* Desktop chevrons: match mobile overlay sizing + icon treatment */
-  .site-nav
-    :is(
-      button.wp-block-navigation-submenu__toggle,
-      button.wp-block-navigation__submenu-icon
-    ) {
-    @apply inline-flex flex-none items-center justify-center w-6 h-6 ml-1 p-0 opacity-70 cursor-pointer;
-    align-self: center;
-    position: static;
-    transform: none;
-  }
-
-  .site-nav
-    :is(
-      button.wp-block-navigation-submenu__toggle,
-      button.wp-block-navigation__submenu-icon
-    ):hover {
-    @apply opacity-100;
-  }
-
-  .site-nav
-    :is(
-      button.wp-block-navigation-submenu__toggle,
-      button.wp-block-navigation__submenu-icon
-    )
-    svg {
-    @apply w-4 h-4 transition-transform fill-current;
-  }
-}
-
-/* -------------------------
-   Mobile overlay item alignment
-   - Dropdown parent rows must keep label + chevron aligned
-   - The submenu UL should wrap below as its own "panel"
-   ------------------------- */
-@media (max-width: 782px) {
-  /* Parent rows: label + chevron inline, submenu wraps below */
-  .site-nav
-    .wp-block-navigation__responsive-container.is-menu-open
-    :is(
-      li.wp-block-navigation-item.has-child,
-      li.wp-block-pages-list__item.has-child
-    ) {
-    @apply flex flex-row flex-wrap items-center;
-  }
-
-  /* Ensure consistent ordering:
-     label (a) -> chevron (button) -> submenu panel (ul) */
-  .site-nav
-    .wp-block-navigation__responsive-container.is-menu-open
-    :is(
-      li.wp-block-navigation-item.has-child,
-      li.wp-block-pages-list__item.has-child
-    )
-    > :is(a, button, ul) {
-    order: 0;
-  }
-
-  .site-nav
-    .wp-block-navigation__responsive-container.is-menu-open
-    :is(
-      li.wp-block-navigation-item.has-child,
-      li.wp-block-pages-list__item.has-child
-    )
-    > :is(
-      a.wp-block-navigation-item__content,
-      a.wp-block-pages-list__item__link
-    ) {
-    order: 1;
-  }
-
-  .site-nav
-    .wp-block-navigation__responsive-container.is-menu-open
-    :is(
-      li.wp-block-navigation-item.has-child,
-      li.wp-block-pages-list__item.has-child
-    )
-    > :is(
-      button.wp-block-navigation-submenu__toggle,
-      button.wp-block-navigation__submenu-icon
-    ) {
-    order: 2;
-  }
-
-  .site-nav
-    .wp-block-navigation__responsive-container.is-menu-open
-    :is(
-      li.wp-block-navigation-item.has-child > ul,
-      li.wp-block-pages-list__item.has-child > ul
-    ) {
-    order: 3;
-  }
-
-  /* Non-dropdown items: full-row links */
-  .site-nav
-    .wp-block-navigation__responsive-container.is-menu-open
-    li.wp-block-navigation-item:not(.has-child)
-    > a.wp-block-navigation-item__content,
-  .site-nav
-    .wp-block-navigation__responsive-container.is-menu-open
-    li.wp-block-pages-list__item:not(.has-child)
-    > a.wp-block-pages-list__item__link {
-    @apply block w-full text-left font-medium;
-    box-sizing: border-box;
-  }
-
-  /* Dropdown parents: anchor shares row with the chevron button.
-     IMPORTANT: keep width stable when opening the dropdown.
-     WP can set width:100% when expanded; that pushes the chevron out of alignment.
-     We force the label to remain a flex item (not w-full) so chevrons never jump. */
-  .site-nav
-    .wp-block-navigation__responsive-container.is-menu-open
-    li.wp-block-navigation-item.has-child
-    > a.wp-block-navigation-item__content,
-  .site-nav
-    .wp-block-navigation__responsive-container.is-menu-open
-    li.wp-block-pages-list__item.has-child
-    > a.wp-block-pages-list__item__link {
-    @apply block flex-1 min-w-0 text-left font-medium;
-    width: auto !important; /* override WP expanded width:100% */
-    box-sizing: border-box;
-  }
-
-  /* Chevron toggle sits immediately after label */
-  .site-nav
-    .wp-block-navigation__responsive-container.is-menu-open
-    :is(
-      button.wp-block-navigation-submenu__toggle,
-      button.wp-block-navigation__submenu-icon
-    ) {
-    @apply inline-flex flex-none items-center justify-center w-6 h-6 ml-1 p-0 opacity-70 cursor-pointer;
-    align-self: center;
-    position: static;
-    transform: none;
-  }
-
-  .site-nav
-    .wp-block-navigation__responsive-container.is-menu-open
-    :is(
-      button.wp-block-navigation-submenu__toggle,
-      button.wp-block-navigation__submenu-icon
-    ):hover {
-    @apply opacity-100;
-  }
-
-  .site-nav
-    .wp-block-navigation__responsive-container.is-menu-open
-    :is(
-      button.wp-block-navigation-submenu__toggle,
-      button.wp-block-navigation__submenu-icon
-    )
-    svg {
-    @apply w-4 h-4 transition-transform fill-current;
-  }
+.site-nav
+  :is(
+    button.wp-block-navigation-submenu__toggle,
+    button.wp-block-navigation__submenu-icon
+  )
+  svg {
+  inline-size: 1rem;
+  block-size: 1rem;
+  fill: currentColor;
 }
