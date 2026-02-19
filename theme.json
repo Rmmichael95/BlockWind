@@ -324,213 +324,44 @@
       "defaultSpacingSizes": false,
       "spacingSizes": [
         {
-          "name": "0",
-          "slug": "0",
+          "name": "None",
+          "slug": "none",
           "size": "0px"
         },
         {
-          "name": "px",
-          "slug": "px",
-          "size": "1px"
+          "name": "Extra Small",
+          "slug": "dh-xs",
+          "size": "clamp(0.75rem, calc(0.7143rem + 0.1786vw), 0.875rem)"
         },
+
         {
-          "name": "0.5",
-          "slug": "0-5",
-          "size": "0.125rem"
-        },
-        {
-          "name": "1",
-          "slug": "1",
-          "size": "0.25rem"
-        },
-        {
-          "name": "1.5",
-          "slug": "1-5",
-          "size": "0.375rem"
-        },
-        {
-          "name": "2",
-          "slug": "2",
-          "size": "0.5rem"
-        },
-        {
-          "name": "2.5",
-          "slug": "2-5",
-          "size": "0.625rem"
-        },
-        {
-          "name": "3",
-          "slug": "3",
-          "size": "0.75rem"
-        },
-        {
-          "name": "3.5",
-          "slug": "3-5",
-          "size": "0.875rem"
-        },
-        {
-          "name": "4",
-          "slug": "4",
-          "size": "1rem"
-        },
-        {
-          "name": "5",
-          "slug": "5",
-          "size": "1.25rem"
-        },
-        {
-          "name": "6",
-          "slug": "6",
-          "size": "1.5rem"
-        },
-        {
-          "name": "7",
-          "slug": "7",
-          "size": "1.75rem"
-        },
-        {
-          "name": "8",
-          "slug": "8",
-          "size": "2rem"
-        },
-        {
-          "name": "9",
-          "slug": "9",
-          "size": "2.25rem"
-        },
-        {
-          "name": "10",
-          "slug": "10",
-          "size": "2.5rem"
-        },
-        {
-          "name": "11",
-          "slug": "11",
-          "size": "2.75rem"
-        },
-        {
-          "name": "12",
-          "slug": "12",
-          "size": "3rem"
-        },
-        {
-          "name": "14",
-          "slug": "14",
-          "size": "3.5rem"
-        },
-        {
-          "name": "16",
-          "slug": "16",
-          "size": "4rem"
-        },
-        {
-          "name": "20",
-          "slug": "20",
-          "size": "5rem"
-        },
-        {
-          "name": "24",
-          "slug": "24",
-          "size": "6rem"
-        },
-        {
-          "name": "28",
-          "slug": "28",
-          "size": "7rem"
-        },
-        {
-          "name": "32",
-          "slug": "32",
-          "size": "8rem"
-        },
-        {
-          "name": "36",
-          "slug": "36",
-          "size": "9rem"
-        },
-        {
-          "name": "40",
-          "slug": "40",
-          "size": "10rem"
-        },
-        {
-          "name": "44",
-          "slug": "44",
-          "size": "11rem"
-        },
-        {
-          "name": "48",
-          "slug": "48",
-          "size": "12rem"
-        },
-        {
-          "name": "52",
-          "slug": "52",
-          "size": "13rem"
-        },
-        {
-          "name": "56",
-          "slug": "56",
-          "size": "14rem"
-        },
-        {
-          "name": "60",
-          "slug": "60",
-          "size": "15rem"
-        },
-        {
-          "name": "64",
-          "slug": "64",
-          "size": "16rem"
-        },
-        {
-          "name": "72",
-          "slug": "72",
-          "size": "18rem"
-        },
-        {
-          "name": "80",
-          "slug": "80",
-          "size": "20rem"
-        },
-        {
-          "name": "96",
-          "slug": "96",
-          "size": "24rem"
-        },
-        {
-          "name": "Fluid Tiny",
-          "slug": "fluid-20",
-          "size": "clamp(0.625rem, calc(0.5536rem + 0.3571vw), 0.875rem)"
-        },
-        {
-          "name": "Fluid X-Small",
-          "slug": "fluid-30",
+          "name": "Small",
+          "slug": "dh-sm",
           "size": "clamp(1.25rem, calc(1.1786rem + 0.3571vw), 1.5rem)"
         },
         {
-          "name": "Fluid Small",
-          "slug": "fluid-40",
+          "name": "Medium",
+          "slug": "dh-md",
           "size": "clamp(1.75rem, calc(1.6071rem + 0.7143vw), 2.25rem)"
         },
         {
-          "name": "Fluid Regular",
-          "slug": "fluid-50",
+          "name": "Large",
+          "slug": "dh-lg",
           "size": "clamp(2rem, calc(1.7143rem + 1.4286vw), 3rem)"
         },
         {
-          "name": "Fluid Large",
-          "slug": "fluid-60",
+          "name": "Extra Large",
+          "slug": "dh-xl",
           "size": "clamp(2rem, calc(1.4286rem + 2.8571vw), 4rem)"
         },
         {
-          "name": "Fluid X-Large",
-          "slug": "fluid-70",
+          "name": "2X Large",
+          "slug": "dh-2xl",
           "size": "clamp(3rem, calc(2.1429rem + 4.2857vw), 6rem)"
         },
         {
-          "name": "Fluid XX-Large",
-          "slug": "fluid-80",
+          "name": "3X Large",
+          "slug": "dh-3xl",
           "size": "clamp(4rem, calc(2.5714rem + 7.1429vw), 9rem)"
         }
       ],
@@ -565,123 +396,70 @@
       ],
       "fontSizes": [
         {
-          "name": "xs",
-          "slug": "xs",
-          "size": "0.75rem"
+          "name": "Extra Small",
+          "slug": "dh-xs",
+          "size": "0.875rem",
+          "fluid": { "min": "0.75rem", "max": "0.875rem" }
         },
         {
-          "name": "sm",
-          "slug": "sm",
-          "size": "0.875rem"
+          "name": "Small",
+          "slug": "dh-sm",
+          "size": "1rem",
+          "fluid": { "min": "0.875rem", "max": "1rem" }
         },
         {
-          "name": "default",
-          "slug": "default",
-          "size": "1rem"
-        },
-        {
-          "name": "lg",
-          "slug": "lg",
-          "size": "1.125rem"
-        },
-        {
-          "name": "xl",
-          "slug": "xl",
-          "size": "1.25rem"
-        },
-        {
-          "name": "2xl",
-          "slug": "2xl",
-          "size": "1.5rem"
-        },
-        {
-          "name": "3xl",
-          "slug": "3xl",
-          "size": "1.875rem"
-        },
-        {
-          "name": "4xl",
-          "slug": "4xl",
-          "size": "2.25rem"
-        },
-        {
-          "name": "5xl",
-          "slug": "5xl",
-          "size": "3rem"
-        },
-        {
-          "name": "6xl",
-          "slug": "6xl",
-          "size": "3.75rem"
-        },
-        {
-          "name": "7xl",
-          "slug": "7xl",
-          "size": "4.5rem"
-        },
-        {
-          "name": "8xl",
-          "slug": "8xl",
-          "size": "6rem"
-        },
-        {
-          "name": "9xl",
-          "slug": "9xl",
-          "size": "8rem"
-        },
-        {
-          "name": "fluid-default",
-          "slug": "fluid-default",
+          "name": "Default",
+          "slug": "dh-md",
           "size": "1.125rem",
           "fluid": { "min": "1rem", "max": "1.125rem" }
         },
         {
-          "name": "fluid-xl",
-          "slug": "fluid-xl",
+          "name": "Large",
+          "slug": "dh-lg",
           "size": "1.5rem",
           "fluid": { "min": "1.25rem", "max": "1.5rem" }
         },
         {
-          "name": "fluid-2xl",
-          "slug": "fluid-2xl",
+          "name": "Extra Large",
+          "slug": "dh-xl",
           "size": "2.25rem",
           "fluid": { "min": "1.5rem", "max": "2.25rem" }
         },
         {
-          "name": "fluid-3xl",
-          "slug": "fluid-3xl",
+          "name": "Heading Small",
+          "slug": "heading-sm",
           "size": "3rem",
-          "fluid": { "min": "1.875rem", "max": "3rem" }
+          "fluid": { "min": "2rem", "max": "3rem" }
         },
         {
-          "name": "fluid-4xl",
-          "slug": "fluid-4xl",
-          "size": "3.75rem",
-          "fluid": { "min": "2.25rem", "max": "3.75rem" }
+          "name": "Heading Medium",
+          "slug": "heading-md",
+          "size": "4rem",
+          "fluid": { "min": "2.5rem", "max": "4rem" }
         },
         {
-          "name": "fluid-5xl",
-          "slug": "fluid-5xl",
-          "size": "4.5rem",
-          "fluid": { "min": "3rem", "max": "4.5rem" }
+          "name": "Heading Large",
+          "slug": "heading-lg",
+          "size": "5rem",
+          "fluid": { "min": "3rem", "max": "5rem" }
         },
         {
-          "name": "fluid-6xl",
-          "slug": "fluid-6xl",
+          "name": "Heading Extra Large",
+          "slug": "heading-xl",
           "size": "6rem",
-          "fluid": { "min": "3.75rem", "max": "6rem" }
+          "fluid": { "min": "3.5rem", "max": "6rem" }
         },
         {
-          "name": "fluid-7xl",
-          "slug": "fluid-7xl",
-          "size": "7rem",
-          "fluid": { "min": "4.5rem", "max": "7rem" }
+          "name": "Heading Hero",
+          "slug": "heading-2xl",
+          "size": "7.5rem",
+          "fluid": { "min": "4rem", "max": "7.5rem" }
         },
         {
-          "name": "fluid-8xl",
-          "slug": "fluid-8xl",
-          "size": "8rem",
-          "fluid": { "min": "6rem", "max": "8rem" }
+          "name": "Heading Hero Large",
+          "slug": "heading-3xl",
+          "size": "9rem",
+          "fluid": { "min": "4.5rem", "max": "9rem" }
         }
       ]
     },
