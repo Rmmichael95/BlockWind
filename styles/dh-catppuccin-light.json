@@ -1,0 +1,135 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "title": "DH Catppuccin Latte",
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "name": "DH Primary",
+          "slug": "dh-primary",
+          "color": "#8839ef"
+        },
+        {
+          "name": "DH Secondary",
+          "slug": "dh-secondary",
+          "color": "#e6e9ef"
+        },
+        {
+          "name": "DH Base",
+          "slug": "dh-base",
+          "color": "#eff1f5"
+        },
+        {
+          "name": "DH Accent",
+          "slug": "dh-accent",
+          "color": "#1e66f5"
+        },
+        {
+          "name": "DH Link",
+          "slug": "dh-link",
+          "color": "#1e66f5"
+        },
+        {
+          "name": "DH Text",
+          "slug": "dh-text",
+          "color": "#4c4f69"
+        },
+        {
+          "name": "DH Muted",
+          "slug": "dh-muted",
+          "color": "#6c6f85"
+        },
+        {
+          "name": "DH Border",
+          "slug": "dh-border",
+          "color": "#ccd0da"
+        },
+        {
+          "name": "DH Contrast",
+          "slug": "dh-contrast",
+          "color": "#ffffff"
+        },
+        {
+          "name": "DH Black",
+          "slug": "dh-black",
+          "color": "#000000"
+        },
+        {
+          "name": "DH White",
+          "slug": "dh-white",
+          "color": "#ffffff"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var:preset|color|dh-base",
+      "text": "var:preset|color|dh-text"
+    },
+    "border": {
+      "color": "var:preset|color|dh-border"
+    },
+    "elements": {
+      "link": {
+        "color": {
+          "text": "var:preset|color|dh-link"
+        },
+        ":hover": {
+          "color": {
+            "text": "var:preset|color|dh-primary"
+          }
+        },
+        ":active": {
+          "color": {
+            "text": "var:preset|color|dh-primary"
+          }
+        }
+      },
+      "button": {
+        "color": {
+          "background": "var:preset|color|dh-accent",
+          "text": "var:preset|color|dh-contrast"
+        },
+        ":hover": {
+          "color": {
+            "background": "var:preset|color|dh-primary",
+            "text": "var:preset|color|dh-contrast"
+          }
+        }
+      }
+    },
+    "blocks": {
+      "core/navigation": {
+        "elements": {
+          "link": {
+            "color": {
+              "text": "var:preset|color|dh-text"
+            },
+            ":hover": {
+              "color": {
+                "text": "var:preset|color|dh-link"
+              }
+            },
+            ":active": {
+              "color": {
+                "text": "var:preset|color|dh-primary"
+              }
+            }
+          }
+        }
+      },
+      "core/separator": {
+        "color": {
+          "background": "var:preset|color|dh-border"
+        }
+      },
+      "core/site-tagline": {
+        "color": {
+          "text": "var:preset|color|dh-muted"
+        }
+      }
+    }
+  }
+}

@@ -84,3 +84,16 @@ function dhali_register_acf_blocks() {
 	}
 }
 add_action( 'init', 'dhali_register_acf_blocks' );
+
+/**
+ * Shortcodes synamic block info
+ */
+function dhali_current_year() {
+	return date_i18n( 'Y' );
+}
+add_shortcode( 'current_year', 'dhali_current_year' );
+
+function dhali_site_name() {
+	return get_bloginfo( 'name' );
+}
+add_shortcode( 'site_name', 'dhali_site_name' );
