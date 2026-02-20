@@ -1,63 +1,63 @@
 {
   "$schema": "https://schemas.wp.org/trunk/theme.json",
   "version": 3,
-  "title": "DH Catppuccin Mocha",
+  "title": "BW Catppuccin Mocha",
   "settings": {
     "color": {
       "palette": [
         {
-          "name": "DH Primary",
-          "slug": "dh-primary",
+          "name": "BW Primary",
+          "slug": "bw-primary",
           "color": "#cba6f7"
         },
         {
-          "name": "DH Secondary",
-          "slug": "dh-secondary",
+          "name": "BW Secondary",
+          "slug": "bw-secondary",
           "color": "#181825"
         },
         {
-          "name": "DH Base",
-          "slug": "dh-base",
+          "name": "BW Base",
+          "slug": "bw-base",
           "color": "#1e1e2e"
         },
         {
-          "name": "DH Accent",
-          "slug": "dh-accent",
+          "name": "BW Accent",
+          "slug": "bw-accent",
           "color": "#89b4fa"
         },
         {
-          "name": "DH Link",
-          "slug": "dh-link",
+          "name": "BW Link",
+          "slug": "bw-link",
           "color": "#89b4fa"
         },
         {
-          "name": "DH Text",
-          "slug": "dh-text",
+          "name": "BW Text",
+          "slug": "bw-text",
           "color": "#cdd6f4"
         },
         {
-          "name": "DH Muted",
-          "slug": "dh-muted",
+          "name": "BW Muted",
+          "slug": "bw-muted",
           "color": "#a6adc8"
         },
         {
-          "name": "DH Border",
-          "slug": "dh-border",
+          "name": "BW Border",
+          "slug": "bw-border",
           "color": "#313244"
         },
         {
-          "name": "DH Contrast",
-          "slug": "dh-contrast",
+          "name": "BW Contrast",
+          "slug": "bw-contrast",
           "color": "#1e1e2e"
         },
         {
-          "name": "DH Black",
-          "slug": "dh-black",
+          "name": "BW Black",
+          "slug": "bw-black",
           "color": "#000000"
         },
         {
-          "name": "DH White",
-          "slug": "dh-white",
+          "name": "BW White",
+          "slug": "bw-white",
           "color": "#ffffff"
         }
       ]
@@ -65,37 +65,37 @@
   },
   "styles": {
     "color": {
-      "background": "var:preset|color|dh-base",
-      "text": "var:preset|color|dh-text"
+      "background": "var:preset|color|bw-base",
+      "text": "var:preset|color|bw-text"
     },
     "border": {
-      "color": "var:preset|color|dh-border"
+      "color": "var:preset|color|bw-border"
     },
     "elements": {
       "link": {
         "color": {
-          "text": "var:preset|color|dh-link"
+          "text": "var:preset|color|bw-link"
         },
         ":hover": {
           "color": {
-            "text": "var:preset|color|dh-primary"
+            "text": "var:preset|color|bw-primary"
           }
         },
         ":active": {
           "color": {
-            "text": "var:preset|color|dh-primary"
+            "text": "var:preset|color|bw-primary"
           }
         }
       },
       "button": {
         "color": {
-          "background": "var:preset|color|dh-accent",
-          "text": "var:preset|color|dh-contrast"
+          "background": "var:preset|color|bw-accent",
+          "text": "var:preset|color|bw-contrast"
         },
         ":hover": {
           "color": {
-            "background": "var:preset|color|dh-primary",
-            "text": "var:preset|color|dh-contrast"
+            "background": "var:preset|color|bw-primary",
+            "text": "var:preset|color|bw-contrast"
           }
         }
       }
@@ -105,16 +105,16 @@
         "elements": {
           "link": {
             "color": {
-              "text": "var:preset|color|dh-text"
+              "text": "var:preset|color|bw-text"
             },
             ":hover": {
               "color": {
-                "text": "var:preset|color|dh-link"
+                "text": "var:preset|color|bw-link"
               }
             },
             ":active": {
               "color": {
-                "text": "var:preset|color|dh-primary"
+                "text": "var:preset|color|bw-primary"
               }
             }
           }
@@ -122,12 +122,12 @@
       },
       "core/separator": {
         "color": {
-          "background": "var:preset|color|dh-border"
+          "background": "var:preset|color|bw-border"
         }
       },
       "core/site-tagline": {
         "color": {
-          "text": "var:preset|color|dh-muted"
+          "text": "var:preset|color|bw-muted"
         }
       }
     }

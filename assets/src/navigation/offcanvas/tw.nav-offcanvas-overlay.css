@@ -1,12 +1,12 @@
 /* ==========================================================
    MODULE: tw.nav-offcanvas-overlay.css
    Purpose: Single utility-composed class for the open overlay container.
-            Exports: .dh-nav-offcanvas-overlay
+            Exports: .bw-nav-offcanvas-overlay
    ========================================================== */
 
 @reference "../../tw.reference.css";
 
-.dh-nav-offcanvas-overlay {
+.bw-nav-offcanvas-overlay {
   @apply fixed inset-0;
   @apply flex items-stretch justify-end;
 }

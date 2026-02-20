@@ -20,7 +20,7 @@ flowchart TD
     A[theme.json] --> B[Templates / Parts / Patterns]
     A --> C[WordPress Block Supports]
 
-    B --> D[Compiled .dh-* Modules]
+    B --> D[Compiled .bw-* Modules]
     B --> E[ACF Blocks]
 
     D --> F[assets/dist/theme.min.css]

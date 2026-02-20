@@ -1,12 +1,12 @@
 <?php
 /**
  * Title: Page – Contact
- * Slug: dh/page-contact
- * Categories: dh-pages
+ * Slug: bw/page-contact
+ * Categories: bw-pages
  * Keywords: contact, layout, page
  */
 ?>
 
-<!-- wp:pattern {"slug":"dh/hero-centered"} /-->
-<!-- wp:pattern {"slug":"dh/contact-split"} /-->
-<!-- wp:pattern {"slug":"dh/newsletter-inline"} /-->
+<!-- wp:pattern {"slug":"bw/hero-centered"} /-->
+<!-- wp:pattern {"slug":"bw/contact-split"} /-->
+<!-- wp:pattern {"slug":"bw/newsletter-inline"} /-->

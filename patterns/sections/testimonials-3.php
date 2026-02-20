@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Testimonials – 3 Cards
- * Slug: dh/testimonials-3
- * Categories: dh-sections, dh-marketing
+ * Slug: bw/testimonials-3
+ * Categories: bw-sections, bw-marketing
  * Keywords: testimonials, reviews
  */
 ?>
 
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-2xl","bottom":"var:preset|spacing|fluid-2xl","left":"var:preset|spacing|fluid-xl","right":"var:preset|spacing|fluid-xl"}}},"backgroundColor":"dh-base","textColor":"dh-text","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-dh-text-color has-dh-base-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--fluid-2xl);padding-right:var(--wp--preset--spacing--fluid-xl);padding-bottom:var(--wp--preset--spacing--fluid-2xl);padding-left:var(--wp--preset--spacing--fluid-xl)">
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-2xl","bottom":"var:preset|spacing|fluid-2xl","left":"var:preset|spacing|fluid-xl","right":"var:preset|spacing|fluid-xl"}}},"backgroundColor":"bw-base","textColor":"bw-text","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-bw-text-color has-bw-base-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--fluid-2xl);padding-right:var(--wp--preset--spacing--fluid-xl);padding-bottom:var(--wp--preset--spacing--fluid-2xl);padding-left:var(--wp--preset--spacing--fluid-xl)">
 	<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|fluid-l"}}} -->
 	<div class="wp-block-group">
 		<!-- wp:heading {"textAlign":"center"} -->
@@ -19,8 +19,8 @@
 		<div class="wp-block-columns">
 			<!-- wp:column -->
 			<div class="wp-block-column">
-				<!-- wp:group {"backgroundColor":"dh-surface","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-m","bottom":"var:preset|spacing|fluid-m","left":"var:preset|spacing|fluid-m","right":"var:preset|spacing|fluid-m"},"blockGap":"0.75rem"},"border":{"radius":"var(--wp--custom--tokens--radius--m,12px)"}}} -->
-				<div class="wp-block-group has-dh-surface-background-color has-background" style="border-radius:var(--wp--custom--tokens--radius--m,12px);padding-top:var(--wp--preset--spacing--fluid-m);padding-right:var(--wp--preset--spacing--fluid-m);padding-bottom:var(--wp--preset--spacing--fluid-m);padding-left:var(--wp--preset--spacing--fluid-m)">
+				<!-- wp:group {"backgroundColor":"bw-surface","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-m","bottom":"var:preset|spacing|fluid-m","left":"var:preset|spacing|fluid-m","right":"var:preset|spacing|fluid-m"},"blockGap":"0.75rem"},"border":{"radius":"var(--wp--custom--tokens--radius--m,12px)"}}} -->
+				<div class="wp-block-group has-bw-surface-background-color has-background" style="border-radius:var(--wp--custom--tokens--radius--m,12px);padding-top:var(--wp--preset--spacing--fluid-m);padding-right:var(--wp--preset--spacing--fluid-m);padding-bottom:var(--wp--preset--spacing--fluid-m);padding-left:var(--wp--preset--spacing--fluid-m)">
 					<!-- wp:paragraph -->
 					<p>“Patterns made our build predictable and fast.”</p>
 					<!-- /wp:paragraph -->
@@ -34,8 +34,8 @@
 
 			<!-- wp:column -->
 			<div class="wp-block-column">
-				<!-- wp:group {"backgroundColor":"dh-surface","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-m","bottom":"var:preset|spacing|fluid-m","left":"var:preset|spacing|fluid-m","right":"var:preset|spacing|fluid-m"},"blockGap":"0.75rem"},"border":{"radius":"var(--wp--custom--tokens--radius--m,12px)"}}} -->
-				<div class="wp-block-group has-dh-surface-background-color has-background" style="border-radius:var(--wp--custom--tokens--radius--m,12px);padding-top:var(--wp--preset--spacing--fluid-m);padding-right:var(--wp--preset--spacing--fluid-m);padding-bottom:var(--wp--preset--spacing--fluid-m);padding-left:var(--wp--preset--spacing--fluid-m)">
+				<!-- wp:group {"backgroundColor":"bw-surface","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-m","bottom":"var:preset|spacing|fluid-m","left":"var:preset|spacing|fluid-m","right":"var:preset|spacing|fluid-m"},"blockGap":"0.75rem"},"border":{"radius":"var(--wp--custom--tokens--radius--m,12px)"}}} -->
+				<div class="wp-block-group has-bw-surface-background-color has-background" style="border-radius:var(--wp--custom--tokens--radius--m,12px);padding-top:var(--wp--preset--spacing--fluid-m);padding-right:var(--wp--preset--spacing--fluid-m);padding-bottom:var(--wp--preset--spacing--fluid-m);padding-left:var(--wp--preset--spacing--fluid-m)">
 					<!-- wp:paragraph -->
 					<p>“Theme.json tokens kept everything consistent.”</p>
 					<!-- /wp:paragraph -->
@@ -49,8 +49,8 @@
 
 			<!-- wp:column -->
 			<div class="wp-block-column">
-				<!-- wp:group {"backgroundColor":"dh-surface","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-m","bottom":"var:preset|spacing|fluid-m","left":"var:preset|spacing|fluid-m","right":"var:preset|spacing|fluid-m"},"blockGap":"0.75rem"},"border":{"radius":"var(--wp--custom--tokens--radius--m,12px)"}}} -->
-				<div class="wp-block-group has-dh-surface-background-color has-background" style="border-radius:var(--wp--custom--tokens--radius--m,12px);padding-top:var(--wp--preset--spacing--fluid-m);padding-right:var(--wp--preset--spacing--fluid-m);padding-bottom:var(--wp--preset--spacing--fluid-m);padding-left:var(--wp--preset--spacing--fluid-m)">
+				<!-- wp:group {"backgroundColor":"bw-surface","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-m","bottom":"var:preset|spacing|fluid-m","left":"var:preset|spacing|fluid-m","right":"var:preset|spacing|fluid-m"},"blockGap":"0.75rem"},"border":{"radius":"var(--wp--custom--tokens--radius--m,12px)"}}} -->
+				<div class="wp-block-group has-bw-surface-background-color has-background" style="border-radius:var(--wp--custom--tokens--radius--m,12px);padding-top:var(--wp--preset--spacing--fluid-m);padding-right:var(--wp--preset--spacing--fluid-m);padding-bottom:var(--wp--preset--spacing--fluid-m);padding-left:var(--wp--preset--spacing--fluid-m)">
 					<!-- wp:paragraph -->
 					<p>“We can swap palettes per brand without refactoring CSS.”</p>
 					<!-- /wp:paragraph -->

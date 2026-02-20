@@ -1,15 +1,15 @@
 /* ==========================================================
    MODULE: tw.nav-dropdown-panel.css
    Purpose: Single utility-composed class for desktop dropdown panels.
-            Exports: .dh-nav-dropdown-panel
+            Exports: .bw-nav-dropdown-panel
    ========================================================== */
 
 @reference "../../tw.reference.css";
 
-.dh-nav-dropdown-panel {
+.bw-nav-dropdown-panel {
   @apply absolute z-50 hidden;
   @apply border;
   @apply shadow-sm;
-  @apply rounded-[var(--wp--preset--radius--dh-md)];
-  @apply p-[var(--wp--preset--spacing--dh-xs)];
+  @apply rounded-[var(--wp--preset--radius--bw-md)];
+  @apply p-[var(--wp--preset--spacing--bw-xs)];
 }

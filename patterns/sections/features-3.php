@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Features – 3 Columns
- * Slug: dh/features-3
- * Categories: dh-sections, dh-content
+ * Slug: bw/features-3
+ * Categories: bw-sections, bw-content
  * Keywords: features, columns, services
  */
 ?>
 
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-2xl","bottom":"var:preset|spacing|fluid-2xl","left":"var:preset|spacing|fluid-xl","right":"var:preset|spacing|fluid-xl"}}},"backgroundColor":"dh-base","textColor":"dh-text","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-dh-text-color has-dh-base-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--fluid-2xl);padding-right:var(--wp--preset--spacing--fluid-xl);padding-bottom:var(--wp--preset--spacing--fluid-2xl);padding-left:var(--wp--preset--spacing--fluid-xl)">
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-2xl","bottom":"var:preset|spacing|fluid-2xl","left":"var:preset|spacing|fluid-xl","right":"var:preset|spacing|fluid-xl"}}},"backgroundColor":"bw-base","textColor":"bw-text","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-bw-text-color has-bw-base-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--fluid-2xl);padding-right:var(--wp--preset--spacing--fluid-xl);padding-bottom:var(--wp--preset--spacing--fluid-2xl);padding-left:var(--wp--preset--spacing--fluid-xl)">
 	<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|fluid-l"}}} -->
 	<div class="wp-block-group">
 		<!-- wp:heading {"textAlign":"center"} -->

@@ -1,15 +1,15 @@
 <?php
 /**
  * Title: Hero – Centered
- * Slug: dh/hero-centered
- * Categories: dh-sections, dh-marketing
+ * Slug: bw/hero-centered
+ * Categories: bw-sections, bw-marketing
  * Keywords: hero, heading, intro, call to action
  * Block Types: core/group, core/heading, core/paragraph, core/buttons
  */
 ?>
 
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-3xl","bottom":"var:preset|spacing|fluid-3xl","left":"var:preset|spacing|fluid-xl","right":"var:preset|spacing|fluid-xl"}}},"backgroundColor":"dh-base","textColor":"dh-text","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-dh-text-color has-dh-base-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--fluid-3xl);padding-right:var(--wp--preset--spacing--fluid-xl);padding-bottom:var(--wp--preset--spacing--fluid-3xl);padding-left:var(--wp--preset--spacing--fluid-xl)">
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-3xl","bottom":"var:preset|spacing|fluid-3xl","left":"var:preset|spacing|fluid-xl","right":"var:preset|spacing|fluid-xl"}}},"backgroundColor":"bw-base","textColor":"bw-text","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-bw-text-color has-bw-base-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--fluid-3xl);padding-right:var(--wp--preset--spacing--fluid-xl);padding-bottom:var(--wp--preset--spacing--fluid-3xl);padding-left:var(--wp--preset--spacing--fluid-xl)">
 	<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|fluid-l"}},"layout":{"type":"constrained","contentSize":"48rem"}} -->
 	<div class="wp-block-group">
 		<!-- wp:heading {"textAlign":"center","level":1} -->
@@ -22,12 +22,12 @@
 
 		<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
 		<div class="wp-block-buttons">
-			<!-- wp:button {"backgroundColor":"dh-primary","textColor":"dh-base"} -->
-			<div class="wp-block-button"><a class="wp-block-button__link has-dh-base-color has-dh-primary-background-color has-text-color has-background wp-element-button" href="#">Get started</a></div>
+			<!-- wp:button {"backgroundColor":"bw-primary","textColor":"bw-base"} -->
+			<div class="wp-block-button"><a class="wp-block-button__link has-bw-base-color has-bw-primary-background-color has-text-color has-background wp-element-button" href="#">Get started</a></div>
 			<!-- /wp:button -->
 
-			<!-- wp:button {"className":"is-style-outline","textColor":"dh-text"} -->
-			<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-dh-text-color has-text-color wp-element-button" href="#">View patterns</a></div>
+			<!-- wp:button {"className":"is-style-outline","textColor":"bw-text"} -->
+			<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-bw-text-color has-text-color wp-element-button" href="#">View patterns</a></div>
 			<!-- /wp:button -->
 		</div>
 		<!-- /wp:buttons -->

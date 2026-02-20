@@ -214,28 +214,28 @@ add_action( 'enqueue_block_assets', 'bw_enqueue_block_modules_frontend_assets' )
 /**
  * Load ACF Blocks
  */
-function dhali_register_acf_blocks() {
+function blockwind_register_acf_blocks() {
 	foreach ( glob( __DIR__ . '/acf-blocks/*', GLOB_ONLYDIR ) as $block_dir ) {
 		register_block_type( $block_dir );
 	}
 }
-add_action( 'init', 'dhali_register_acf_blocks' );
+add_action( 'init', 'blockwind_register_acf_blocks' );
 
 /**
  * Shortcodes synamic block info
  */
-function dhali_current_year() {
+function blockwind_current_year() {
 	return date_i18n( 'Y' );
 }
-add_shortcode( 'current_year', 'dhali_current_year' );
+add_shortcode( 'current_year', 'blockwind_current_year' );
 
-function dhali_site_name() {
+function blockwind_site_name() {
 	return get_bloginfo( 'name' );
 }
-add_shortcode( 'site_name', 'dhali_site_name' );
+add_shortcode( 'site_name', 'blockwind_site_name' );
 
 /**
- * BlockWind: Register DH pattern categories (theme.json v3-safe).
+ * BlockWind: Register BW pattern categories (theme.json v3-safe).
  */
 add_action(
 	'init',
@@ -246,35 +246,35 @@ add_action(
 
 		$categories = array(
 			array(
-				'slug'  => 'dh-sections',
+				'slug'  => 'bw-sections',
 				'label' => __( 'Dahli Sections', 'blockwind' ),
 			),
 			array(
-				'slug'  => 'dh-pages',
+				'slug'  => 'bw-pages',
 				'label' => __( 'Dahli Page Layouts', 'blockwind' ),
 			),
 			array(
-				'slug'  => 'dh-marketing',
+				'slug'  => 'bw-marketing',
 				'label' => __( 'Dahli Marketing', 'blockwind' ),
 			),
 			array(
-				'slug'  => 'dh-content',
+				'slug'  => 'bw-content',
 				'label' => __( 'Dahli Content', 'blockwind' ),
 			),
 			array(
-				'slug'  => 'dh-components',
+				'slug'  => 'bw-components',
 				'label' => __( 'Dahli Components', 'blockwind' ),
 			),
 			array(
-				'slug'  => 'dh-utility',
+				'slug'  => 'bw-utility',
 				'label' => __( 'Dahli Utility', 'blockwind' ),
 			),
 			array(
-				'slug'  => 'dh-navigation',
+				'slug'  => 'bw-navigation',
 				'label' => __( 'Dahli Navigation', 'blockwind' ),
 			),
 			array(
-				'slug'  => 'dh-commerce',
+				'slug'  => 'bw-commerce',
 				'label' => __( 'Dahli Commerce', 'blockwind' ),
 			),
 		);

@@ -1,13 +1,13 @@
 /* ==========================================================
    MODULE: tw.nav-item-rounded-link.css
    Purpose: Single utility-composed class for top-level nav links.
-            Exports: .dh-nav-item-link
+            Exports: .bw-nav-item-link
    ========================================================== */
 
 @reference "../../tw.reference.css";
 
-.dh-nav-item-rounded-link {
-  @apply rounded-[var(--wp--preset--radius--dh-md)];
-  @apply px-[var(--wp--preset--spacing--dh-sm)];
-  @apply py-[var(--wp--preset--spacing--dh-xs)];
+.bw-nav-item-rounded-link {
+  @apply rounded-[var(--wp--preset--radius--bw-md)];
+  @apply px-[var(--wp--preset--spacing--bw-sm)];
+  @apply py-[var(--wp--preset--spacing--bw-xs)];
 }

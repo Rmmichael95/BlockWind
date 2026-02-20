@@ -1,11 +1,11 @@
 /* ==========================================================
    MODULE: tw.nav-dropdown-bind.css
-   Purpose: Bind core Navigation submenu containers to dh-* classes
+   Purpose: Bind core Navigation submenu containers to bw-* classes
             without requiring markup changes.
             - Keeps selector/behavior logic here (WP markup-driven).
             - Uses theme.json vars for paint (source of truth).
    Dependencies:
-     - theme.json: --wp--custom--dh-navigation--dropdown--*
+     - theme.json: --wp--custom--bw-navigation--dropdown--*
      - theme.json: --wp--preset--spacing--*, --wp--preset--radius--*
    ========================================================== */
 
@@ -20,24 +20,24 @@
       ul.wp-block-navigation__submenu-container,
       ul.wp-block-pages-list__submenu-container
     ) {
-    /* class composition (utility equivalent of .dh-nav-dropdown-panel) */
+    /* class composition (utility equivalent of .bw-nav-dropdown-panel) */
     @apply absolute z-50 hidden;
     @apply border;
     @apply shadow-sm;
-    @apply rounded-[var(--wp--preset--radius--dh-md)];
-    @apply p-[var(--wp--preset--spacing--dh-xs)];
+    @apply rounded-[var(--wp--preset--radius--bw-md)];
+    @apply p-[var(--wp--preset--spacing--bw-xs)];
 
     /* WP token-driven paint (theme.json) */
-    background: var(--wp--custom--dh-navigation--dropdown--background);
-    border-color: var(--wp--custom--dh-navigation--dropdown--border-color);
-    border-width: var(--wp--custom--dh-navigation--dropdown--border-width);
-    box-shadow: var(--wp--custom--dh-navigation--dropdown--shadow);
+    background: var(--wp--custom--bw-navigation--dropdown--background);
+    border-color: var(--wp--custom--bw-navigation--dropdown--border-color);
+    border-width: var(--wp--custom--bw-navigation--dropdown--border-width);
+    box-shadow: var(--wp--custom--bw-navigation--dropdown--shadow);
 
     /* positioning */
-    inset-block-start: calc(100% + var(--wp--preset--spacing--dh-xs));
+    inset-block-start: calc(100% + var(--wp--preset--spacing--bw-xs));
     inset-inline-start: 0;
     min-inline-size: var(
-      --wp--custom--dh-navigation--dropdown--min-width,
+      --wp--custom--bw-navigation--dropdown--min-width,
       15rem
     );
   }
@@ -73,7 +73,7 @@
         ul.wp-block-pages-list__submenu-container
     ) {
     inset-block-start: 0;
-    inset-inline-start: calc(100% + var(--wp--preset--spacing--dh-xs));
+    inset-inline-start: calc(100% + var(--wp--preset--spacing--bw-xs));
   }
 }
 
@@ -88,18 +88,18 @@
       ul.wp-block-navigation__submenu-container,
       ul.wp-block-pages-list__submenu-container
     ) {
-    /* class composition (utility equivalent of .dh-nav-dropdown-panel-mobile) */
+    /* class composition (utility equivalent of .bw-nav-dropdown-panel-mobile) */
     @apply static w-full hidden;
     @apply border;
     @apply shadow-sm;
-    @apply rounded-[var(--wp--preset--radius--dh-md)];
-    @apply p-[var(--wp--preset--spacing--dh-xs)];
-    @apply mt-[var(--wp--preset--spacing--dh-xs)];
+    @apply rounded-[var(--wp--preset--radius--bw-md)];
+    @apply p-[var(--wp--preset--spacing--bw-xs)];
+    @apply mt-[var(--wp--preset--spacing--bw-xs)];
 
-    background: var(--wp--custom--dh-navigation--dropdown--background);
-    border-color: var(--wp--custom--dh-navigation--dropdown--border-color);
-    border-width: var(--wp--custom--dh-navigation--dropdown--border-width);
-    box-shadow: var(--wp--custom--dh-navigation--dropdown--shadow);
+    background: var(--wp--custom--bw-navigation--dropdown--background);
+    border-color: var(--wp--custom--bw-navigation--dropdown--border-color);
+    border-width: var(--wp--custom--bw-navigation--dropdown--border-width);
+    box-shadow: var(--wp--custom--bw-navigation--dropdown--shadow);
   }
 
   /* WP open states */

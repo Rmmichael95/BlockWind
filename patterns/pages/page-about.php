@@ -1,13 +1,13 @@
 <?php
 /**
  * Title: Page – About
- * Slug: dh/page-about
- * Categories: dh-pages
+ * Slug: bw/page-about
+ * Categories: bw-pages
  * Keywords: about, layout, page
  */
 ?>
 
-<!-- wp:pattern {"slug":"dh/hero-centered"} /-->
-<!-- wp:pattern {"slug":"dh/features-icon-grid-6"} /-->
-<!-- wp:pattern {"slug":"dh/faq-accordion"} /-->
-<!-- wp:pattern {"slug":"dh/call-to-action-banner"} /-->
+<!-- wp:pattern {"slug":"bw/hero-centered"} /-->
+<!-- wp:pattern {"slug":"bw/features-icon-grid-6"} /-->
+<!-- wp:pattern {"slug":"bw/faq-accordion"} /-->
+<!-- wp:pattern {"slug":"bw/call-to-action-banner"} /-->

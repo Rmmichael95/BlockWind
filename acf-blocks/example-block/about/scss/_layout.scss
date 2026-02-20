@@ -8,8 +8,8 @@
 
 .bw-about {
   // Example consuming WP vars (replace with your actual semantic vars)
-  background: var(--wp--preset--color--dh-surface, transparent);
-  color: var(--wp--preset--color--dh-text, inherit);
+  background: var(--wp--preset--color--bw-surface, transparent);
+  color: var(--wp--preset--color--bw-text, inherit);
 
   &__inner {
     // Prefer WP spacing vars if defined (or theme custom vars)

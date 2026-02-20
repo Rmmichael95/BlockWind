@@ -28,7 +28,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: color-mix(in oklab, var(--dh-black) 50%, transparent);
+  background: color-mix(in oklab, var(--bw-black) 50%, transparent);
 }
 
 /* Drawer panel */
@@ -37,15 +37,15 @@
   z-index: 1;
 
   block-size: 100%;
-  inline-size: min(100%, var(--dh-offcanvas-max-width));
+  inline-size: min(100%, var(--bw-offcanvas-max-width));
 
-  background-color: var(--dh-offcanvas-bg);
-  border-inline-start: 1px solid var(--dh-offcanvas-border);
-  border-top-left-radius: var(--dh-offcanvas-radius);
-  border-bottom-left-radius: var(--dh-offcanvas-radius);
-  box-shadow: var(--dh-offcanvas-shadow);
+  background-color: var(--bw-offcanvas-bg);
+  border-inline-start: 1px solid var(--bw-offcanvas-border);
+  border-top-left-radius: var(--bw-offcanvas-radius);
+  border-bottom-left-radius: var(--bw-offcanvas-radius);
+  box-shadow: var(--bw-offcanvas-shadow);
 
-  padding: var(--wp--preset--spacing--dh-md);
+  padding: var(--wp--preset--spacing--bw-md);
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -59,7 +59,7 @@
 
   /* Space for close button row */
   padding-block-start: calc(
-    var(--wp--preset--spacing--dh-md) + var(--wp--preset--spacing--dh-sm)
+    var(--wp--preset--spacing--bw-md) + var(--wp--preset--spacing--bw-sm)
   );
 }
 
@@ -67,7 +67,7 @@
 :root.has-modal-open .site-nav .wp-block-navigation__container {
   display: flex;
   flex-direction: column;
-  gap: var(--wp--style--block-gap, var(--wp--preset--spacing--dh-xs));
+  gap: var(--wp--style--block-gap, var(--wp--preset--spacing--bw-xs));
   align-items: stretch;
 }
 
@@ -84,8 +84,8 @@
   .site-nav
   .wp-block-navigation__responsive-container-close {
   position: absolute;
-  inset-block-start: var(--wp--preset--spacing--dh-sm);
-  inset-inline-end: var(--wp--preset--spacing--dh-sm);
+  inset-block-start: var(--wp--preset--spacing--bw-sm);
+  inset-inline-end: var(--wp--preset--spacing--bw-sm);
 
   inline-size: 2.5rem;
   block-size: 2.5rem;
@@ -94,7 +94,7 @@
   align-items: center;
   justify-content: center;
 
-  border-radius: var(--wp--preset--radius--dh-md);
-  border: 1px solid var(--dh-offcanvas-border);
-  background-color: var(--dh-surface);
+  border-radius: var(--wp--preset--radius--bw-md);
+  border: 1px solid var(--bw-offcanvas-border);
+  background-color: var(--bw-surface);
 }

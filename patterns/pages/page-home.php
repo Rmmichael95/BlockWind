@@ -1,16 +1,16 @@
 <?php
 /**
  * Title: Page – Home (Marketing)
- * Slug: dh/page-home
- * Categories: dh-pages
+ * Slug: bw/page-home
+ * Categories: bw-pages
  * Keywords: home, layout, page
  * Block Types: core/post-content
  */
 ?>
 
-<!-- wp:pattern {"slug":"dh/hero-split-media"} /-->
-<!-- wp:pattern {"slug":"dh/logo-cloud"} /-->
-<!-- wp:pattern {"slug":"dh/features-3"} /-->
-<!-- wp:pattern {"slug":"dh/stats-3"} /-->
-<!-- wp:pattern {"slug":"dh/testimonials-3"} /-->
-<!-- wp:pattern {"slug":"dh/call-to-action-banner"} /-->
+<!-- wp:pattern {"slug":"bw/hero-split-media"} /-->
+<!-- wp:pattern {"slug":"bw/logo-cloud"} /-->
+<!-- wp:pattern {"slug":"bw/features-3"} /-->
+<!-- wp:pattern {"slug":"bw/stats-3"} /-->
+<!-- wp:pattern {"slug":"bw/testimonials-3"} /-->
+<!-- wp:pattern {"slug":"bw/call-to-action-banner"} /-->

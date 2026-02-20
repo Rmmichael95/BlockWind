@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Call to Action – Banner
- * Slug: dh/call-to-action-banner
- * Categories: dh-sections, dh-marketing
+ * Slug: bw/call-to-action-banner
+ * Categories: bw-sections, bw-marketing
  * Keywords: cta, banner
  */
 ?>
 
-<!-- wp:group {"align":"full","backgroundColor":"dh-primary","textColor":"dh-base","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-l","bottom":"var:preset|spacing|fluid-l","left":"var:preset|spacing|fluid-xl","right":"var:preset|spacing|fluid-xl"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-dh-base-color has-dh-primary-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--fluid-l);padding-right:var(--wp--preset--spacing--fluid-xl);padding-bottom:var(--wp--preset--spacing--fluid-l);padding-left:var(--wp--preset--spacing--fluid-xl)">
+<!-- wp:group {"align":"full","backgroundColor":"bw-primary","textColor":"bw-base","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-l","bottom":"var:preset|spacing|fluid-l","left":"var:preset|spacing|fluid-xl","right":"var:preset|spacing|fluid-xl"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-bw-base-color has-bw-primary-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--fluid-l);padding-right:var(--wp--preset--spacing--fluid-xl);padding-bottom:var(--wp--preset--spacing--fluid-l);padding-left:var(--wp--preset--spacing--fluid-xl)">
 	<!-- wp:columns {"verticalAlignment":"center"} -->
 	<div class="wp-block-columns are-vertically-aligned-center">
 		<!-- wp:column {"verticalAlignment":"center","width":"70%"} -->
@@ -26,8 +26,8 @@
 		<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:30%">
 			<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"right"}} -->
 			<div class="wp-block-buttons">
-				<!-- wp:button {"backgroundColor":"dh-base","textColor":"dh-text"} -->
-				<div class="wp-block-button"><a class="wp-block-button__link has-dh-text-color has-dh-base-background-color has-text-color has-background wp-element-button" href="#">Contact us</a></div>
+				<!-- wp:button {"backgroundColor":"bw-base","textColor":"bw-text"} -->
+				<div class="wp-block-button"><a class="wp-block-button__link has-bw-text-color has-bw-base-background-color has-text-color has-background wp-element-button" href="#">Contact us</a></div>
 				<!-- /wp:button -->
 			</div>
 			<!-- /wp:buttons -->

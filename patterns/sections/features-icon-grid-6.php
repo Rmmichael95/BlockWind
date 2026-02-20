@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Features – Icon Grid (6)
- * Slug: dh/features-icon-grid-6
- * Categories: dh-sections, dh-components
+ * Slug: bw/features-icon-grid-6
+ * Categories: bw-sections, bw-components
  * Keywords: features, grid, icons
  */
 ?>
 
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-2xl","bottom":"var:preset|spacing|fluid-2xl","left":"var:preset|spacing|fluid-xl","right":"var:preset|spacing|fluid-xl"}}},"backgroundColor":"dh-surface","textColor":"dh-text","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-dh-text-color has-dh-surface-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--fluid-2xl);padding-right:var(--wp--preset--spacing--fluid-xl);padding-bottom:var(--wp--preset--spacing--fluid-2xl);padding-left:var(--wp--preset--spacing--fluid-xl)">
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-2xl","bottom":"var:preset|spacing|fluid-2xl","left":"var:preset|spacing|fluid-xl","right":"var:preset|spacing|fluid-xl"}}},"backgroundColor":"bw-surface","textColor":"bw-text","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-bw-text-color has-bw-surface-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--fluid-2xl);padding-right:var(--wp--preset--spacing--fluid-xl);padding-bottom:var(--wp--preset--spacing--fluid-2xl);padding-left:var(--wp--preset--spacing--fluid-xl)">
 	<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|fluid-l"}}} -->
 	<div class="wp-block-group">
 		<!-- wp:heading {"textAlign":"center"} -->

@@ -17,15 +17,15 @@
       ul.wp-block-navigation__submenu-container,
       ul.wp-block-pages-list__submenu-container
     ) {
-    background-color: var(--dh-dropdown-bg);
-    border: 1px solid var(--dh-dropdown-border);
-    border-radius: var(--dh-dropdown-radius);
-    box-shadow: var(--dh-dropdown-shadow);
+    background-color: var(--bw-dropdown-bg);
+    border: 1px solid var(--bw-dropdown-border);
+    border-radius: var(--bw-dropdown-radius);
+    box-shadow: var(--bw-dropdown-shadow);
 
-    padding: var(--wp--preset--spacing--dh-xs);
+    padding: var(--wp--preset--spacing--bw-xs);
 
     position: absolute;
-    inset-block-start: calc(100% + var(--wp--preset--spacing--dh-xs));
+    inset-block-start: calc(100% + var(--wp--preset--spacing--bw-xs));
     inset-inline-start: 0;
 
     min-inline-size: 15rem;
@@ -65,7 +65,7 @@
         ul.wp-block-pages-list__submenu-container
     ) {
     inset-block-start: 0;
-    inset-inline-start: calc(100% + var(--wp--preset--spacing--dh-xs));
+    inset-inline-start: calc(100% + var(--wp--preset--spacing--bw-xs));
   }
 }
 
@@ -81,16 +81,16 @@
       ul.wp-block-navigation__submenu-container,
       ul.wp-block-pages-list__submenu-container
     ) {
-    background-color: var(--dh-dropdown-bg);
-    border: 1px solid var(--dh-dropdown-border);
-    border-radius: var(--dh-dropdown-radius);
-    box-shadow: var(--dh-dropdown-shadow);
+    background-color: var(--bw-dropdown-bg);
+    border: 1px solid var(--bw-dropdown-border);
+    border-radius: var(--bw-dropdown-radius);
+    box-shadow: var(--bw-dropdown-shadow);
 
-    padding: var(--wp--preset--spacing--dh-xs);
+    padding: var(--wp--preset--spacing--bw-xs);
 
     position: static;
     inline-size: 100%;
-    margin-block-start: var(--wp--preset--spacing--dh-xs);
+    margin-block-start: var(--wp--preset--spacing--bw-xs);
 
     display: none;
   }

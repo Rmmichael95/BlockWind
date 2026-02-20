@@ -6,48 +6,48 @@
     "color": {
       "palette": [
         {
-          "name": "DH Primary",
-          "slug": "dh-primary",
+          "name": "BW Primary",
+          "slug": "bw-primary",
           "color": "#495c69"
         },
         {
-          "name": "DH Secondary",
-          "slug": "dh-secondary",
+          "name": "BW Secondary",
+          "slug": "bw-secondary",
           "color": "#97a47f"
         },
         {
-          "name": "DH Base",
-          "slug": "dh-base",
+          "name": "BW Base",
+          "slug": "bw-base",
           "color": "#fffbef"
         },
         {
-          "name": "DH Accent",
-          "slug": "dh-accent",
+          "name": "BW Accent",
+          "slug": "bw-accent",
           "color": "#d3a300"
         },
         {
-          "name": "DH Link",
-          "slug": "dh-link",
+          "name": "BW Link",
+          "slug": "bw-link",
           "color": "#495c69"
         },
         {
-          "name": "DH Text",
-          "slug": "dh-text",
+          "name": "BW Text",
+          "slug": "bw-text",
           "color": "#1E2326"
         },
         {
-          "name": "DH Muted",
-          "slug": "dh-muted",
+          "name": "BW Muted",
+          "slug": "bw-muted",
           "color": "#565c57"
         },
         {
-          "name": "DH Border",
-          "slug": "dh-border",
+          "name": "BW Border",
+          "slug": "bw-border",
           "color": "#d7d7d7"
         },
         {
-          "name": "DH Contrast",
-          "slug": "dh-contrast",
+          "name": "BW Contrast",
+          "slug": "bw-contrast",
           "color": "#ffffff"
         }
       ]
@@ -56,12 +56,12 @@
       "fontFamilies": [
         {
           "name": "Body",
-          "slug": "dh-body",
+          "slug": "bw-body",
           "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, \"Apple Color Emoji\", \"Segoe UI Emoji\""
         },
         {
           "name": "Headings",
-          "slug": "dh-heading",
+          "slug": "bw-heading",
           "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, \"Apple Color Emoji\", \"Segoe UI Emoji\""
         }
       ]
@@ -69,19 +69,19 @@
   },
   "styles": {
     "color": {
-      "background": "var:preset|color|dh-base",
-      "text": "var:preset|color|dh-text"
+      "background": "var:preset|color|bw-base",
+      "text": "var:preset|color|bw-text"
     },
     "elements": {
       "link": {
         "color": {
-          "text": "var:preset|color|dh-link"
+          "text": "var:preset|color|bw-link"
         }
       },
       "button": {
         "color": {
-          "background": "var:preset|color|dh-primary",
-          "text": "var:preset|color|dh-contrast"
+          "background": "var:preset|color|bw-primary",
+          "text": "var:preset|color|bw-contrast"
         }
       }
     }

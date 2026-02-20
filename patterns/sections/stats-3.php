@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Stats – 3 Up
- * Slug: dh/stats-3
- * Categories: dh-sections, dh-components
+ * Slug: bw/stats-3
+ * Categories: bw-sections, bw-components
  * Keywords: stats, metrics
  */
 ?>
 
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-xl","bottom":"var:preset|spacing|fluid-xl","left":"var:preset|spacing|fluid-xl","right":"var:preset|spacing|fluid-xl"}}},"backgroundColor":"dh-contrast","textColor":"dh-text","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-dh-text-color has-dh-contrast-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--fluid-xl);padding-right:var(--wp--preset--spacing--fluid-xl);padding-bottom:var(--wp--preset--spacing--fluid-xl);padding-left:var(--wp--preset--spacing--fluid-xl)">
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-xl","bottom":"var:preset|spacing|fluid-xl","left":"var:preset|spacing|fluid-xl","right":"var:preset|spacing|fluid-xl"}}},"backgroundColor":"bw-contrast","textColor":"bw-text","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-bw-text-color has-bw-contrast-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--fluid-xl);padding-right:var(--wp--preset--spacing--fluid-xl);padding-bottom:var(--wp--preset--spacing--fluid-xl);padding-left:var(--wp--preset--spacing--fluid-xl)">
 	<!-- wp:columns {"style":{"spacing":{"blockGap":{"top":"var:preset|spacing|fluid-l","left":"var:preset|spacing|fluid-l"}}}} -->
 	<div class="wp-block-columns">
 		<!-- wp:column -->

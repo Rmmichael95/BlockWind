@@ -16,9 +16,9 @@
     a.wp-block-navigation-item__content,
     a.wp-block-pages-list__item__link
   ) {
-  padding-block: var(--wp--preset--spacing--dh-xs);
-  padding-inline: var(--wp--preset--spacing--dh-sm);
-  border-radius: var(--wp--preset--radius--dh-md);
+  padding-block: var(--wp--preset--spacing--bw-xs);
+  padding-inline: var(--wp--preset--spacing--bw-sm);
+  border-radius: var(--wp--preset--radius--bw-md);
 }
 
 /* Background affordance only (does not fight theme.json hover styles) */
@@ -36,7 +36,7 @@
     a.wp-block-navigation-item__content,
     a.wp-block-pages-list__item__link
   ):focus-visible {
-  background-color: var(--dh-nav-hover-bg);
+  background-color: var(--bw-nav-hover-bg);
 }
 
 /* Chevron / submenu toggle: inherit currentColor (theme.json handles color) */

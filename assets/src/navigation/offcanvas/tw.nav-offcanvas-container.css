@@ -1,12 +1,12 @@
 /* ==========================================================
    MODULE: tw.nav-offcanvas-container.css
    Purpose: Single utility-composed class for modal menu layout.
-            Exports: .dh-nav-offcanvas-container
+            Exports: .bw-nav-offcanvas-container
    ========================================================== */
 
 @reference "../../tw.reference.css";
 
-.dh-nav-offcanvas-container {
+.bw-nav-offcanvas-container {
   @apply flex flex-col items-stretch;
-  @apply gap-[var(--wp--style--block-gap,var(--wp--preset--spacing--dh-xs))];
+  @apply gap-[var(--wp--style--block-gap,var(--wp--preset--spacing--bw-xs))];
 }

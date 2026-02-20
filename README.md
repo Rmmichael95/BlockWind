@@ -5,7 +5,7 @@
 
 > **`theme.json` is the single source of truth for design tokens.**
 
-Templates, parts, and patterns define structure and composition, while WordPress block supports and style variations handle most styling. When WordPress cannot express something cleanly, BlockWind introduces small compiled `.dh-*` classes (via Tailwind `@apply`) to bridge the gap.
+Templates, parts, and patterns define structure and composition, while WordPress block supports and style variations handle most styling. When WordPress cannot express something cleanly, BlockWind introduces small compiled `.bw-*` classes (via Tailwind `@apply`) to bridge the gap.
 
 ACF blocks are treated as isolated components with their own SCSS and JS pipelines, compiled in place and loaded via `block.json`.
 
@@ -19,7 +19,7 @@ Styling follows a strict priority:
 
 1. `theme.json` presets + `settings.custom` (semantic tokens)
 2. WordPress block supports / style engine variables
-3. Compiled `.dh-*` modular classes (consume WP tokens; never define them)
+3. Compiled `.bw-*` modular classes (consume WP tokens; never define them)
 4. `tw.tokens.css` (Tailwind bridge — may be empty)
 5. `__tokens.scss` (SCSS bridge — may be empty)
 6. SCSS modules (structural styling and ACF blocks)
@@ -157,7 +157,7 @@ acf-blocks/
 - Consume WordPress tokens via CSS variables
 - Only define block-local tokens when WordPress cannot
 - Prefer structural SCSS over small modular classes
-- Avoid `.dh-*` dependencies inside ACF blocks
+- Avoid `.bw-*` dependencies inside ACF blocks
 
 ---
 
@@ -172,7 +172,7 @@ acf-blocks/
 
 ## Modular class system (FSE only)
 
-Tailwind `@apply` is used to create reusable `.dh-*` classes for:
+Tailwind `@apply` is used to create reusable `.bw-*` classes for:
 
 - navigation behavior
 - layout gaps WordPress cannot express
@@ -190,7 +190,7 @@ Use SCSS when styling:
 - would produce overly granular utility classes
 - belongs to an isolated component (ACF)
 
-Use `.dh-*` classes when styling:
+Use `.bw-*` classes when styling:
 
 - is small and reusable
 - fills a gap WordPress cannot express

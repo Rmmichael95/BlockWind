@@ -1,11 +1,11 @@
 /* ==========================================================
    MODULE: tw.nav-items-bind.css
-   Purpose: Bind WP core Navigation markup to dh-* item behavior.
+   Purpose: Bind WP core Navigation markup to bw-* item behavior.
             - Targets: li.wp-block-navigation-item / pages list items
             - Uses theme.json vars for paint (source of truth)
    Dependencies:
-     - theme.json: --wp--custom--dh-navigation--item--*
-     - theme.json: --wp--custom--dh-navigation--hover--background (optional)
+     - theme.json: --wp--custom--bw-navigation--item--*
+     - theme.json: --wp--custom--bw-navigation--hover--background (optional)
    ========================================================== */
 
 @reference "../../tw.reference.css";
@@ -18,9 +18,9 @@
     a.wp-block-navigation-item__content,
     a.wp-block-pages-list__item__link
   ) {
-  @apply rounded-[var(--wp--preset--radius--dh-md)];
-  @apply px-[var(--wp--preset--spacing--dh-sm)];
-  @apply py-[var(--wp--preset--spacing--dh-xs)];
+  @apply rounded-[var(--wp--preset--radius--bw-md)];
+  @apply px-[var(--wp--preset--spacing--bw-sm)];
+  @apply py-[var(--wp--preset--spacing--bw-xs)];
 }
 
 /* Hover/focus affordance (paint from theme.json) */
@@ -38,7 +38,7 @@
     a.wp-block-navigation-item__content,
     a.wp-block-pages-list__item__link
   ):focus-visible {
-  background: var(--wp--custom--dh-navigation--hover--background, transparent);
+  background: var(--wp--custom--bw-navigation--hover--background, transparent);
 }
 
 /* Chevron / submenu toggle */
