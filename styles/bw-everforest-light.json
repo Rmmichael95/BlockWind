@@ -1,7 +1,7 @@
 {
   "$schema": "https://schemas.wp.org/trunk/theme.json",
   "version": 3,
-  "title": "Dh Everforest Light",
+  "title": "BW Everforest Light",
   "settings": {
     "color": {
       "palette": [
@@ -76,6 +76,16 @@
       "link": {
         "color": {
           "text": "var:preset|color|bw-link"
+        },
+        ":hover": {
+          "color": {
+            "text": "var:preset|color|bw-accent"
+          }
+        },
+        ":active": {
+          "color": {
+            "text": "var:preset|color|bw-accent"
+          }
         }
       },
       "button": {
@@ -84,6 +94,9 @@
           "text": "var:preset|color|bw-contrast"
         }
       }
+    },
+    "border": {
+      "color": "var:preset|color|bw-border"
     }
   }
 }

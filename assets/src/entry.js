@@ -3,22 +3,26 @@
 // Purpose: Opt-in imports (no CSS output if you import nothing)
 // ==========================================================
 
-// Tailwind utilities (no preflight) + only the modules you need:
-// FSE-first: if you don't import anything, you get no CSS output.
-// Uncomment only when you need them:
-import "./tw.base.css";
-import "./tw.tokens.css";
+import "./core/tw.tokens.css";
+import "./core/tw.base.css";
 
-// Navigation modules (directory opt-in)
-// import "./navigation/dropdowns";
-// import "./navigation/items";
-// import "./navigation/offcanvas";
+// Optional navigation CSS bundles (after you fix their index.js paths)
+// import "./view/navigation/dropdowns/styles.js";
+// import "./view/navigation/dropdowns/scripts.js";
 
-// Optional SCSS (organization only) – uncomment only if used.
-// import "./scss/app.scss";
+// Items
+// import "./view/navigation/items/styles.js";
+// import "./view/navigation/items/scripts.js";
 
-// add your JS here
-import "./js/offcanvas-logo.js";
-import "./js/offcanvas-devtools-guard.js";
+// Offcanvas
+// import "./view/navigation/offcanvas/styles.js";
+// import "./view/navigation/offcanvas/scripts.js";
+
+// Editor behavior (group variation)
+import "./editor/variations/styles.js";
+import "./editor/variations/scripts.js";
+
+// SCSS entry (your preference: compiled from entry.js)
+import "./scss/index.scss";
 
 export {};

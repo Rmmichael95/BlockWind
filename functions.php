@@ -12,6 +12,75 @@
 if ( ! function_exists( 'blockwind_setup' ) ) {
 
 	/**
+	 * BlockWind: Register patterns from /patterns recursively (supports subfolders like /patterns/sections).
+	 */
+	function bw_register_block_patterns_from_theme() {
+		if ( ! function_exists( 'register_block_pattern' ) ) {
+			return;
+		}
+
+		$patterns_dir = get_theme_file_path( '/patterns' );
+		if ( ! is_dir( $patterns_dir ) ) {
+			return;
+		}
+
+		$iterator = new RecursiveIteratorIterator(
+			new RecursiveDirectoryIterator( $patterns_dir, FilesystemIterator::SKIP_DOTS )
+		);
+
+		foreach ( $iterator as $file ) {
+			/** @var SplFileInfo $file */
+			if ( $file->getExtension() !== 'php' ) {
+				continue;
+			}
+
+			$path = $file->getPathname();
+
+			$headers = get_file_data(
+				$path,
+				array(
+					'title'          => 'Title',
+					'slug'           => 'Slug',
+					'description'    => 'Description',
+					'categories'     => 'Categories',
+					'keywords'       => 'Keywords',
+					'block_types'    => 'Block Types',
+					'viewport_width' => 'Viewport Width',
+					'inserter'       => 'Inserter',
+				)
+			);
+
+			if ( empty( $headers['title'] ) || empty( $headers['slug'] ) ) {
+					continue;
+			}
+
+			$categories  = array_filter( array_map( 'trim', explode( ',', (string) $headers['categories'] ) ) );
+			$keywords    = array_filter( array_map( 'trim', explode( ',', (string) $headers['keywords'] ) ) );
+			$block_types = array_filter( array_map( 'trim', explode( ',', (string) $headers['block_types'] ) ) );
+
+			// Capture the pattern markup (everything after the PHP header).
+			ob_start();
+			include $path;
+			$content = trim( (string) ob_get_clean() );
+
+			register_block_pattern(
+				$headers['slug'],
+				array(
+					'title'         => $headers['title'],
+					'description'   => $headers['description'],
+					'categories'    => $categories,
+					'keywords'      => $keywords,
+					'blockTypes'    => $block_types,
+					'viewportWidth' => is_numeric( $headers['viewport_width'] ) ? (int) $headers['viewport_width'] : null,
+					'content'       => $content,
+					'inserter'      => ( $headers['inserter'] === '' ) ? true : filter_var( $headers['inserter'], FILTER_VALIDATE_BOOLEAN ),
+				)
+			);
+		}
+	}
+	add_action( 'init', 'bw_register_block_patterns_from_theme', 9 );
+
+	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
 	 * Note that this function is hooked into the after_setup_theme hook, which
@@ -45,7 +114,7 @@ function blockwind_enqueue_stylesheet() {
 add_action(
 	'wp_enqueue_scripts',
 	function () {
-		$css_rel = 'assets/dist/theme.min.css';
+		$css_rel = 'assets/inc/theme.min.css';
 		$css_abs = get_theme_file_path( $css_rel );
 
 		// Enqueue only if the file exists (and isn't empty)
@@ -59,7 +128,7 @@ add_action(
 		}
 
 		// Only enqueue JS if/when you actually add JS behavior
-		$js_rel = 'assets/dist/theme.min.js';
+		$js_rel = 'assets/inc/theme.min.js';
 		$js_abs = get_theme_file_path( $js_rel );
 
 		// If you want truly zero JS on the frontend, keep this disabled.
@@ -74,6 +143,36 @@ add_action(
 		}
 	}
 );
+
+add_action('enqueue_block_editor_assets', function () {
+  $css_rel = 'assets/inc/editor.min.css';
+  $css_abs = get_theme_file_path($css_rel);
+
+  if (file_exists($css_abs) && filesize($css_abs) > 20) {
+    wp_enqueue_style(
+      'blockwind-editor',
+      get_theme_file_uri($css_rel),
+      array('wp-edit-blocks'),
+      filemtime($css_abs)
+    );
+  }
+
+  $js_rel = 'assets/inc/editor.min.js';
+  $js_abs = get_theme_file_path($js_rel);
+
+  if (file_exists($js_abs) && filesize($js_abs) > 20) {
+    wp_enqueue_script(
+      'blockwind-editor',
+      get_theme_file_uri($js_rel),
+      array('wp-blocks', 'wp-dom-ready', 'wp-edit-post'),
+      filemtime($js_abs),
+      true
+    );
+
+    // Your Vite output format is "es" (module). Ensure WP loads it as a module.
+    wp_script_add_data('blockwind-editor', 'type', 'module');
+  }
+});
 
 /**
  * BlockWind: Load blocks & editor extensions from /assets/blocks/*
@@ -247,35 +346,35 @@ add_action(
 		$categories = array(
 			array(
 				'slug'  => 'bw-sections',
-				'label' => __( 'Dahli Sections', 'blockwind' ),
+				'label' => __( 'BlockWind Sections', 'blockwind' ),
 			),
 			array(
 				'slug'  => 'bw-pages',
-				'label' => __( 'Dahli Page Layouts', 'blockwind' ),
+				'label' => __( 'BlockWind Page Layouts', 'blockwind' ),
 			),
 			array(
 				'slug'  => 'bw-marketing',
-				'label' => __( 'Dahli Marketing', 'blockwind' ),
+				'label' => __( 'BlockWind Marketing', 'blockwind' ),
 			),
 			array(
 				'slug'  => 'bw-content',
-				'label' => __( 'Dahli Content', 'blockwind' ),
+				'label' => __( 'BlockWind Content', 'blockwind' ),
 			),
 			array(
 				'slug'  => 'bw-components',
-				'label' => __( 'Dahli Components', 'blockwind' ),
+				'label' => __( 'BlockWind Components', 'blockwind' ),
 			),
 			array(
 				'slug'  => 'bw-utility',
-				'label' => __( 'Dahli Utility', 'blockwind' ),
+				'label' => __( 'BlockWind Utility', 'blockwind' ),
 			),
 			array(
 				'slug'  => 'bw-navigation',
-				'label' => __( 'Dahli Navigation', 'blockwind' ),
+				'label' => __( 'BlockWind Navigation', 'blockwind' ),
 			),
 			array(
 				'slug'  => 'bw-commerce',
-				'label' => __( 'Dahli Commerce', 'blockwind' ),
+				'label' => __( 'BlockWind Commerce', 'blockwind' ),
 			),
 		);
 

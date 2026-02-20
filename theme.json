@@ -3,7 +3,7 @@
   "version": 3,
   "settings": {
     "appearanceTools": true,
-    "useRootPaddingAwareAlignments": true,
+    "useRootPaddingAwareAlignments": false,
     "layout": {
       "contentSize": "640px",
       "wideSize": "1280px",
@@ -315,7 +315,6 @@
         }
       ]
     },
-
     "spacing": {
       "padding": true,
       "margin": true,
@@ -506,7 +505,7 @@
       "bw-flow": {
         "gap": "var(--wp--preset--spacing--bw-md)",
         "gap-tight": "var(--wp--preset--spacing--bw-xs)",
-        "section-padding-y": "var(--wp--preset--spacing--bw-2xl)",
+        "section-padding-y": "var(--wp--preset--spacing--bw-sm)",
         "content-padding-x": "var(--wp--preset--spacing--bw-sm)"
       },
       "bw-navigation": {
@@ -556,13 +555,7 @@
       "text": "var:preset|color|bw-text"
     },
     "spacing": {
-      "blockGap": "var(--wp--custom--bw-flow--gap)",
-      "padding": {
-        "top": "var:preset|spacing|bw-none",
-        "right": "var(--wp--custom--bw-flow--content-padding-x)",
-        "bottom": "var:preset|spacing|bw-none",
-        "left": "var(--wp--custom--bw-flow--content-padding-x)"
-      }
+      "blockGap": "var(--wp--custom--bw-flow--gap)"
     },
     "typography": {
       "fontFamily": "var:preset|font-family|bw-body",
@@ -761,12 +754,7 @@
           "radius": "var:preset|radius|bw-lg"
         },
         "spacing": {
-          "padding": {
-            "bottom": "var:preset|spacing|bw-md",
-            "left": "var:preset|spacing|bw-md",
-            "right": "var:preset|spacing|bw-md",
-            "top": "var:preset|spacing|bw-md"
-          }
+          "blockGap": "var(--wp--custom--bw-flow--gap)"
         }
       },
       "core/heading": {

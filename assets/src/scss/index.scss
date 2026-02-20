@@ -8,3 +8,10 @@
    - Reference theme.json tokens only: var(--wp--custom--bw-*), var(--wp--preset--*).
    - Avoid overriding core block behavior unless critical.
    ========================================================================== */
+
+@use "./tokens";
+@use "./mixins";
+
+@use "./base/typography";
+@use "./components/example";
+@use "./view/navigation/offcanvas";
