@@ -1,4 +1,3 @@
-
 # BlockWind
 
 **BlockWind** is an FSE-first WordPress block theme built around one core principle:
@@ -20,9 +19,12 @@ Styling follows a strict priority:
 1. `theme.json` presets + `settings.custom` (semantic tokens)
 2. WordPress block supports / style engine variables
 3. Compiled `.bw-*` modular classes (consume WP tokens; never define them)
-4. `tw.tokens.css` (Tailwind bridge — may be empty)
-5. `__tokens.scss` (SCSS bridge — may be empty)
+
+- `tw.tokens.css` (Tailwind bridge — may be empty)
+
 6. SCSS modules (structural styling and ACF blocks)
+
+- `__tokens.scss` (SCSS bridge — may be empty)
 
 Tokens should only exist outside `theme.json` when they **cannot** be defined there and significantly simplify styling.
 
@@ -35,6 +37,7 @@ BlockWind uses **Vite** as the single build tool.
 ### Output philosophy
 
 - One global theme bundle
+- Per-block isolated builds for custom blocks (assets/blocks/)
 - Per-block isolated builds for ACF blocks
 - All runtime assets are minified (`*.min.*`)
 - Source files remain non-minified and never loaded directly
@@ -43,13 +46,13 @@ BlockWind uses **Vite** as the single build tool.
 
 ## Build commands
 
-| Command | Purpose |
-|--------|--------|
-| `npm run dev` | Vite dev server for theme assets |
-| `npm run build` | Build core theme bundle |
-| `npm run build:blocks` | Build `assets/blocks/*` packages |
-| `npm run build:acf` | Compile ACF SCSS + JS into per-block `*.min.*` |
-| `npm run build:all` | Build theme + blocks + ACF |
+| Command                | Purpose                                        |
+| ---------------------- | ---------------------------------------------- |
+| `npm run dev`          | Vite dev server for theme assets               |
+| `npm run build`        | Build core theme bundle                        |
+| `npm run build:blocks` | Build `assets/blocks/*` packages               |
+| `npm run build:acf`    | Compile ACF SCSS + JS into per-block `*.min.*` |
+| `npm run build:all`    | Build theme + blocks + ACF                     |
 
 ---
 
@@ -58,12 +61,14 @@ BlockWind uses **Vite** as the single build tool.
 Templates, patterns, and ACF blocks reference compiled outputs only.
 
 **Theme bundle**
+
 ```
 assets/dist/theme.min.css
 assets/dist/theme.min.js
 ```
 
 **ACF blocks**
+
 ```
 acf-blocks/*/*.min.css
 acf-blocks/*/*.min.js
@@ -99,12 +104,12 @@ No custom enqueue logic is required — `block.json` handles it.
 
 Each ACF block compiles source assets back into the same directory:
 
-| Source | Output |
-|------|------|
-| `style.scss` | `style.min.css` |
+| Source        | Output           |
+| ------------- | ---------------- |
+| `style.scss`  | `style.min.css`  |
 | `editor.scss` | `editor.min.css` |
-| `view.js` | `view.min.js` |
-| `editor.js` | `editor.min.js` |
+| `view.js`     | `view.min.js`    |
+| `editor.js`   | `editor.min.js`  |
 
 `block.json` loads these via `file:` paths:
 
