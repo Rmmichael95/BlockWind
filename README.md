@@ -6,6 +6,8 @@
 
 Templates, parts, and patterns define structure and composition, while WordPress block supports and style variations handle most styling. When WordPress cannot express something cleanly, BlockWind introduces small compiled `.bw-*` classes (via Tailwind `@apply`) to bridge the gap.
 
+Custom blocks made in `assets/blocks/` and enqueue in `functions.php` for convienence instead of `mu-plugins`
+
 ACF blocks are treated as isolated components with their own SCSS and JS pipelines, compiled in place and loaded via `block.json`.
 
 ---
@@ -34,7 +36,7 @@ BlockWind uses **Vite** as the single build tool.
 ### Output philosophy
 
 - One global theme bundle
-- Per-block isolated builds for custom blocks (assets/blocks/)
+- Per-block isolated builds for custom blocks `assets/blocks/`
 - Per-block isolated builds for ACF blocks
 - All runtime assets are minified (`*.min.*`)
 - Source files remain non-minified and never loaded directly
@@ -157,9 +159,9 @@ acf-blocks/
 
 - ACF blocks are SCSS-first
 - Consume WordPress tokens via CSS variables
+- consume bw- tailwind classes if exist, don't create own
 - Only define block-local tokens when WordPress cannot
-- Prefer structural SCSS over small modular classes
-- Avoid `.bw-*` dependencies inside ACF blocks
+- custom styling using scss and js
 
 ---
 
@@ -172,7 +174,7 @@ acf-blocks/
 
 ---
 
-## Modular class system (FSE only)
+## Modular class system
 
 Tailwind `@apply` is used to create reusable `.bw-*` classes for:
 
@@ -222,3 +224,9 @@ BlockWind provides:
 - isolated SCSS-driven ACF block system
 - unified Vite build pipeline
 - portable block architecture
+
+---
+
+## License
+
+![License: GPL v2](https://img.shields.io)
