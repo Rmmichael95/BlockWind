@@ -1,0 +1,18 @@
+/**
+ * BlockWind ACF Block: About — _layout.scss
+ *
+ * Purpose:
+ * - Structural layout for the block.
+ * - Avoid visual “design tokens” here; consume WP vars instead.
+ */
+
+.bw-about {
+  // Example consuming WP vars (replace with your actual semantic vars)
+  background: var(--wp--preset--color--dh-surface, transparent);
+  color: var(--wp--preset--color--dh-text, inherit);
+
+  &__inner {
+    // Prefer WP spacing vars if defined (or theme custom vars)
+    padding: var(--wp--preset--spacing--40, 2rem);
+  }
+}

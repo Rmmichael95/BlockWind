@@ -1,0 +1,18 @@
+/**
+ * BlockWind ACF Block: About — _components.scss
+ *
+ * Purpose:
+ * - Styling for elements/components inside the block.
+ */
+
+.bw-about {
+  &__title {
+    margin: 0 0 var(--wp--preset--spacing--20, 1rem);
+    font-size: var(--wp--preset--font-size--fluid-xl, 1.5rem);
+    line-height: var(--wp--custom--line-height--heading, 1.1);
+  }
+
+  &__content {
+    line-height: var(--wp--custom--line-height--body, 1.75);
+  }
+}

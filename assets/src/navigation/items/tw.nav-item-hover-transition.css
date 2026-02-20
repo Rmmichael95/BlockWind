@@ -1,0 +1,14 @@
+/* ==========================================================
+   MODULE: tw.nav-item-hover-transition.css
+   Purpose: Single utility-composed class for interactive hover/focus affordance.
+            Exports: .dh-nav-item-hover
+   Notes:
+     - Background color is applied via theme.json token in the bind file to
+       keep paint decisions in theme.json.
+   ========================================================== */
+
+@reference "../../tw.reference.css";
+
+.dh-nav-item-hover-transition {
+  @apply transition;
+}

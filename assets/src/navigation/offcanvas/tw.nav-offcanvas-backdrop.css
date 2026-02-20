@@ -1,0 +1,13 @@
+/* ==========================================================
+   MODULE: tw.nav-offcanvas-backdrop.css
+   Purpose: Single utility-composed class for the overlay backdrop layer.
+            Exports: .dh-nav-offcanvas-backdrop
+   Notes:
+     - Actual background paint comes from theme.json in the bind file.
+   ========================================================== */
+
+@reference "../../tw.reference.css";
+
+.dh-nav-offcanvas-backdrop {
+  @apply absolute inset-0;
+}

@@ -1,0 +1,16 @@
+/* ==========================================================
+   MODULE: tw.nav-item-chevron.css
+   Purpose: Single utility-composed class for submenu toggle button (chevron).
+            Exports: .dh-nav-item-chevron
+   ========================================================== */
+
+@reference "../../tw.reference.css";
+
+.dh-nav-item-chevron {
+  @apply inline-flex items-center justify-center;
+  @apply w-6 h-6;
+  @apply ms-1;
+  @apply p-0 border-0 bg-transparent;
+  @apply opacity-80 hover:opacity-100;
+  @apply cursor-pointer;
+}

@@ -1,0 +1,15 @@
+/**
+ * BlockWind ACF Block: About — _responsive.scss
+ *
+ * Purpose:
+ * - Responsive rules for this block.
+ * - Keep breakpoints consistent with your theme conventions.
+ */
+
+@media (min-width: 768px) {
+  .bw-about {
+    &__inner {
+      padding: var(--wp--preset--spacing--50, 3rem);
+    }
+  }
+}

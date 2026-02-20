@@ -1,0 +1,15 @@
+/* ==========================================================
+   MODULE: tw.nav-offcanvas-panel.css
+   Purpose: Single utility-composed class for the drawer panel.
+            Exports: .dh-nav-offcanvas-panel
+   ========================================================== */
+
+@reference "../../tw.reference.css";
+
+.dh-nav-offcanvas-panel {
+  @apply relative z-10;
+  @apply h-full;
+  @apply overflow-hidden;
+  @apply box-border;
+  @apply p-[var(--wp--preset--spacing--dh-md)];
+}

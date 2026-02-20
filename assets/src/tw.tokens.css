@@ -1,123 +1,13 @@
 /* ==========================================================
    MODULE: tw.tokens.css
    Purpose: Map Tailwind v4 runtime tokens (no Preflight) to
-            WordPress theme.json presets. Tokens only — no styling.
+            WordPress theme.json presets/custom properties.
+            Tokens only — no styling.
             Safe to load globally; keeps WP/theme.json as source of truth.
+   Dependencies:
+     - theme.json provides: --wp--preset--* and --wp--custom--*
+     - tw.reference.css (imported by consumers)
+   Notes:
+     - Do NOT set colors/fonts/spacing here unless it's a pure alias.
+     - No selectors, no component rules, no layout rules.
    ========================================================== */
-
-/* ==========================================================
-   tw.tokens.css (BlockWind)
-   Goal: WordPress-first tokens + self-documenting DH semantics
-   - Colors + fonts map to theme.json presets (style-variation safe)
-   - NO spacing mirror vars (use WP spacing vars directly in modules)
-   - Minimal Tailwind v4 runtime tokens (radius/shadow/text-size)
-   ========================================================== */
-
-/* ----------------------------------------------------------
-   Tailwind v4 minimal runtime tokens
-   (Keep only what your build/utilities actually expect)
-   ---------------------------------------------------------- */
-:root {
-  /* Tailwind spacing unit (used in a few calc patterns; keep stable) */
-  --spacing: 0.25rem;
-
-  /* Radius tokens -> theme.json radius presets */
-  --radius-none: var(--wp--preset--radius--dh-none);
-  --radius-xs: var(--wp--preset--radius--dh-xs);
-  --radius-sm: var(--wp--preset--radius--dh-sm);
-  --radius-md: var(--wp--preset--radius--dh-md);
-  --radius-lg: var(--wp--preset--radius--dh-lg);
-  --radius-xl: var(--wp--preset--radius--dh-xl);
-  --radius-2xl: var(--wp--preset--radius--dh-2xl);
-  --radius-3xl: var(--wp--preset--radius--dh-3xl);
-  --radius-4xl: var(--wp--preset--radius--dh-4xl);
-  --radius-full: var(--wp--preset--radius--dh-full);
-
-  /* Common alias */
-  --radius: var(--radius-md);
-
-  /* Common alias */
-  --shadow: var(--shadow-sm);
-
-  /* ----------------------------------------------------------
-   DH Semantic Tokens (self-documenting)
-   Rule: components should use --dh-* (not raw --wp--preset--)
-   ---------------------------------------------------------- */
-  /* Core palette semantics (from theme.json color palette dh-*) */
-  --dh-primary: var(--wp--preset--color--dh-primary);
-  --dh-secondary: var(--wp--preset--color--dh-secondary);
-  --dh-bg: var(--wp--preset--color--dh-base);
-  --dh-accent: var(--wp--preset--color--dh-accent);
-
-  --dh-text: var(--wp--preset--color--dh-text);
-  --dh-muted: var(--wp--preset--color--dh-muted);
-
-  --dh-border: var(--wp--preset--color--dh-border);
-  --dh-contrast: var(--wp--preset--color--dh-contrast);
-
-  --dh-link: var(--wp--preset--color--dh-link);
-
-  /* Explicit black/white (rarely needed; keep for overlays/icons) */
-  --dh-black: var(--wp--preset--color--dh-black);
-  --dh-white: var(--wp--preset--color--dh-white);
-
-  /* Surface semantics (choose sensible defaults for your palette) */
-  /* "surface" should generally be a panel color: contrast on base background */
-  --dh-surface: var(--dh-contrast);
-  /* "panel" can be used for dropdowns/offcanvas if you want a distinct layer */
-  --dh-panel: var(--dh-bg);
-
-  /* Hover surface (theme.json does not define a hover color preset)
-     Use a subtle, accessible neutral overlay derived from text. */
-  --dh-hover-surface: color-mix(in oklab, var(--dh-text) 8%, transparent);
-
-  /* Focus ring color should match theme.json navigation focus outline:
-     core/navigation uses dh-link for outline. */
-  --dh-focus-ring: var(--dh-link);
-  --dh-focus-ring-width: 2px;
-  --dh-focus-ring-offset: 2px;
-}
-
-/* ----------------------------------------------------------
-   Navigation + dropdown + offcanvas semantics
-   - Tailwind nav modules should use these only
-   - Let theme.json own link colors + text-decoration for core/navigation
-   ---------------------------------------------------------- */
-:root {
-  /* Nav container context */
-  --dh-nav-fg: var(--dh-text);
-  --dh-nav-bg: transparent;
-
-  /* Nav row hover background (does not fight theme.json link hover color) */
-  --dh-nav-hover-bg: var(--dh-hover-surface);
-
-  /* Dropdown panel */
-  --dh-dropdown-bg: var(--dh-panel);
-  --dh-dropdown-fg: var(--dh-text);
-  --dh-dropdown-border: var(--dh-border);
-  --dh-dropdown-radius: var(--wp--preset--radius--dh-lg, 0.5rem);
-  --dh-dropdown-shadow: var(--wp--preset--shadow--dh-md, var(--shadow-md));
-
-  /* Offcanvas panel */
-  --dh-offcanvas-bg: var(--dh-panel);
-  --dh-offcanvas-fg: var(--dh-text);
-  --dh-offcanvas-border: var(--dh-border);
-  --dh-offcanvas-radius: var(--wp--preset--radius--dh-lg, 0.5rem);
-  --dh-offcanvas-shadow: var(--wp--preset--shadow--dh-2xl, var(--shadow-2xl));
-
-  /* Optional sizing knobs (you can set these via theme.json "custom" later) */
-  --dh-offcanvas-max-width: 448px;
-}
-
-/* ----------------------------------------------------------
-   Minimal compatibility aliases (if older modules still reference these)
-   Keep these ONLY if you still have bw-* usage elsewhere.
-   ---------------------------------------------------------- */
-:root {
-  --bw-color-bg: var(--dh-bg);
-  --bw-color-text: var(--dh-text);
-  --bw-color-accent: var(--dh-accent);
-  --bw-color-surface: var(--dh-surface);
-  --bw-color-border: var(--dh-border);
-  --bw-color-hover: var(--dh-hover-surface);
-}

@@ -1,0 +1,129 @@
+/* ==========================================================
+   MODULE: tw.nav-dropdown-bind.css
+   Purpose: Bind core Navigation submenu containers to dh-* classes
+            without requiring markup changes.
+            - Keeps selector/behavior logic here (WP markup-driven).
+            - Uses theme.json vars for paint (source of truth).
+   Dependencies:
+     - theme.json: --wp--custom--dh-navigation--dropdown--*
+     - theme.json: --wp--preset--spacing--*, --wp--preset--radius--*
+   ========================================================== */
+
+@reference "../../tw.reference.css";
+
+/* -------------------------
+   Desktop dropdown panels
+   ------------------------- */
+@media (min-width: 783px) {
+  .site-nav
+    :is(
+      ul.wp-block-navigation__submenu-container,
+      ul.wp-block-pages-list__submenu-container
+    ) {
+    /* class composition (utility equivalent of .dh-nav-dropdown-panel) */
+    @apply absolute z-50 hidden;
+    @apply border;
+    @apply shadow-sm;
+    @apply rounded-[var(--wp--preset--radius--dh-md)];
+    @apply p-[var(--wp--preset--spacing--dh-xs)];
+
+    /* WP token-driven paint (theme.json) */
+    background: var(--wp--custom--dh-navigation--dropdown--background);
+    border-color: var(--wp--custom--dh-navigation--dropdown--border-color);
+    border-width: var(--wp--custom--dh-navigation--dropdown--border-width);
+    box-shadow: var(--wp--custom--dh-navigation--dropdown--shadow);
+
+    /* positioning */
+    inset-block-start: calc(100% + var(--wp--preset--spacing--dh-xs));
+    inset-inline-start: 0;
+    min-inline-size: var(
+      --wp--custom--dh-navigation--dropdown--min-width,
+      15rem
+    );
+  }
+
+  /* Show submenu on hover + keyboard focus within */
+  .site-nav
+    :is(
+      li.wp-block-navigation-item.has-child,
+      li.wp-block-pages-list__item.has-child
+    ):hover
+    > :is(
+      ul.wp-block-navigation__submenu-container,
+      ul.wp-block-pages-list__submenu-container
+    ),
+  .site-nav
+    :is(
+      li.wp-block-navigation-item.has-child,
+      li.wp-block-pages-list__item.has-child
+    ):focus-within
+    > :is(
+      ul.wp-block-navigation__submenu-container,
+      ul.wp-block-pages-list__submenu-container
+    ) {
+    @apply block;
+  }
+
+  /* Nested flyouts */
+  .site-nav
+    :is(
+      ul.wp-block-navigation__submenu-container
+        ul.wp-block-navigation__submenu-container,
+      ul.wp-block-pages-list__submenu-container
+        ul.wp-block-pages-list__submenu-container
+    ) {
+    inset-block-start: 0;
+    inset-inline-start: calc(100% + var(--wp--preset--spacing--dh-xs));
+  }
+}
+
+/* -------------------------
+   Mobile submenu panel box
+   NOTE: Offcanvas layout belongs elsewhere.
+   ------------------------- */
+@media (max-width: 782px) {
+  .site-nav
+    .wp-block-navigation__responsive-container
+    :is(
+      ul.wp-block-navigation__submenu-container,
+      ul.wp-block-pages-list__submenu-container
+    ) {
+    /* class composition (utility equivalent of .dh-nav-dropdown-panel-mobile) */
+    @apply static w-full hidden;
+    @apply border;
+    @apply shadow-sm;
+    @apply rounded-[var(--wp--preset--radius--dh-md)];
+    @apply p-[var(--wp--preset--spacing--dh-xs)];
+    @apply mt-[var(--wp--preset--spacing--dh-xs)];
+
+    background: var(--wp--custom--dh-navigation--dropdown--background);
+    border-color: var(--wp--custom--dh-navigation--dropdown--border-color);
+    border-width: var(--wp--custom--dh-navigation--dropdown--border-width);
+    box-shadow: var(--wp--custom--dh-navigation--dropdown--shadow);
+  }
+
+  /* WP open states */
+  .site-nav
+    .wp-block-navigation__responsive-container
+    :is(
+      li.is-open > ul.wp-block-navigation__submenu-container,
+      li.is-open > ul.wp-block-pages-list__submenu-container
+    ) {
+    @apply block;
+  }
+
+  .site-nav
+    .wp-block-navigation__responsive-container
+    :is(
+      button.wp-block-navigation-submenu__toggle[aria-expanded="true"]
+        ~ ul.wp-block-navigation__submenu-container,
+      button.wp-block-navigation__submenu-icon[aria-expanded="true"]
+        ~ ul.wp-block-navigation__submenu-container,
+      button.wp-block-navigation-submenu__toggle[aria-expanded="true"]
+        ~ ul.wp-block-pages-list__submenu-container,
+      button.wp-block-navigation__submenu-icon[aria-expanded="true"]
+        ~ ul.wp-block-pages-list__submenu-container
+    ) {
+    @apply block;
+  }
+}

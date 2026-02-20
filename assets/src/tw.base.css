@@ -1,8 +1,14 @@
 /* ==========================================================
    MODULE: tw.base.css
-   Purpose: Tailwind v4 utilities only (no Preflight), FSE-first.
-   Import this only when you need Tailwind utilities at all.
+   Purpose: Minimal global baseline that WordPress does NOT
+            handle via theme.json styles.
+            - Keep extremely small: only true global fixes.
+            - Prefer theme.json for typography, colors, spacing.
+   Dependencies:
+     - tw.reference.css
+     - tw.tokens.css (token aliases only)
    ========================================================== */
+
 @layer theme, base, components, utilities;
 
 @import "tailwindcss/theme.css" layer(theme);

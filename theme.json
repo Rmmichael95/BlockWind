@@ -463,8 +463,21 @@
         }
       ]
     },
-
     "custom": {
+      "dh-ui": {
+        "surface": "var:preset|color|dh-secondary",
+        "surface-alt": "var:preset|color|dh-contrast",
+        "panel": "var:preset|color|dh-secondary",
+        "border": "var:preset|color|dh-border",
+        "text": "var:preset|color|dh-text",
+        "muted": "var:preset|color|dh-muted",
+        "link": "var:preset|color|dh-link",
+        "link-hover": "var:preset|color|dh-link",
+        "accent": "var:preset|color|dh-accent",
+        "accent-contrast": "var:preset|color|dh-contrast",
+        "focus-ring": "var:preset|color|dh-link",
+        "hover-surface": "color-mix(in oklab, var(--wp--preset--color--dh-text) 8%, transparent)"
+      },
       "dh-line-height": {
         "body": "1.6",
         "heading": "1.25",
@@ -497,12 +510,41 @@
         "content-padding-x": "var(--wp--preset--spacing--dh-sm)"
       },
       "dh-navigation": {
+        "text-decoration": "none",
+        "text-decoration-hover": "none",
         "gap": "var(--wp--preset--spacing--dh-xs)",
-        "item-padding-y": "var(--wp--preset--spacing--dh-xs)",
-        "item-padding-x": "var(--wp--preset--spacing--dh-sm)",
-        "dropdown-radius": "var(--wp--preset--radius--dh-md)",
-        "dropdown-padding": "var(--wp--preset--spacing--dh-xs)",
-        "border-width": "1px"
+        "item": {
+          "font-size": "var(--wp--preset--font-size--dh-sm)",
+          "font-weight": "var(--wp--custom--dh-font-weight--bold)",
+          "line-height": "var(--wp--custom--dh-line-height--tight)",
+          "padding-y": "var(--wp--preset--spacing--dh-xs)",
+          "padding-x": "var(--wp--preset--spacing--dh-sm)"
+        },
+        "dropdown": {
+          "min-width": "min(clamp(14rem, 22vw, 18rem), calc(var(--wp--style--global--content-size, 640px) - (2 * var(--wp--preset--spacing--dh-sm))))",
+          "padding": "var(--wp--preset--spacing--dh-xs)",
+          "radius": "var(--wp--preset--radius--dh-md)",
+          "border-width": "1px",
+          "border-color": "var(--wp--custom--dh-ui--border)",
+          "background": "var(--wp--custom--dh-ui--panel)",
+          "shadow": "var(--wp--preset--shadow--dh-sm)"
+        },
+        "offcanvas": {
+          "width": "min(92vw, 22rem)",
+          "radius": "var(--wp--preset--radius--dh-lg)",
+          "background": "var(--wp--custom--dh-ui--panel)",
+          "shadow": "var(--wp--preset--shadow--dh-xl)",
+          "backdrop": "rgba(0,0,0,0.5)"
+        },
+        "active": {
+          "color": "var(--wp--custom--dh-ui--text)",
+          "decoration": "var(--wp--custom--dh-navigation--text-decoration)"
+        },
+        "hover": {
+          "color": "var(--wp--custom--dh-ui--link)",
+          "decoration": "var(--wp--custom--dh-navigation--text-decoration-hover)",
+          "background": "var(--wp--custom--dh-ui--hover-surface)"
+        }
       }
     },
     "blocks": {}

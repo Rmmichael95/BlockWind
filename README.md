@@ -1,303 +1,222 @@
-# Blockwind
 
-**Blockwind** is an **FSE-first (Full Site Editing)** WordPress block theme built around a clean separation of concerns:
+# BlockWind
 
-- **`theme.json`** = design tokens + editor capabilities + baseline styles (**source of truth**)
-- **Tailwind (optional)** = minimal responsive utility framework + migration helpers (**implementation layer when needed**)
-- **SCSS (optional)** = organization (partials/mixins/components) **not a second design system**
-- **Vite** = build system that outputs a single, minified `theme.min.css` (only when CSS modules are imported)
+**BlockWind** is an FSE-first WordPress block theme built around one core principle:
 
-The theme is designed to be **usable with zero compiled CSS** (pure FSE + `theme.json`), while still allowing teams migrating from Bootstrap/hybrid themes to opt into a **Bootstrap-like class layer** built with Tailwind `@apply`.
+> **`theme.json` is the single source of truth for design tokens.**
 
----
+Templates, parts, and patterns define structure and composition, while WordPress block supports and style variations handle most styling. When WordPress cannot express something cleanly, BlockWind introduces small compiled `.dh-*` classes (via Tailwind `@apply`) to bridge the gap.
 
-## Goals
-
-### ✅ FSE-first
-
-Blockwind prioritizes WordPress core block theming:
-
-- Templates, parts, and patterns define layout and “component library”
-- `theme.json` controls the editor experience and global styling
-- Minimal PHP (mostly enqueue + theme support)
-
-### ✅ No bloat, no unused CSS by default
-
-- If you **do not import Tailwind/SCSS modules**, Vite will **not produce CSS output**
-- Your theme runs on `theme.json` and block markup alone
-- When enabled, CSS compiles into **one minified file**: `assets/dist/theme.min.css`
-
-### ✅ Migration-friendly
-
-A modular Tailwind `@apply` layer can mimic common Bootstrap patterns:
-
-- `.container`, `.row`, `.col-*`
-- spacing utilities
-- flex alignment / ordering
-- `.card`, `.stretched-link`
-
-Modules are split so you can **import only what you need** during migration.
-
-### ✅ Single source of truth for tokens
-
-- Tokens live in `theme.json`
-- Tailwind/SCSS should reference WordPress CSS variables (`--wp--preset--*`) rather than redefining colors/type/spacing
-
-- When you need tokens inside optional layers, **export/derive** them from `theme.json` into:
-  - `assets/src/tw.tokens.css` (for Tailwind modules)
-  - `assets/src/scss/_tokens.scss` (for SCSS)
+ACF blocks are treated as isolated components with their own SCSS and JS pipelines, compiled in place and loaded via `block.json`.
 
 ---
 
-## Theme Structure
+## Core philosophy
 
+### Token hierarchy
+
+Styling follows a strict priority:
+
+1. `theme.json` presets + `settings.custom` (semantic tokens)
+2. WordPress block supports / style engine variables
+3. Compiled `.dh-*` modular classes (consume WP tokens; never define them)
+4. `tw.tokens.css` (Tailwind bridge — may be empty)
+5. `__tokens.scss` (SCSS bridge — may be empty)
+6. SCSS modules (structural styling and ACF blocks)
+
+Tokens should only exist outside `theme.json` when they **cannot** be defined there and significantly simplify styling.
+
+---
+
+## Build system
+
+BlockWind uses **Vite** as the single build tool.
+
+### Output philosophy
+
+- One global theme bundle
+- Per-block isolated builds for ACF blocks
+- All runtime assets are minified (`*.min.*`)
+- Source files remain non-minified and never loaded directly
+
+---
+
+## Build commands
+
+| Command | Purpose |
+|--------|--------|
+| `npm run dev` | Vite dev server for theme assets |
+| `npm run build` | Build core theme bundle |
+| `npm run build:blocks` | Build `assets/blocks/*` packages |
+| `npm run build:acf` | Compile ACF SCSS + JS into per-block `*.min.*` |
+| `npm run build:all` | Build theme + blocks + ACF |
+
+---
+
+## Runtime asset rule
+
+Templates, patterns, and ACF blocks reference compiled outputs only.
+
+**Theme bundle**
 ```
-blockwind/
-  style.css
-  theme.json
-
-  templates/
-    index.html
-    page.html
-    front-page.html (recommended)
-
-  parts/
-    header.html
-    footer.html
-
-  patterns/
-    *.php (section/component patterns)
-
-  assets/
-    src/
-      entry.js                 # opt-in imports (no CSS output if you import nothing)
-      js/                      # all theme JS modules live here (optional)
-        offcanvas-logo.js      # small JS module(s) (optional)
-      tw.base.css              # Tailwind v4 utilities only (no Preflight)
-      tw.tokens.css            # tokens exported from theme.json (overrides some Tailwind defaults); define vars as WP-first with Tailwind fallback
-      tw.grid.css              # Bootstrap-ish container/row/col
-      tw.flex-align.css        # flex directions + alignment
-      tw.spacing.css           # spacing subset (m/p)
-      tw.order.css             # order subset
-      tw.card.css              # cards
-      tw.stretched-link.css    # stretched-link overlay
-      tw.offcanvas.css         # offcanvas/mobile nav styling (layout/alignment lives here)
-      tw.dropdown.css          # dropdown panel styling (box/border; not nav alignment)
-      tw.reference.css         # reference/demo utilities (optional)
-      scss/
-        app.scss               # optional SCSS entry (organization only)
-        _tokens.scss
-        _mixins.scss
-        components/
-        utilities/
-    dist/
-      theme.min.css            # generated only when CSS modules are imported
-      theme.min.js             # tiny build artifact (enqueue optional)
+assets/dist/theme.min.css
+assets/dist/theme.min.js
 ```
 
----
-
-## How Styling Works
-
-### 1) `theme.json` (always on)
-
-`theme.json` is the **contract**:
-
-- design tokens (colors, typography, spacing)
-- editor capabilities (what controls editors see)
-- baseline global + block styles
-
-This is the _preferred_ styling system for core blocks and editor consistency.
-
-If you need those tokens available to build layers, export/derive them from `theme.json` into:
-
-- `assets/src/tw.tokens.css` (Tailwind)
-- `assets/src/scss/_tokens.scss` (SCSS)
-
-When exporting/deriving tokens into those files, write them as **aliases** to WordPress variables (with Tailwind fallback), not as a new source of truth.
-
-### 2) Tailwind (optional, modular)
-
-Tailwind is used as a **minimal responsive framework** when needed:
-
-**Load order (when opting in):** import `tw.base.css` first, then `tw.tokens.css` (which can override some Tailwind defaults to match `theme.json`), then any feature modules.
-
-In `assets/src/tw.tokens.css`, define token aliases using WordPress variables first and **always** include a fallback value (Tailwind v4 default) so the theme remains stable even if a preset isn’t defined.
-
-Tailwind is used as a **minimal responsive framework** when needed:
-
-- layout helpers
-- semantic classes built with `@apply`
-- migration layer for Bootstrap-like class names (optional modules)
-
-**Preflight is intentionally disabled** to avoid fighting WordPress and `theme.json`.
-
-### 3) SCSS (optional)
-
-SCSS is allowed for:
-
-- partial organization (`components/`, `utilities/`)
-- mixins/functions
-- cleaner code structure
-
-SCSS should **not** introduce a separate token system—reference `theme.json` CSS vars instead.
-
-If you want token conveniences in SCSS (maps/variables), keep them derived from `theme.json` in `assets/src/scss/_tokens.scss` and import it into `app.scss`.
-
-In `assets/src/scss/_tokens.scss`, keep tokens aligned with `theme.json` by pointing to WordPress CSS variables and **always** providing a fallback (Tailwind v4 default) whenever you reference a variable that may not exist.
-
----
-
-## Requirements
-
-- Node.js 18+ (recommended)
-- npm / pnpm / yarn
-- WordPress 6.x block theme compatible environment
-
----
-
-## Install
-
-npm install
-
-````
-
-### Dev dependencies used
-
-- `vite` (build)
-- `tailwindcss` + `@tailwindcss/vite` (optional CSS framework)
-- `sass-embedded` (optional SCSS compiler)
-
----
-
-## Development Workflow
-
-### A) FSE-only mode (default, no compiled CSS)
-
-Blockwind can run purely on:
-
-- `theme.json`
-- templates/parts/patterns
-
-✅ Leave CSS imports **disabled** in `assets/src/entry.js`:
-
-```js
-// import "./tw.base.css";
-// import "./tw.tokens.css"; // tokens exported from theme.json; may override some Tailwind defaults
-// import "./tw.grid.css";
-// import "./scss/app.scss";
-export {};
-````
-
-In this mode, `npm run build` produces no `theme.min.css` (JS output depends on whether you import any JS modules), and the theme stays clean.
-
----
-
-### B) Enable Tailwind modules (migration or utility framework)
-
-To opt in, import only what you need.
-
-Example: Bootstrap-ish grid + cards only:
-
-```js
-// assets/src/entry.js
-import "./tw.base.css";
-import "./tw.tokens.css"; // exported from theme.json; may override some Tailwind defaults
-import "./tw.grid.css";
-import "./tw.card.css";
-import "./tw.stretched-link.css";
-
-export {};
+**ACF blocks**
+```
+acf-blocks/*/*.min.css
+acf-blocks/*/*.min.js
 ```
 
----
-
-### C) Enable SCSS (organization only)
-
-```js
-import "./tw.base.css"; // optional if you also use @apply in SCSS
-import "./scss/app.scss"; // optional
-export {};
-```
-
-Recommended: import `assets/src/scss/_tokens.scss` inside `app.scss` so SCSS stays aligned with `theme.json` tokens.
-
-When you add variables there, **always include fallback values** so missing presets don’t break styling.
-
-> If your SCSS uses `@apply`, you must have Tailwind utilities available.
+If a responsibility can move into `theme.json` or block supports, custom CSS should be removed.
 
 ---
 
-## Build
+## ACF blocks
 
-### Production build
+ACF blocks are **self-contained components**.
 
-```bash
-npm run build
-```
-
-Outputs (when CSS is imported):
-
-- `assets/dist/theme.min.css` (single file, minified)
-- `assets/dist/theme.min.js` (tiny, optional)
-
-### Dev server (optional)
-
-```bash
-npm run dev
-```
-
-> In WordPress themes, dev server usage is optional. Many teams simply run `npm run build` and refresh.
-
----
-
-## Enqueueing Output in WordPress
-
-The theme enqueues `assets/dist/theme.min.css` **only if it exists and has content**.
-This preserves the **no-bloat** default behavior.
-
-Typical enqueue logic:
-
-- `style.css` is header-only for compliance
-- `theme.min.css` is the real stylesheet when present
-
----
-
-## Scripts
-
-Example `package.json` scripts:
+They use ACF’s extended `block.json` schema:
 
 ```json
-{
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  }
+"$schema": "https://advancedcustomfields.com/schemas/json/main/block.json"
+```
+
+Blocks are registered automatically:
+
+```php
+foreach ( glob( __DIR__ . '/acf-blocks/*', GLOB_ONLYDIR ) as $block_dir ) {
+  register_block_type( $block_dir );
 }
 ```
 
----
-
-## Project Philosophy
-
-- **Use blocks and `theme.json` first**
-- **Add Tailwind only when it prevents custom CSS sprawl**
-- **Use SCSS only for organization**
-- **Ship zero extra CSS when you don’t need it**
-- **Keep output simple: one minified `theme.min.css`**
+No custom enqueue logic is required — `block.json` handles it.
 
 ---
 
-## Suggested Migration Approach (Bootstrap → Blockwind)
+## ACF asset contract
 
-1. Start with file-based templates/parts/patterns using familiar `.container/.row/.col-*`.
-2. Import only the necessary Tailwind modules to support those classes.
-3. Gradually refactor toward long-term theme semantics (`l-*`, `c-*`) and remove migration modules over time.
-4. Keep tokens and editor styling in `theme.json` (and export/derive tokens into `assets/src/tw.tokens.css` and `assets/src/scss/_tokens.scss` when optional layers need them).
+Each ACF block compiles source assets back into the same directory:
+
+| Source | Output |
+|------|------|
+| `style.scss` | `style.min.css` |
+| `editor.scss` | `editor.min.css` |
+| `view.js` | `view.min.js` |
+| `editor.js` | `editor.min.js` |
+
+`block.json` loads these via `file:` paths:
+
+```json
+{
+  "style": ["file:./style.min.css"],
+  "editorStyle": ["file:./editor.min.css"],
+  "script": ["file:./view.min.js"],
+  "editorScript": ["file:./editor.min.js"]
+}
+```
+
+Non-minified files are source-only.
 
 ---
 
-## License
+## Expected ACF block structure
 
-![License: GPL v2](https://img.shields.io)
+```
+acf-blocks/
+  example/
+    block.json
+    block.php
+    render.php
+
+    style.scss
+    style.min.css
+
+    editor.scss
+    editor.min.css
+
+    view.js
+    view.min.js
+
+    editor.js
+    editor.min.js
+
+    scss/
+      _tokens.scss
+      _layout.scss
+      _components.scss
+      _responsive.scss
+```
+
+---
+
+## ACF styling rules
+
+- ACF blocks are SCSS-first
+- Consume WordPress tokens via CSS variables
+- Only define block-local tokens when WordPress cannot
+- Prefer structural SCSS over small modular classes
+- Avoid `.dh-*` dependencies inside ACF blocks
+
+---
+
+## ACF scripting rules
+
+- `view.js` → frontend behavior only
+- `editor.js` → editor-only behavior
+- Scripts should be self-contained
+- `*.asset.php` files are not required in this Vite workflow
+
+---
+
+## Modular class system (FSE only)
+
+Tailwind `@apply` is used to create reusable `.dh-*` classes for:
+
+- navigation behavior
+- layout gaps WordPress cannot express
+- interaction styling
+
+These classes compile into the theme bundle and are referenced directly in templates, parts, and patterns.
+
+---
+
+## SCSS usage
+
+Use SCSS when styling:
+
+- is structural rather than reusable
+- would produce overly granular utility classes
+- belongs to an isolated component (ACF)
+
+Use `.dh-*` classes when styling:
+
+- is small and reusable
+- fills a gap WordPress cannot express
+- applies across templates/patterns
+
+---
+
+## Creating a new ACF block (quick checklist)
+
+1. Duplicate `acf-blocks/example`
+2. Update `block.json` name/title
+3. Adjust PHP helper names
+4. Write SCSS + optional JS
+5. Run `npm run build:acf`
+6. Confirm `*.min.*` outputs exist
+7. Use the block in editor
+
+---
+
+## Architectural summary
+
+BlockWind provides:
+
+- semantic token contract via `theme.json`
+- minimal runtime CSS
+- modular Tailwind class system for FSE
+- isolated SCSS-driven ACF block system
+- unified Vite build pipeline
+- portable block architecture

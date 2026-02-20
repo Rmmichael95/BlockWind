@@ -1,3 +1,13 @@
+/* ==========================================================
+   MODULE: tw.reference.css
+   Purpose: Shared reference layer for all Tailwind modules.
+            - Imports Tailwind runtime layers (no Preflight).
+            - Declares any shared @layer ordering expectations.
+            - DOES NOT declare project tokens or styling rules.
+            This file should be imported first by every tw.* module.
+   Dependencies: none
+   ========================================================== */
+
 @layer theme, base, components, utilities;
 
 /* Theme (breakpoints, etc.) */

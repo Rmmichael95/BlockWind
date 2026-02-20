@@ -1,0 +1,101 @@
+/* ==========================================================
+   MODULE: tw.nav-offcanvas-bind.css
+   Purpose: Bind core Navigation offcanvas markup + open-state classes
+            to dh-* behavior without markup changes.
+            - Scoped to .site-nav
+            - Only applies while modal is open (has-modal-open + is-menu-open)
+            - Uses theme.json vars for paint (source of truth)
+   Dependencies:
+     - theme.json: --wp--custom--dh-navigation--offcanvas--*
+     - theme.json: --wp--custom--dh-ui--border / --wp--custom--dh-ui--panel / etc.
+   ========================================================== */
+
+@reference "../../tw.reference.css";
+
+/* Only apply while modal is open */
+:root.has-modal-open
+  .site-nav
+  .wp-block-navigation__responsive-container.is-menu-open {
+  @apply fixed inset-0;
+  @apply flex items-stretch justify-end;
+  z-index: 100000;
+}
+
+/* Backdrop */
+:root.has-modal-open
+  .site-nav
+  .wp-block-navigation__responsive-container.is-menu-open::before {
+  content: "";
+  @apply absolute inset-0;
+
+  background: var(
+    --wp--custom--dh-navigation--offcanvas--backdrop,
+    rgba(0, 0, 0, 0.5)
+  );
+}
+
+/* Drawer panel */
+:root.has-modal-open .site-nav .wp-block-navigation__responsive-dialog {
+  @apply relative z-10;
+  @apply h-full overflow-hidden box-border;
+  @apply p-[var(--wp--preset--spacing--dh-md)];
+
+  inline-size: min(
+    100%,
+    var(--wp--custom--dh-navigation--offcanvas--width, 22rem)
+  );
+
+  background: var(--wp--custom--dh-navigation--offcanvas--background);
+  box-shadow: var(--wp--custom--dh-navigation--offcanvas--shadow);
+  border-inline-start: 1px solid var(--wp--custom--dh-ui--border);
+
+  border-top-left-radius: var(--wp--custom--dh-navigation--offcanvas--radius);
+  border-bottom-left-radius: var(
+    --wp--custom--dh-navigation--offcanvas--radius
+  );
+}
+
+/* Scroll area */
+:root.has-modal-open
+  .site-nav
+  .wp-block-navigation__responsive-container-content {
+  @apply h-full overflow-y-auto;
+
+  /* Space for close button row */
+  padding-block-start: calc(
+    var(--wp--preset--spacing--dh-md) + var(--wp--preset--spacing--dh-sm)
+  );
+}
+
+/* Modal-specific menu formatting (independent of desktop) */
+:root.has-modal-open .site-nav .wp-block-navigation__container {
+  @apply flex flex-col items-stretch;
+  @apply gap-[var(--wp--style--block-gap,var(--wp--preset--spacing--dh-xs))];
+}
+
+/* Example: modal text alignment independent of desktop */
+:root.has-modal-open
+  .site-nav
+  .wp-block-navigation__container
+  :is(a.wp-block-navigation-item__content, a.wp-block-pages-list__item__link) {
+  text-align: right;
+}
+
+/* Close button container (do not override focus outline) */
+:root.has-modal-open
+  .site-nav
+  .wp-block-navigation__responsive-container-close {
+  @apply absolute;
+  @apply top-[var(--wp--preset--spacing--dh-sm)];
+  @apply right-[var(--wp--preset--spacing--dh-sm)];
+  @apply w-10 h-10;
+  @apply inline-flex items-center justify-center;
+  @apply rounded-[var(--wp--preset--radius--dh-md)];
+  @apply border;
+
+  border-color: var(--wp--custom--dh-ui--border);
+  background: var(
+    --wp--custom--dh-ui--surface,
+    var(--wp--custom--dh-ui--panel)
+  );
+}

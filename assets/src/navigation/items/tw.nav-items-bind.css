@@ -1,0 +1,68 @@
+/* ==========================================================
+   MODULE: tw.nav-items-bind.css
+   Purpose: Bind WP core Navigation markup to dh-* item behavior.
+            - Targets: li.wp-block-navigation-item / pages list items
+            - Uses theme.json vars for paint (source of truth)
+   Dependencies:
+     - theme.json: --wp--custom--dh-navigation--item--*
+     - theme.json: --wp--custom--dh-navigation--hover--background (optional)
+   ========================================================== */
+
+@reference "../../tw.reference.css";
+
+/* Item link spacing + radius */
+.site-nav
+  .wp-block-navigation__container
+  :is(li.wp-block-navigation-item, li.wp-block-pages-list__item)
+  > :is(
+    a.wp-block-navigation-item__content,
+    a.wp-block-pages-list__item__link
+  ) {
+  @apply rounded-[var(--wp--preset--radius--dh-md)];
+  @apply px-[var(--wp--preset--spacing--dh-sm)];
+  @apply py-[var(--wp--preset--spacing--dh-xs)];
+}
+
+/* Hover/focus affordance (paint from theme.json) */
+.site-nav
+  .wp-block-navigation__container
+  :is(li.wp-block-navigation-item, li.wp-block-pages-list__item)
+  > :is(
+    a.wp-block-navigation-item__content,
+    a.wp-block-pages-list__item__link
+  ):hover,
+.site-nav
+  .wp-block-navigation__container
+  :is(li.wp-block-navigation-item, li.wp-block-pages-list__item)
+  > :is(
+    a.wp-block-navigation-item__content,
+    a.wp-block-pages-list__item__link
+  ):focus-visible {
+  background: var(--wp--custom--dh-navigation--hover--background, transparent);
+}
+
+/* Chevron / submenu toggle */
+.site-nav
+  :is(
+    button.wp-block-navigation-submenu__toggle,
+    button.wp-block-navigation__submenu-icon
+  ) {
+  @apply inline-flex items-center justify-center;
+  @apply w-6 h-6;
+  @apply ms-1;
+  @apply p-0 border-0 bg-transparent;
+  @apply opacity-80 hover:opacity-100;
+  @apply cursor-pointer;
+  color: inherit;
+}
+
+/* Icon sizing */
+.site-nav
+  :is(
+    button.wp-block-navigation-submenu__toggle,
+    button.wp-block-navigation__submenu-icon
+  )
+  svg {
+  @apply w-4 h-4;
+  fill: currentColor;
+}

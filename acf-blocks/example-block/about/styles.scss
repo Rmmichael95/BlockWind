@@ -1,0 +1,21 @@
+/**
+ * BlockWind ACF Block: About — style.scss (FRONTEND)
+ *
+ * Purpose:
+ * - Frontend styles for this block only.
+ *
+ * Token rules:
+ * - Prefer WordPress/theme.json CSS vars (var(--wp--preset--...), var(--wp--custom--...)).
+ * - Only add block-local tokens in scss/_tokens.scss when theme.json cannot express them.
+ *
+ * Output:
+ * - Compiled by Vite to: style.min.css (same folder)
+ */
+
+@use "sass:map";
+
+// Local partials (scoped to this block)
+@import "./scss/tokens";
+@import "./scss/layout";
+@import "./scss/components";
+@import "./scss/responsive";

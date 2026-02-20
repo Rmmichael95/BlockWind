@@ -1,0 +1,19 @@
+/**
+ * BlockWind ACF Block: About — _tokens.scss (BLOCK-LOCAL TOKENS)
+ *
+ * Purpose:
+ * - Define ONLY tokens that cannot be defined in theme.json
+ *   AND significantly simplify this block’s styling.
+ *
+ * Prefer:
+ * - var(--wp--preset--color--*)
+ * - var(--wp--preset--font-size--*)
+ * - var(--wp--custom--*)
+ *
+ * IMPORTANT:
+ * - Keep this file tiny.
+ * - If theme.json can take over later, remove tokens here.
+ */
+
+// Example (use sparingly):
+$bw-about-radius: 1rem;

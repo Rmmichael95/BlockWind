@@ -1,0 +1,17 @@
+/* ==========================================================
+   MODULE: tw.nav-offcanvas-close.css
+   Purpose: Single utility-composed class for the modal close button container.
+            Exports: .dh-nav-offcanvas-close
+   ========================================================== */
+
+@reference "../../tw.reference.css";
+
+.dh-nav-offcanvas-close {
+  @apply absolute;
+  @apply top-[var(--wp--preset--spacing--dh-sm)];
+  @apply right-[var(--wp--preset--spacing--dh-sm)];
+  @apply w-10 h-10;
+  @apply inline-flex items-center justify-center;
+  @apply rounded-[var(--wp--preset--radius--dh-md)];
+  @apply border;
+}

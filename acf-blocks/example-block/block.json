@@ -1,0 +1,26 @@
+{
+  "$schema": "https://advancedcustomfields.com/schemas/json/main/block.json",
+  "apiVersion": 3,
+
+  "name": "blockwind/example",
+  "title": "Example Acf BlockWind Block",
+  "description": "A custom block using BlockWind",
+  "category": "design",
+  "icon": "admin-comments",
+  "keywords": ["about", "blockwind", "block"],
+
+  "style": ["file:./style.min.css"],
+  "editorStyle": ["file:./editor.min.css"],
+  "script": ["file:./view.min.js"],
+  "editorScript": ["file:./editor.min.js"],
+
+  "supports": {
+    "anchor": true,
+    "align": ["wide", "full"]
+  },
+
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "render.php"
+  }
+}
