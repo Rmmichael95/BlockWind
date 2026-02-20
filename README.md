@@ -19,12 +19,9 @@ Styling follows a strict priority:
 1. `theme.json` presets + `settings.custom` (semantic tokens)
 2. WordPress block supports / style engine variables
 3. Compiled `.bw-*` modular classes (consume WP tokens; never define them)
-
-- `tw.tokens.css` (Tailwind bridge — may be empty)
-
-6. SCSS modules (structural styling and ACF blocks)
-
-- `__tokens.scss` (SCSS bridge — may be empty)
+   `tw.tokens.css` (Tailwind bridge — may be empty)
+4. SCSS modules (structural styling and ACF block)
+   `__tokens.scss` (SCSS bridge — may be empty)
 
 Tokens should only exist outside `theme.json` when they **cannot** be defined there and significantly simplify styling.
 
