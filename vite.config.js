@@ -17,50 +17,60 @@
  *
  * Important note about CSS:
  *  - cssCodeSplit: true is required so theme + editor each get their own CSS file.
- *  - If cssCodeSplit was false, Vite would output ONE combined CSS file for both
- *    bundles, which defeats the separation.
+ *
+ * IMPORTANT note about JS chunks:
+ *  - If you want ALL code compiled into theme.min.js or editor.min.js (no /assets/*.js parts),
+ *    we must run TWO separate builds (one input at a time).
+ *  - This config supports that via BW_BUILD_TARGET=theme|editor.
  */
 
 import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 
-export default defineConfig({
-  plugins: [tailwindcss()],
-  build: {
-    outDir: "assets/inc",
-    emptyOutDir: true,
+export default defineConfig(() => {
+  // BW_BUILD_TARGET controls which single-entry build we run.
+  // Default to "theme" so `vite build` still works if someone forgets.
+  const target = process.env.BW_BUILD_TARGET === "editor" ? "editor" : "theme";
 
-    // We want separate CSS files for each entry (theme vs editor)
-    cssCodeSplit: true,
-    minify: "esbuild",
+  const input =
+    target === "editor"
+      ? { editor: "assets/src/editor.js" }
+      : { theme: "assets/src/entry.js" };
 
-    rollupOptions: {
-      // These are the two "starting points" Vite will build from
-      input: {
-        theme: "assets/src/entry.js",
-        editor: "assets/src/editor.js",
-      },
+  return {
+    plugins: [tailwindcss()],
 
-      output: {
-        // WordPress can load ES modules fine when enqueued correctly
-        format: "es",
+    build: {
+      outDir: "assets/inc",
 
-        // Name the JS files exactly how we want them (no hashes)
-        entryFileNames: (chunk) => {
-          if (chunk.name === "editor") return "editor.min.js";
-          return "theme.min.js";
-        },
+      // Theme build should clear output; editor build should not.
+      emptyOutDir: target === "theme",
 
-        // Name extracted CSS (and other assets) exactly how we want them
-        assetFileNames: (assetInfo) => {
-          // Vite names extracted CSS after the entry: theme.css / editor.css
-          if (assetInfo.name === "theme.css") return "theme.min.css";
-          if (assetInfo.name === "editor.css") return "editor.min.css";
+      // Keep theme + editor CSS separate (Vite will emit theme.css or editor.css)
+      cssCodeSplit: true,
+      minify: "esbuild",
 
-          // Fonts/images/etc keep their normal names
-          return "[name][extname]";
+      rollupOptions: {
+        input,
+
+        output: {
+          format: "es",
+
+          // Single-file bundle output (no chunks) — allowed because input is a single entry per run
+          inlineDynamicImports: true,
+
+          // Name entry JS deterministically
+          entryFileNames:
+            target === "editor" ? "editor.min.js" : "theme.min.js",
+
+          // Name extracted CSS deterministically
+          assetFileNames: (assetInfo) => {
+            if (assetInfo.name === "theme.css") return "theme.min.css";
+            if (assetInfo.name === "editor.css") return "editor.min.css";
+            return "[name][extname]";
+          },
         },
       },
     },
-  },
+  };
 });

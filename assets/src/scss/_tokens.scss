@@ -8,3 +8,23 @@
    - Reference theme.json tokens only: var(--wp--custom--bw-*), var(--wp--preset--*).
    - Avoid overriding core block behavior unless critical.
    ========================================================================== */
+
+/* ==========================================================================
+   Token Aliases (SCSS vars -> theme.json CSS vars)
+   --------------------------------------------------------------------------
+   Purpose: Make SCSS readable while keeping theme.json as the source of truth.
+   Rule: Only alias existing CSS custom properties; do not invent new scales.
+   ========================================================================== */
+
+$bw-nav-item-px: var(--wp--custom--bw-navigation--item--padding-x);
+$bw-nav-item-py: var(--wp--custom--bw-navigation--item--padding-y);
+
+$bw-nav-mobile-hit-area: var(--wp--custom--bw-navigation--mobile--submenu-hit-area, 3.75rem);
+$bw-nav-mobile-submenu-indent: var(--wp--custom--bw-navigation--mobile--submenu-indent, var(--wp--preset--spacing--bw-sm));
+$bw-nav-mobile-submenu-gap: var(--wp--custom--bw-navigation--mobile--submenu-gap, var(--wp--preset--spacing--bw-xs));
+$bw-nav-mobile-submenu-padding-top: var(--wp--custom--bw-navigation--mobile--submenu-padding-top, var(--wp--preset--spacing--bw-xs));
+
+$bw-focus-ring-color: var(--wp--custom--bw-ui--focus-ring);
+$bw-focus-ring-width: var(--wp--custom--bw-focus-ring--width, 2px);
+$bw-focus-ring-offset: var(--wp--custom--bw-focus-ring--offset, 2px);
+$bw-focus-ring-radius: var(--wp--preset--radius--bw-sm);

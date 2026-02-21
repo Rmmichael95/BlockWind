@@ -24,7 +24,7 @@
 
   function mount() {
     const container = document.querySelector(
-      ".site-nav .wp-block-navigation__responsive-container.is-menu-open",
+      ".wp-block-navigation__responsive-container.is-menu-open",
     );
     if (!container) return;
 

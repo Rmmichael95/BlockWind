@@ -4,6 +4,7 @@
 // ==========================================================
 
 // Import every .js file in ./js (excluding index.js itself if needed)
-import.meta.glob("./js/*.js", { eager: true });
+const jsModules = import.meta.glob("./js/*.js", { eager: true });
+void jsModules;
 
 export {};

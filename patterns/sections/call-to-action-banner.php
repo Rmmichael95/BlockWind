@@ -7,7 +7,7 @@
  */
 ?>
 
-<!-- wp:group {"align":"full","backgroundColor":"bw-primary","textColor":"bw-base","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-l","bottom":"var:preset|spacing|fluid-l","left":"var:preset|spacing|fluid-xl","right":"var:preset|spacing|fluid-xl"}}},"layout":{"type":"constrained"}} -->
+<!-- wp:group {"align":"full","backgroundColor":"bw-primary","textColor":"bw-base","style":{"spacing":{"padding":{"top":"var(--wp--custom--bw-flow--section-padding-y)","right":"var(--wp--custom--bw-flow--content-padding-x)","bottom":"var(--wp--custom--bw-flow--section-padding-y)","left":"var(--wp--custom--bw-flow--content-padding-x)"},"blockGap":"var(--wp--custom--bw-flow--gap)"}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull has-bw-base-color has-bw-primary-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--fluid-l);padding-right:var(--wp--preset--spacing--fluid-xl);padding-bottom:var(--wp--preset--spacing--fluid-l);padding-left:var(--wp--preset--spacing--fluid-xl)">
 	<!-- wp:columns {"verticalAlignment":"center"} -->
 	<div class="wp-block-columns are-vertically-aligned-center">
