@@ -18,9 +18,37 @@
 /* Open responsive (modal) menu state.
    WordPress commonly toggles :root.has-modal-open + .is-menu-open. */
 :root.has-modal-open .wp-block-navigation__responsive-container.is-menu-open {
+  overflow-y: t.$bw-nav-mobile-modal-overflow-y;
+  scrollbar-gutter: t.$bw-nav-mobile-modal-scrollbar-gutter;
+
+  /* Prevent shrink-to-fit jitter */
+  .wp-block-navigation__container,
+  .wp-block-page-list {
+    width: 100%;
+    max-width: 100%;
+    align-self: stretch;
+    box-sizing: border-box;
+  }
+
+  /* Prevent anchor padding from making it wider than its parent */
+  .wp-block-navigation-item__content {
+    box-sizing: border-box;
+  }
+  /* ------------------------------------------------------------------------
+     Prevent horizontal shift when submenus open:
+     keep the UL from shrink-wrapping under items-justified-* alignment.
+     --------------------------------------------------------------------- */
+
+  .wp-block-navigation__container,
+  .wp-block-page-list {
+    width: 100%;
+    max-width: 100%;
+    align-self: stretch;
+    box-sizing: border-box;
+  }
 
   /* ------------------------------------------------------------------------
-     Optional 4: Submenu show/hide driven by aria-expanded
+     Optional: Submenu show/hide driven by aria-expanded
      --------------------------------------------------------------------- */
 
   .wp-block-navigation .has-child .wp-block-navigation__submenu-container {
@@ -32,8 +60,27 @@
     display: flex;
   }
 
+  /* ------------------------------------------------------------------------
+     Core fix: Submenu chevron must not resize when aria-expanded changes.
+     WordPress may set svg to inherit sizing; we clamp to a token value.
+     --------------------------------------------------------------------- */
+
+  /* Core fix: Submenu chevron constant size (token-driven) */
+  .wp-block-navigation-submenu {
+    .wp-block-navigation__submenu-icon svg,
+    .wp-block-navigation-submenu-icon svg {
+      width: t.$bw-nav-submenu-chevron-size;
+      height: t.$bw-nav-submenu-chevron-size;
+      max-width: t.$bw-nav-submenu-chevron-size;
+      max-height: t.$bw-nav-submenu-chevron-size;
+      flex: 0 0 t.$bw-nav-submenu-chevron-size;
+      margin: 0;
+    }
+  }
+
   /* Mobile submenu layout (minimal, ergonomic) */
   .wp-block-navigation__submenu-container {
+    box-sizing: border-box;
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
@@ -57,7 +104,8 @@
   .wp-block-navigation-item__content {
     display: block;
     width: 100%;
-    padding: t.$bw-nav-item-py t.$bw-nav-mobile-hit-area t.$bw-nav-item-py t.$bw-nav-item-px;
+    padding: t.$bw-nav-item-py t.$bw-nav-mobile-hit-area t.$bw-nav-item-py
+      t.$bw-nav-item-px;
     text-decoration: inherit;
   }
 
@@ -67,17 +115,20 @@
     top: 0;
     right: 0;
     width: t.$bw-nav-mobile-hit-area;
-    height: 100%;
-    padding: t.$bw-nav-item-py 0;
-    display: flex;
+
+    height: auto; /* key: prevents growing with expanded <li> */
+    padding: t.$bw-nav-item-py 0; /* row rhythm */
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+
     z-index: 10;
     background: transparent;
+    border: 0;
   }
 
   /* ------------------------------------------------------------------------
-     Optional 5: Focus-visible rings (token-driven)
+     Optional: Focus-visible rings (token-driven)
      --------------------------------------------------------------------- */
 
   .wp-block-navigation-item__content:focus-visible,
@@ -91,14 +142,17 @@
 }
 
 /* RTL adjustments (must be scoped with :root as the ancestor of body) */
-:root.has-modal-open body.rtl .wp-block-navigation__responsive-container.is-menu-open {
+:root.has-modal-open
+  body.rtl
+  .wp-block-navigation__responsive-container.is-menu-open {
   .wp-block-navigation__submenu-container {
     padding-left: 0;
     padding-right: t.$bw-nav-mobile-submenu-indent;
   }
 
   .wp-block-navigation-item__content {
-    padding: t.$bw-nav-item-py t.$bw-nav-item-px t.$bw-nav-item-py t.$bw-nav-mobile-hit-area;
+    padding: t.$bw-nav-item-py t.$bw-nav-item-px t.$bw-nav-item-py
+      t.$bw-nav-mobile-hit-area;
   }
 
   .wp-block-navigation-submenu__toggle {

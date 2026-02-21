@@ -1,232 +1,160 @@
+
 # BlockWind
 
-**BlockWind** is an FSE-first WordPress block theme built around one core principle:
+**BlockWind** is a modern WordPress block theme built for predictable layout composition, strict token-driven design, and scalable multi-site development.
 
-> **`theme.json` is the single source of truth for design tokens.**
-
-Templates, parts, and patterns define structure and composition, while WordPress block supports and style variations handle most styling. When WordPress cannot express something cleanly, BlockWind introduces small compiled `.bw-*` classes (via Tailwind `@apply`) to bridge the gap.
-
-Custom blocks made in `assets/blocks/` and enqueue in `functions.php` for convienence instead of `mu-plugins`
-
-ACF blocks are treated as isolated components with their own SCSS and JS pipelines, compiled in place and loaded via `block.json`.
+It treats WordPress as a **design system platform**, not just a theme runtime.
 
 ---
 
-## Core philosophy
+## ✨ Key Highlights
 
-### Token hierarchy
-
-Styling follows a strict priority:
-
-1. `theme.json` presets + `settings.custom` (semantic tokens)
-2. WordPress block supports / style engine variables
-3. Compiled `.bw-*` modular classes (consume WP tokens; never define them)
-   - `tw.tokens.css` (Tailwind bridge — may be empty)
-4. SCSS modules (structural styling and ACF block)
-   - `__tokens.scss` (SCSS bridge — may be empty)
-
-Tokens should only exist outside `theme.json` when they **cannot** be defined there and significantly simplify styling.
+- 🎨 **theme.json-first design system**
+- 🧱 **Sections-first layout model**
+- 📐 Predictable spacing via **flow tokens**
+- 🧩 Pattern primitives for rapid page building
+- ♿ Stable, accessible core block behavior
+- ⚡ Unified build pipeline (Vite + block packages + ACF)
+- 🧭 Navigation baseline focused on correctness before styling
 
 ---
 
-## Build system
+## 🎯 Project Goals
 
-BlockWind uses **Vite** as the single build tool.
+BlockWind exists to solve common block theme problems:
 
-### Output philosophy
+- Layout spacing conflicts between templates and patterns  
+- Inconsistent responsive behavior across sites  
+- Token duplication between CSS, SCSS, and theme.json  
+- Over-reliance on global CSS overrides  
+- Fragile navigation behavior in responsive menus  
 
-- One global theme bundle
-- Per-block isolated builds for custom blocks `assets/blocks/`
-- Per-block isolated builds for ACF blocks
-- All runtime assets are minified (`*.min.*`)
-- Source files remain non-minified and never loaded directly
+### BlockWind’s answer
 
----
-
-## Build commands
-
-| Command                | Purpose                                        |
-| ---------------------- | ---------------------------------------------- |
-| `npm run dev`          | Vite dev server for theme assets               |
-| `npm run build`        | Build core theme bundle                        |
-| `npm run build:blocks` | Build `assets/blocks/*` packages               |
-| `npm run build:acf`    | Compile ACF SCSS + JS into per-block `*.min.*` |
-| `npm run build:all`    | Build theme + blocks + ACF                     |
+- **theme.json is the single source of truth**
+- Layout is composed from **predictable section primitives**
+- Tokens are semantic and portable across projects
+- Core block behavior is stabilized before styling layers
+- Runtime CSS remains minimal and intentional
 
 ---
 
-## Runtime asset rule
+## 🧱 Layout Philosophy
 
-Templates, patterns, and ACF blocks reference compiled outputs only.
-
-**Theme bundle**
+BlockWind uses a **sections-first composition model**.
 
 ```
-assets/dist/theme.min.css
-assets/dist/theme.min.js
+Flow Tokens → Section Patterns → Template Parts → Page
 ```
 
-**ACF blocks**
+### Core rules
 
-```
-acf-blocks/*/*.min.css
-acf-blocks/*/*.min.js
-```
+- Templates are structural and neutral  
+- Patterns own gutters and spacing  
+- Template parts behave like persistent sections  
+- Flow tokens define layout rhythm  
 
-If a responsibility can move into `theme.json` or block supports, custom CSS should be removed.
+### Section primitives
+
+- **Cover Flow** → full-bleed media with inner gutters  
+- **Group Flow** → generic section band  
+- **Canvas Flow** → neutral starting section  
 
 ---
 
-## ACF blocks
+## 🎨 Design System
 
-ACF blocks are **self-contained components**.
+BlockWind follows a strict token hierarchy:
 
-They use ACF’s extended `block.json` schema:
+1. `theme.json` presets + custom tokens  
+2. WordPress block supports  
+3. `.bw-*` compiled modules (token consumers only)  
+4. SCSS for structural or component styling  
 
-```json
-"$schema": "https://advancedcustomfields.com/schemas/json/main/block.json"
-```
-
-Blocks are registered automatically:
-
-```php
-foreach ( glob( __DIR__ . '/acf-blocks/*', GLOB_ONLYDIR ) as $block_dir ) {
-  register_block_type( $block_dir );
-}
-```
-
-No custom enqueue logic is required — `block.json` handles it.
+This ensures tokens never drift across layers.
 
 ---
 
-## ACF asset contract
+## 🧭 Navigation Philosophy
 
-Each ACF block compiles source assets back into the same directory:
+Navigation is treated as a **behavioral baseline**, not a styling problem.
 
-| Source        | Output           |
-| ------------- | ---------------- |
-| `style.scss`  | `style.min.css`  |
-| `editor.scss` | `editor.min.css` |
-| `view.js`     | `view.min.js`    |
-| `editor.js`   | `editor.min.js`  |
+### Guarantees
 
-`block.json` loads these via `file:` paths:
+- Stable modal layout (no horizontal shift)  
+- Constant chevron icon sizing  
+- Toggle hit area ergonomics  
+- No wrapper assumptions  
+- Token-driven sizing and spacing  
 
-```json
-{
-  "style": ["file:./style.min.css"],
-  "editorStyle": ["file:./editor.min.css"],
-  "script": ["file:./view.min.js"],
-  "editorScript": ["file:./editor.min.js"]
-}
-```
-
-Non-minified files are source-only.
+This allows optional styling layers without breaking accessibility or layout.
 
 ---
 
-## Expected ACF block structure
+## ⚙️ Build System
+
+BlockWind uses a unified multi-pipeline build architecture:
+
+### Theme bundle
+- Source → `assets/src`
+- Output → `assets/dist/theme.min.*`
+
+### Custom block packages
+- Location → `assets/blocks/*`
+- Built via a lightweight Node runner
+
+### ACF blocks
+- Location → `acf-blocks/*`
+- Compiled back into each block directory
 
 ```
-acf-blocks/
-  example/
-    block.json
-    block.php
-    render.php
-
-    style.scss
-    style.min.css
-
-    editor.scss
-    editor.min.css
-
-    view.js
-    view.min.js
-
-    editor.js
-    editor.min.js
-
-    scss/
-      _tokens.scss
-      _layout.scss
-      _components.scss
-      _responsive.scss
+npm run dev
+npm run build
+npm run build:blocks
+npm run build:acf
+npm run build:all
 ```
 
 ---
 
-## ACF styling rules
+## 📚 Documentation
 
-- ACF blocks are SCSS-first
-- Consume WordPress tokens via CSS variables
-- consume bw- tailwind classes if exist, don't create own
-- Only define block-local tokens when WordPress cannot
-- custom styling using scss and js
+Full technical documentation lives in `/docs`:
 
----
-
-## ACF scripting rules
-
-- `view.js` → frontend behavior only
-- `editor.js` → editor-only behavior
-- Scripts should be self-contained
-- `*.asset.php` files are not required in this Vite workflow
+- Layout system
+- Navigation baseline
+- Pattern authoring rules
+- Token architecture
+- Build system
+- Diagrams and ownership models
 
 ---
 
-## Modular class system
+## 🧠 Architectural Summary
 
-Tailwind `@apply` is used to create reusable `.bw-*` classes for:
-
-- navigation behavior
-- layout gaps WordPress cannot express
-- interaction styling
-
-These classes compile into the theme bundle and are referenced directly in templates, parts, and patterns.
-
----
-
-## SCSS usage
-
-Use SCSS when styling:
-
-- is structural rather than reusable
-- would produce overly granular utility classes
-- belongs to an isolated component (ACF)
-
-Use `.bw-*` classes when styling:
-
-- is small and reusable
-- fills a gap WordPress cannot express
-- applies across templates/patterns
+| Layer | Responsibility |
+|------|----------------|
+| theme.json | Design tokens |
+| Patterns | Layout composition |
+| Templates | Structural scaffolding |
+| Template Parts | Persistent layout sections |
+| Navigation Base | Behavior correctness |
+| Build System | Compile and isolate assets |
 
 ---
 
-## Creating a new ACF block (quick checklist)
+## 🚀 Intended Use
 
-1. Duplicate `acf-blocks/example`
-2. Update `block.json` name/title
-3. Adjust PHP helper names
-4. Write SCSS + optional JS
-5. Run `npm run build:acf`
-6. Confirm `*.min.*` outputs exist
-7. Use the block in editor
+BlockWind is ideal for:
 
----
-
-## Architectural summary
-
-BlockWind provides:
-
-- semantic token contract via `theme.json`
-- minimal runtime CSS
-- modular Tailwind class system for FSE
-- isolated SCSS-driven ACF block system
-- unified Vite build pipeline
-- portable block architecture
+- Multi-client WordPress development
+- Design-system-driven teams
+- Agencies building reusable pattern libraries
+- Projects requiring predictable responsive behavior
+- Long-term maintainable block theme architectures
 
 ---
 
-## License
+## 📄 License
 
-![License: GPL v2](https://img.shields.io)
+GPL v2
