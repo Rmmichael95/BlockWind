@@ -1,0 +1,11 @@
+/* ==========================================================================
+   BlockWind: theme-styles.scss
+   --------------------------------------------------------------------------
+   Role: Theme-level style variation aggregator.
+   - Keep variation CSS scoped to .is-style-* selectors
+   - Pull in only block style variations (Phase 1)
+   ========================================================================== */
+
+@use "./block-styles/core-group-variations";
+@use "./block-styles/core-columns-variations";
+@use "./block-styles/core-button-variations";

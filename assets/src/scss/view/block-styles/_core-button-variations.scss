@@ -1,0 +1,20 @@
+@use "../../tokens" as *;
+@use "../../mixins" as *;
+
+/* ==========================================================================
+   BlockWind: core/button variations
+   ========================================================================== */
+
+.wp-block-button {
+  &.is-style-bw-pill .wp-block-button__link {
+    border-radius: 9999px;
+  }
+
+  &.is-style-bw-ghost .wp-block-button__link {
+    @include bw-button-ghost;
+  }
+
+  &.is-style-bw-ghost .wp-block-button__link:hover {
+    background: $bw-ui-hover-surface;
+  }
+}

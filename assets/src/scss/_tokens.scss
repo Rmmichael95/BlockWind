@@ -16,6 +16,26 @@
    Rule: Only alias existing CSS custom properties; do not invent new scales.
    ========================================================================== */
 
+$bw-ui-panel: var(--wp--custom--bw-ui--panel);
+$bw-ui-border: var(--wp--custom--bw-ui--border);
+$bw-ui-text: var(--wp--custom--bw-ui--text);
+$bw-ui-hover-surface: var(--wp--custom--bw-ui--hover-surface);
+
+$bw-flow-gap: var(--wp--custom--bw-flow--gap);
+$bw-flow-gap-tight: var(--wp--custom--bw-flow--gap-tight);
+$bw-flow-gap-loose: var(--wp--custom--bw-flow--gap-loose);
+
+$bw-panel-bg: var(--wp--custom--bw-panel--background);
+$bw-panel-bg-soft: var(--wp--custom--bw-panel--background-soft);
+$bw-panel-border-width: var(--wp--custom--bw-panel--border-width);
+$bw-panel-border-color: var(--wp--custom--bw-panel--border-color);
+$bw-panel-radius: var(--wp--custom--bw-panel--radius);
+$bw-panel-shadow: var(--wp--custom--bw-panel--shadow);
+$bw-panel-shadow-elevated: var(--wp--custom--bw-panel--shadow-elevated);
+$bw-panel-pad-y: var(--wp--custom--bw-panel--padding-y);
+$bw-panel-pad-x: var(--wp--custom--bw-panel--padding-x);
+$bw-panel-blur: var(--wp--custom--bw-panel--blur);
+
 $bw-nav-item-px: var(--wp--custom--bw-navigation--item--padding-x);
 $bw-nav-item-py: var(--wp--custom--bw-navigation--item--padding-y);
 
@@ -52,3 +72,18 @@ $bw-focus-ring-color: var(--wp--custom--bw-ui--focus-ring);
 $bw-focus-ring-width: var(--wp--custom--bw-focus-ring--width);
 $bw-focus-ring-offset: var(--wp--custom--bw-focus-ring--offset);
 $bw-focus-ring-radius: var(--wp--preset--radius--bw-sm);
+
+/* --- Phase 1 additions (broader semantic aliases; still theme.json sourced) --- */
+
+$bw-ui-surface: var(--wp--custom--bw-ui--surface);
+$bw-ui-surface-alt: var(--wp--custom--bw-ui--surface-alt);
+$bw-ui-muted: var(--wp--custom--bw-ui--muted);
+$bw-ui-link: var(--wp--custom--bw-ui--link);
+$bw-ui-link-hover: var(--wp--custom--bw-ui--link-hover);
+$bw-ui-accent: var(--wp--custom--bw-ui--accent);
+$bw-ui-accent-contrast: var(--wp--custom--bw-ui--accent-contrast);
+$bw-ui-focus-ring: var(--wp--custom--bw-ui--focus-ring);
+$bw-flow-section-padding-y: var(--wp--custom--bw-flow--section-padding-y);
+$bw-flow-content-padding-x: var(--wp--custom--bw-flow--content-padding-x);
+$bw-flow-stack-padding-y: var(--wp--custom--bw-flow--stack-padding-y);
+$bw-flow-panel-padding-x: var(--wp--custom--bw-flow--panel-padding-x);

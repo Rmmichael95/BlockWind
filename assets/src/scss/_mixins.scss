@@ -1,0 +1,40 @@
+@use "./tokens" as *;
+
+/* ==========================================================================
+   Mixins: reuse structure, never introduce new values
+   ========================================================================== */
+
+@mixin bw-panel-base {
+  border-radius: $bw-panel-radius;
+  border: $bw-panel-border-width solid $bw-panel-border-color;
+  padding-block: $bw-panel-pad-y;
+  padding-inline: $bw-panel-pad-x;
+}
+
+@mixin bw-panel-surface($background, $shadow: null) {
+  background: $background;
+
+  @if $shadow != null {
+    box-shadow: $shadow;
+  }
+}
+
+@mixin bw-blur($amount) {
+  -webkit-backdrop-filter: blur($amount);
+  backdrop-filter: blur($amount);
+}
+
+@mixin bw-button-ghost {
+  background: transparent;
+  border: 1px solid $bw-ui-border;
+  color: $bw-ui-text;
+}
+
+@mixin bw-backdrop-blur($amount) {
+  -webkit-backdrop-filter: blur($amount);
+  backdrop-filter: blur($amount);
+}
+
+@mixin bw-local-block-gap($gap) {
+  --wp--style--block-gap: #{$gap};
+}

@@ -466,7 +466,6 @@
       "bw-ui": {
         "surface": "var:preset|color|bw-secondary",
         "surface-alt": "var:preset|color|bw-contrast",
-        "panel": "var:preset|color|bw-secondary",
         "border": "var:preset|color|bw-border",
         "text": "var:preset|color|bw-text",
         "muted": "var:preset|color|bw-muted",
@@ -505,15 +504,28 @@
       "bw-flow": {
         "gap": "var(--wp--preset--spacing--bw-sm)",
         "gap-tight": "var(--wp--preset--spacing--bw-xs)",
+        "gap-loose": "var(--wp--preset--spacing--bw-md)",
         "section-padding-y": "var(--wp--preset--spacing--bw-sm)",
         "content-padding-x": "var(--wp--preset--spacing--bw-sm)",
         "stack-padding-y": "var(--wp--preset--spacing--bw-sm)",
         "panel-padding-x": "var(--wp--preset--spacing--bw-sm)"
       },
+      "bw-panel": {
+        "background": "var(--wp--custom--bw-ui--surface)",
+        "background-soft": "color-mix(in oklab, var(--wp--custom--bw-ui--panel) 85%, transparent)",
+        "border-width": "1px",
+        "border-color": "var(--wp--custom--bw-ui--border)",
+        "radius": "var(--wp--preset--radius--bw-lg)",
+        "shadow": "var(--wp--preset--shadow--bw-sm)",
+        "shadow-elevated": "var(--wp--preset--shadow--bw-lg)",
+        "padding-y": "var(--wp--custom--bw-flow--stack-padding-y)",
+        "padding-x": "var(--wp--custom--bw-flow--panel-padding-x)",
+        "blur": "16px"
+      },
       "bw-navigation": {
         "text-decoration": "none",
         "text-decoration-hover": "none",
-        "gap": "var(--wp--preset--spacing--bw-xs)",
+        "gap": "var(--wp--custom--bw-flow--gap-tight)",
         "item": {
           "font-size": "var(--wp--preset--font-size--bw-sm)",
           "font-weight": "var(--wp--custom--bw-font-weight--bold)",
@@ -528,7 +540,7 @@
           "border-width": "1px",
           "border-color": "var(--wp--custom--bw-ui--border)",
           "background": "var(--wp--custom--bw-ui--panel)",
-          "shadow": "var:preset|shadow|dw-sm"
+          "shadow": "var:preset|shadow|bw-sm"
         },
         "offcanvas": {
           "width": "min(92vw, 22rem)",

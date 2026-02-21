@@ -11,8 +11,8 @@
 
 @use "./tokens";
 @use "./mixins";
-
-@use "./base/typography";
-@use "./components/example";
+@use "./view/theme-styles";
 @use "./view/navigation/core-navigation-base";
 @use "./view/navigation/offcanvas";
+@use "./base/typography";
+@use "./components/example";
