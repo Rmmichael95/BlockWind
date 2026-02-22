@@ -1,0 +1,9 @@
+@use "../../../../prelude" as *;
+
+/* core/group — Stack (Loose)
+   - Prefer setting the block gap custom property so it applies to layout modes.
+*/
+.wp-block-group.is-style-bw-stack-loose {
+  --wp--style--block-gap: #{$bw-flow-gap-loose};
+  gap: var(--wp--style--block-gap);
+}

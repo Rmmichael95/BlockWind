@@ -1,0 +1,26 @@
+/* ==========================================================================
+   BlockWind SCSS: core/group — Blur Panel (Overlay)
+   --------------------------------------------------------------------------
+   Style: bw-blur-panel
+   Intent:
+   - Used over imagery (Cover/hero).
+   - No surface painting (no background color); blur only.
+   - Keep structure consistent with other panels (radius, padding, border).
+   ========================================================================== */
+@use "../../../../prelude" as *;
+
+.wp-block-group.is-style-bw-blur-panel {
+  /* Structural panel base: radius, border, padding */
+  @include bw-panel-base;
+
+  /* No background color on purpose (overlay use-case). */
+
+  /* Slight elevation helps readability over busy imagery */
+  box-shadow: $bw-panel-shadow-elevated;
+
+  /* Optional: soften border when over imagery */
+  border-color: color-mix(in oklab, #{$bw-panel-border-color} 60%, transparent);
+
+  /* Backdrop blur (token-driven amount by default) */
+  @include bw-blur();
+}

@@ -1,0 +1,24 @@
+@use "../../../../prelude" as *;
+
+/* core/list — Checklist
+   - Keeps semantic list structure (still <ul>/<li>)
+   - Uses token-driven spacing + accent color.
+*/
+.wp-block-list.is-style-bw-checklist {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+
+  li {
+    position: relative;
+    padding-left: calc(#{$bw-flow-gap} + 0.25em);
+  }
+
+  li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: $bw-ui-accent;
+  }
+}

@@ -1,0 +1,12 @@
+@use "../../../../prelude" as *;
+
+/* core/cover — Hero Overlay
+   - Minimal “hero” overlay treatment without introducing new color scales.
+   - Uses bw-ui muted surface as the overlay color.
+*/
+.wp-block-cover.is-style-bw-hero-overlay {
+  .wp-block-cover__background {
+    background: $bw-ui-muted;
+    opacity: 0.55;
+  }
+}

@@ -1,0 +1,11 @@
+/* ==========================================================================
+   BlockWind SCSS: view/block-styles/core/columns/_index.scss
+   --------------------------------------------------------------------------
+   Role: core/columns: aggregates all registered style variations.
+   Tenants:
+   - Style variations only (scoped to .is-style-* selectors).
+   - Do NOT introduce new colors/spacing scales.
+   - Use theme.json tokens via SCSS aliases only.
+   ========================================================================== */
+
+@use "bw-stack-md";

@@ -1,0 +1,21 @@
+/* ==========================================================================
+   BlockWind SCSS: view/block-style/core/button/ghost/_bw-ghost.scss
+   --------------------------------------------------------------------------
+   Role: core/button style variation: Ghost.
+   Tenants:
+   - Style variations only (scoped to .is-style-* selectors).
+   - Do NOT introduce new colors/spacing scales.
+   - Use theme.json tokens via SCSS aliases only.
+   ========================================================================== */
+@use "../../../../prelude" as *;
+/* ----------------------------------------------------------------------------
+   Variation: bw-ghost
+   ------------------------------------------------------------------------- */
+
+.wp-block-button.is-style-bw-ghost > .wp-block-button__link {
+  @include bw-button-ghost;
+}
+
+.wp-block-button.is-style-bw-ghost > .wp-block-button__link:hover {
+  background: $bw-ui-hover-surface;
+}

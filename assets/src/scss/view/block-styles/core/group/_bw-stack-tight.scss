@@ -1,0 +1,18 @@
+/* ==========================================================================
+   BlockWind SCSS: view/block-styles/core/group/_bw-stack-tight.scss
+   --------------------------------------------------------------------------
+   Role: core/group style variation: Stack Tight (local rhythm override).
+   Tenants:
+   - Style variations only (scoped to .is-style-* selectors).
+   - Do NOT introduce new colors/spacing scales.
+   - Use theme.json tokens via SCSS aliases only.
+   ========================================================================== */
+@use "../../../../prelude" as *;
+/* ----------------------------------------------------------------------------
+   Variation: bw-stack-tight
+   ------------------------------------------------------------------------- */
+
+.wp-block-group.is-style-bw-stack-tight {
+  /* Local rhythm override (variation-specific) */
+  @include bw-local-block-gap($bw-flow-gap-tight);
+}

@@ -19,9 +19,16 @@
   }
 }
 
-@mixin bw-blur($amount) {
-  -webkit-backdrop-filter: blur($amount);
-  backdrop-filter: blur($amount);
+@mixin bw-blur($amount: var(--wp--custom--bw-panel--blur)) {
+  -webkit-backdrop-filter: blur(#{$amount});
+  backdrop-filter: blur(#{$amount});
+}
+
+@mixin bw-frost-tint(
+  $tint-percent: 86%,
+  $bg-token: $bw-ui-surface
+) {
+  background: color-mix(in oklab, #{$bg-token} #{$tint-percent}, transparent);
 }
 
 @mixin bw-button-ghost {
@@ -30,9 +37,9 @@
   color: $bw-ui-text;
 }
 
-@mixin bw-backdrop-blur($amount) {
-  -webkit-backdrop-filter: blur($amount);
-  backdrop-filter: blur($amount);
+/* Legacy alias (prefer bw-blur) */
+@mixin bw-backdrop-blur($amount: var(--wp--custom--bw-panel--blur)) {
+  @include bw-blur($amount);
 }
 
 @mixin bw-local-block-gap($gap) {

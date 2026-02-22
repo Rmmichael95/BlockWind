@@ -1,0 +1,17 @@
+/* ==========================================================================
+   BlockWind SCSS: view/block-style/core/button/pill/_bw-pill.scss
+   --------------------------------------------------------------------------
+   Role: core/button style variation: Pill.
+   Tenants:
+   - Style variations only (scoped to .is-style-* selectors).
+   - Do NOT introduce new colors/spacing scales.
+   - Use theme.json tokens via SCSS aliases only.
+   ========================================================================== */
+@use "../../../../prelude" as *;
+/* ----------------------------------------------------------------------------
+   Variation: bw-pill
+   ------------------------------------------------------------------------- */
+
+.wp-block-button.is-style-bw-pill .wp-block-button__link {
+  border-radius: var(--wp--preset--border-radius--bw-pill);
+}

@@ -1,0 +1,25 @@
+/* ==========================================================================
+   BlockWind SCSS: view/block-styles/core/columns/stack-on-mobile/_bw-stack-md.scss
+   --------------------------------------------------------------------------
+   Role: core/columns style variation: Stack on Mobile.
+   Tenants:
+   - Style variations only (scoped to .is-style-* selectors).
+   - Do NOT introduce new colors/spacing scales.
+   - Use theme.json tokens via SCSS aliases only.
+   ========================================================================== */
+@use "../../../../prelude" as *;
+/* ----------------------------------------------------------------------------
+   Variation: bw-stack-md
+   ------------------------------------------------------------------------- */
+
+@media (max-width: 781px) {
+  .wp-block-columns {
+    &.is-style-bw-stack-md {
+      flex-wrap: wrap !important;
+    }
+
+    &.is-style-bw-stack-md > .wp-block-column {
+      flex-basis: 100% !important;
+    }
+  }
+}

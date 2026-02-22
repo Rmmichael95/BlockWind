@@ -1,0 +1,21 @@
+@use "../../../../prelude" as *;
+
+/* core/image — Frame
+   - Wraps the <img> with a panel-like frame.
+   - Keeps values token-driven.
+*/
+.wp-block-image.is-style-bw-frame {
+  /* Figure wrapper becomes the frame */
+  @include bw-panel-base;
+  @include bw-panel-surface($bw-panel-bg, $bw-panel-shadow);
+
+  /* Ensure the image respects the frame radius */
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: calc(#{$bw-panel-radius} - 1px);
+  }
+}

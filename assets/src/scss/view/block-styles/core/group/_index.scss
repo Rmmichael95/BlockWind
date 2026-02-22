@@ -1,0 +1,17 @@
+/* ==========================================================================
+   BlockWind SCSS: view/block-styles/core/group/_index.scss
+   --------------------------------------------------------------------------
+   Role: core/group: aggregates all registered style variations.
+   Tenants:
+   - Style variations only (scoped to .is-style-* selectors).
+   - Do NOT introduce new colors/spacing scales.
+   - Use theme.json tokens via SCSS aliases only.
+   ========================================================================== */
+
+@use "bw-card";
+@use "bw-subtle-border";
+@use "bw-panel";
+@use "bw-blur-panel";
+@use "bw-frosted-blur";
+@use "bw-stack-tight";
+@use "bw-stack-loose";

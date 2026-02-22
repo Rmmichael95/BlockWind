@@ -1,0 +1,31 @@
+/* ==========================================================================
+   BlockWind SCSS: view/block-styles/core/group/_bw-frosted-blur.scss
+   --------------------------------------------------------------------------
+   Role: core/group style variation: Frosted Blur (readable glass panel).
+   Tenants:
+   - Style variations only (scoped to .is-style-* selectors).
+   - Do NOT introduce new colors/spacing scales.
+   - Use theme.json tokens via SCSS aliases only.
+   ========================================================================== */
+@use "../../../../prelude" as *;
+/* ----------------------------------------------------------------------------
+   Variation: bw-frosted-blur
+   Intended use: readable “glass” panel on any background.
+   Notes:
+   - tint carries readability; blur is a bonus.
+   - uses primary surface token by default (themeable via theme.json).
+   ------------------------------------------------------------------------- */
+
+.wp-block-group.is-style-bw-frosted-blur {
+  @include bw-panel-base;
+
+  /* Frosted glass: readable tint first */
+  @include bw-frost-tint(86%, $bw-ui-surface);
+
+  box-shadow: $bw-panel-shadow-elevated;
+
+  /* Optional: soften border for glass panels */
+  border-color: color-mix(in oklab, #{$bw-panel-border-color} 40%, transparent);
+
+  @include bw-blur();
+}

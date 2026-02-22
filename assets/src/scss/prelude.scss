@@ -1,0 +1,10 @@
+/* ==========================================================================
+   BlockWind SCSS: prelude.scss
+   --------------------------------------------------------------------------
+   Role: Single import for token aliases + shared mixins.
+   - Use this in leaf modules to avoid repeated @use lines.
+   - Do NOT define new colors/spacing scales here.
+   ========================================================================== */
+
+@forward "./tokens";
+@forward "./mixins";

@@ -1,0 +1,51 @@
+/* ==========================================================================
+   BlockWind SCSS: view/layout/_flow.scss
+   --------------------------------------------------------------------------
+   Phase 2: Flow ownership + minimal template structure.
+
+   Contract:
+   - .bw-flow is a *scope provider* (sets local flow aliases + default rhythm).
+     It is SAFE on full-bleed wrappers (it does NOT apply padding).
+   - .bw-flow-content opts into horizontal gutters (content-padding-x).
+   - .bw-flow-section opts into vertical section padding (section-padding-y).
+
+   Bridge:
+   - All token references must come from SCSS vars in _tokens.scss (via prelude).
+   - No raw var(--wp--custom--bw-flow--*) usage in this file.
+   ========================================================================== */
+
+@use "../../prelude" as *;
+
+:where(.bw-flow) {
+  /* Local aliases (lets future per-section overrides change one place) */
+  --bw-flow-gap: #{$bw-flow-gap};
+  --bw-flow-gap-tight: #{$bw-flow-gap-tight};
+  --bw-flow-gap-loose: #{$bw-flow-gap-loose};
+
+  --bw-flow-section-padding-y: #{$bw-flow-section-padding-y};
+  --bw-flow-content-padding-x: #{$bw-flow-content-padding-x};
+
+  /* Default rhythm for block containers inside this scope */
+  --wp--style--block-gap: var(--bw-flow-gap);
+  gap: var(--bw-flow-gap);
+}
+
+/* Rhythm variants (scope-only) */
+:where(.bw-flow.bw-flow--tight) {
+  --wp--style--block-gap: var(--bw-flow-gap-tight);
+  gap: var(--bw-flow-gap-tight);
+}
+
+:where(.bw-flow.bw-flow--loose) {
+  --wp--style--block-gap: var(--bw-flow-gap-loose);
+  gap: var(--bw-flow-gap-loose);
+}
+
+/* Opt-in gutters/padding (use on appropriate inner wrappers) */
+:where(.bw-flow-content) {
+  padding-inline: var(--bw-flow-content-padding-x);
+}
+
+:where(.bw-flow-section) {
+  padding-block: var(--bw-flow-section-padding-y);
+}

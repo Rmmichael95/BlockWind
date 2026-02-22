@@ -1,0 +1,20 @@
+/* ==========================================================================
+   BlockWind SCSS: view/block-styles/core/group/_bw-subtle-border.scss
+   --------------------------------------------------------------------------
+   Role: core/group style variation: Subtle Border (alternate surface panel).
+   Tenants:
+   - Style variations only (scoped to .is-style-* selectors).
+   - Do NOT introduce new colors/spacing scales.
+   - Use theme.json tokens via SCSS aliases only.
+   ========================================================================== */
+@use "../../../../prelude" as *;
+/* ----------------------------------------------------------------------------
+   Variation: bw-subtle-border
+   ------------------------------------------------------------------------- */
+
+.wp-block-group.is-style-bw-subtle-border {
+  @include bw-panel-base;
+
+  /* Intentionally alternate surface */
+  @include bw-panel-surface($bw-ui-surface-alt);
+}

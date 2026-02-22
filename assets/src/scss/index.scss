@@ -9,10 +9,9 @@
    - Avoid overriding core block behavior unless critical.
    ========================================================================== */
 
-@use "./tokens";
-@use "./mixins";
-@use "./view/theme-styles";
-@use "./view/navigation/core-navigation-base";
-@use "./view/navigation/offcanvas";
-@use "./base/typography";
-@use "./components/example";
+@use "./prelude" as *;
+
+@use "./base";
+@use "./components";
+@use "./view";
+@use "./editor";

@@ -1,0 +1,18 @@
+@use "../../../../prelude" as *;
+
+/* core/list — Inline
+   - Useful for tag-like or metadata lists.
+*/
+.wp-block-list.is-style-bw-inline {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: $bw-flow-gap;
+
+  li {
+    margin: 0;
+  }
+}

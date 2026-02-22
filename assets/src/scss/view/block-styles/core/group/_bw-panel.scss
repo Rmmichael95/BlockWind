@@ -1,0 +1,7 @@
+@use "../../../../prelude" as *;
+
+/* core/group — Panel */
+.wp-block-group.is-style-bw-panel {
+  @include bw-panel-base;
+  @include bw-panel-surface($bw-panel-bg, $bw-panel-shadow);
+}

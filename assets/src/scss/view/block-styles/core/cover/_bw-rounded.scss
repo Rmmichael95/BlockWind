@@ -1,0 +1,7 @@
+@use "../../../../prelude" as *;
+
+/* core/cover — Rounded */
+.wp-block-cover.is-style-bw-rounded {
+  border-radius: $bw-panel-radius;
+  overflow: hidden;
+}

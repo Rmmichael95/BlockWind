@@ -1,0 +1,8 @@
+@use "../../../../prelude" as *;
+
+/* core/separator — Subtle */
+.wp-block-separator.is-style-bw-subtle {
+  border: 0;
+  border-top: 1px solid $bw-ui-border;
+  opacity: 0.65;
+}

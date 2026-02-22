@@ -321,7 +321,13 @@ function blockwind_register_phase1_block_styles(): void {
 
 	register_block_style( 'core/group', array(
 		'name'  => 'bw-blur-panel',
-		'label' => __( 'Blur Panel', TEXT_DOMAIN ),
+		'label' => __( 'Blur Panel (Overlay)', TEXT_DOMAIN ),
+	) );
+
+
+	register_block_style( 'core/group', array(
+		'name'  => 'bw-frosted-blur',
+		'label' => __( 'Frosted Blur', TEXT_DOMAIN ),
 	) );
 
 	register_block_style( 'core/group', array(
@@ -329,13 +335,21 @@ function blockwind_register_phase1_block_styles(): void {
 		'label' => __( 'Stack (Tight)', TEXT_DOMAIN ),
 	) );
 
-	// core/columns
+	register_block_style( 'core/group', array(
+		'name'  => 'bw-panel',
+		'label' => __( 'Panel', TEXT_DOMAIN ),
+	) );
+
+	register_block_style( 'core/group', array(
+		'name'  => 'bw-stack-loose',
+    'label' => __( 'Stack (Loose)', TEXT_DOMAIN ),
+  ) );
+
 	register_block_style( 'core/columns', array(
 		'name'  => 'bw-stack-md',
 		'label' => __( 'Stack on Mobile', TEXT_DOMAIN ),
 	) );
 
-	// core/button
 	register_block_style( 'core/button', array(
 		'name'  => 'bw-pill',
 		'label' => __( 'Pill', TEXT_DOMAIN ),
@@ -344,6 +358,52 @@ function blockwind_register_phase1_block_styles(): void {
 	register_block_style( 'core/button', array(
 		'name'  => 'bw-ghost',
 		'label' => __( 'Ghost', TEXT_DOMAIN ),
+	) );
+
+
+	register_block_style( 'core/image', array(
+		'name'  => 'bw-rounded',
+		'label' => __( 'Rounded', TEXT_DOMAIN ),
+	) );
+
+	register_block_style( 'core/image', array(
+		'name'  => 'bw-frame',
+		'label' => __( 'Frame', TEXT_DOMAIN ),
+	) );
+
+	register_block_style( 'core/image', array(
+		'name'  => 'bw-shadow',
+		'label' => __( 'Shadow', TEXT_DOMAIN ),
+	) );
+
+	register_block_style( 'core/gallery', array(
+		'name'  => 'bw-rounded',
+		'label' => __( 'Rounded', TEXT_DOMAIN ),
+	) );
+
+	register_block_style( 'core/separator', array(
+		'name'  => 'bw-subtle',
+		'label' => __( 'Subtle', TEXT_DOMAIN ),
+	) );
+
+	register_block_style( 'core/list', array(
+		'name'  => 'bw-checklist',
+		'label' => __( 'Checklist', TEXT_DOMAIN ),
+	) );
+
+	register_block_style( 'core/list', array(
+		'name'  => 'bw-inline',
+		'label' => __( 'Inline', TEXT_DOMAIN ),
+	) );
+
+	register_block_style( 'core/cover', array(
+		'name'  => 'bw-hero-overlay',
+		'label' => __( 'Hero Overlay', TEXT_DOMAIN ),
+	) );
+
+	register_block_style( 'core/cover', array(
+		'name'  => 'bw-rounded',
+		'label' => __( 'Rounded', TEXT_DOMAIN ),
 	) );
 }
 add_action( 'init', __NAMESPACE__ . '\blockwind_register_phase1_block_styles', 20 );

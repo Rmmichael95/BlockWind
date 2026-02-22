@@ -1,0 +1,8 @@
+@use "../../../../prelude" as *;
+
+/* core/image — Rounded */
+.wp-block-image.is-style-bw-rounded {
+  img {
+    border-radius: $bw-panel-radius;
+  }
+}

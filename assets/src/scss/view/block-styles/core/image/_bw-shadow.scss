@@ -1,0 +1,9 @@
+@use "../../../../prelude" as *;
+
+/* core/image — Shadow */
+.wp-block-image.is-style-bw-shadow {
+  img {
+    border-radius: $bw-panel-radius;
+    box-shadow: $bw-panel-shadow-elevated;
+  }
+}

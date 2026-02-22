@@ -1,0 +1,20 @@
+/* ==========================================================================
+   BlockWind SCSS: view/block-styles/core/group/_bw-card.scss
+   --------------------------------------------------------------------------
+   Role: core/group style variation: Card (primary panel surface).
+   Tenants:
+   - Style variations only (scoped to .is-style-* selectors).
+   - Do NOT introduce new colors/spacing scales.
+   - Use theme.json tokens via SCSS aliases only.
+   ========================================================================== */
+@use "../../../../prelude" as *;
+/* ----------------------------------------------------------------------------
+   Variation: bw-card
+   ------------------------------------------------------------------------- */
+
+.wp-block-group.is-style-bw-card {
+  @include bw-panel-base;
+
+  /* Primary panel surface */
+  @include bw-panel-surface($bw-ui-surface, $bw-panel-shadow);
+}
