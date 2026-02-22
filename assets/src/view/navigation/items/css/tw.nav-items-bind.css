@@ -18,7 +18,7 @@
     a.wp-block-navigation-item__content,
     a.wp-block-pages-list__item__link
   ) {
-  @apply rounded-[var(--wp--preset--radius--bw-md)];
+  @apply rounded-[var(--wp--preset--border-radius--bw-md)];
   @apply px-[var(--wp--preset--spacing--bw-sm)];
   @apply py-[var(--wp--preset--spacing--bw-xs)];
 }

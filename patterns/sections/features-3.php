@@ -1,56 +1,36 @@
 <?php
 /**
- * Title: Features – 3 Columns
- * Slug: bw/features-3
+ * Title: FAQ – Accordion
+ * Slug: bw/faq-accordion
  * Categories: bw-sections, bw-content
- * Keywords: features, columns, services
+ * Keywords: faq, accordion
  */
 ?>
 
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var(--wp--custom--bw-flow--section-padding-y)","right":"var(--wp--custom--bw-flow--content-padding-x)","bottom":"var(--wp--custom--bw-flow--section-padding-y)","left":"var(--wp--custom--bw-flow--content-padding-x)"},"blockGap":"var(--wp--custom--bw-flow--gap)"}},"backgroundColor":"bw-base","textColor":"bw-text","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-bw-text-color has-bw-base-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--fluid-2xl);padding-right:var(--wp--preset--spacing--fluid-xl);padding-bottom:var(--wp--preset--spacing--fluid-2xl);padding-left:var(--wp--preset--spacing--fluid-xl)">
-	<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|fluid-l"}}} -->
+<!-- wp:group {"align":"full","className":"bw-flow","style":{"spacing":{"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"default"},"backgroundColor":"bw-base","textColor":"bw-text"} -->
+<div class="wp-block-group alignfull bw-flow has-bw-text-color has-bw-base-background-color has-text-color has-background" style="margin-top:0;margin-bottom:0">
+	<!-- wp:group {"align":"wide","className":"bw-flow-content bw-flow-section","style":{"spacing":{"blockGap":"var(--wp--custom--bw-flow--gap)"}},"layout":{"type":"constrained"}} -->
+	<div class="wp-block-group alignwide bw-flow-content bw-flow-section">
+
+	<!-- wp:group {"layout":{"type":"constrained","contentSize":"48rem"},"style":{"spacing":{"blockGap":"var:preset|spacing|fluid-l"}}} -->
 	<div class="wp-block-group">
 		<!-- wp:heading {"textAlign":"center"} -->
-		<h2 class="wp-block-heading has-text-align-center">What you get</h2>
+		<h2 class="wp-block-heading has-text-align-center">FAQ</h2>
 		<!-- /wp:heading -->
 
-		<!-- wp:columns {"style":{"spacing":{"blockGap":{"top":"var:preset|spacing|fluid-l","left":"var:preset|spacing|fluid-l"}}}} -->
-		<div class="wp-block-columns">
-			<!-- wp:column -->
-			<div class="wp-block-column">
-				<!-- wp:heading {"level":3} -->
-				<h3 class="wp-block-heading">Theme.json-first</h3>
-				<!-- /wp:heading -->
-				<!-- wp:paragraph -->
-				<p>Tokens live where WordPress expects them. Avoid hardcoded values in CSS.</p>
-				<!-- /wp:paragraph -->
-			</div>
-			<!-- /wp:column -->
+		<!-- wp:details -->
+		<details class="wp-block-details"><summary>What is BlockWind?</summary><p>A WordPress-first theme with a token and pattern-driven workflow.</p></details>
+		<!-- /wp:details -->
 
-			<!-- wp:column -->
-			<div class="wp-block-column">
-				<!-- wp:heading {"level":3} -->
-				<h3 class="wp-block-heading">Patterns-first</h3>
-				<!-- /wp:heading -->
-				<!-- wp:paragraph -->
-				<p>Compose pages from sections. Keep templates minimal and predictable.</p>
-				<!-- /wp:paragraph -->
-			</div>
-			<!-- /wp:column -->
+		<!-- wp:details -->
+		<details class="wp-block-details"><summary>Do I need Tailwind?</summary><p>No. Tailwind is optional and used only for reusable, non-token behaviors.</p></details>
+		<!-- /wp:details -->
 
-			<!-- wp:column -->
-			<div class="wp-block-column">
-				<!-- wp:heading {"level":3} -->
-				<h3 class="wp-block-heading">Optional Tailwind</h3>
-				<!-- /wp:heading -->
-				<!-- wp:paragraph -->
-				<p>Use modular CSS only for gaps (nav/offcanvas/layout), not a second design system.</p>
-				<!-- /wp:paragraph -->
-			</div>
-			<!-- /wp:column -->
-		</div>
-		<!-- /wp:columns -->
+		<!-- wp:details -->
+		<details class="wp-block-details"><summary>Can I build full-bleed sections?</summary><p>Yes—use alignfull outer wrappers with inner flow gutters.</p></details>
+		<!-- /wp:details -->
+	</div>
+	<!-- /wp:group -->
 	</div>
 	<!-- /wp:group -->
 </div>

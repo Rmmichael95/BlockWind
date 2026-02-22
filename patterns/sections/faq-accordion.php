@@ -3,29 +3,50 @@
  * Title: FAQ – Accordion
  * Slug: bw/faq-accordion
  * Categories: bw-sections, bw-content
- * Keywords: faq, accordion, details
+ * Keywords: faq, accordion
  */
 ?>
 
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var(--wp--custom--bw-flow--section-padding-y)","right":"var(--wp--custom--bw-flow--content-padding-x)","bottom":"var(--wp--custom--bw-flow--section-padding-y)","left":"var(--wp--custom--bw-flow--content-padding-x)"},"blockGap":"var(--wp--custom--bw-flow--gap)"}},"backgroundColor":"bw-base","textColor":"bw-text","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-bw-text-color has-bw-base-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--fluid-2xl);padding-right:var(--wp--preset--spacing--fluid-xl);padding-bottom:var(--wp--preset--spacing--fluid-2xl);padding-left:var(--wp--preset--spacing--fluid-xl)">
-	<!-- wp:group {"layout":{"type":"constrained","contentSize":"48rem"},"style":{"spacing":{"blockGap":"var:preset|spacing|fluid-l"}}} -->
-	<div class="wp-block-group">
-		<!-- wp:heading {"textAlign":"center"} -->
-		<h2 class="wp-block-heading has-text-align-center">Frequently asked questions</h2>
-		<!-- /wp:heading -->
+<!-- wp:group {"align":"full","className":"bw-flow","style":{"spacing":{"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"default"},"backgroundColor":"bw-base","textColor":"bw-text"} -->
+<div class="wp-block-group alignfull bw-flow has-bw-text-color has-bw-base-background-color has-text-color has-background" style="margin-top:0;margin-bottom:0">
+	<!-- wp:group {"align":"wide","className":"bw-flow-content bw-flow-section","style":{"spacing":{"blockGap":"var(--wp--custom--bw-flow--gap)"}},"layout":{"type":"constrained"}} -->
+	<div class="wp-block-group alignwide bw-flow-content bw-flow-section">
 
-		<!-- wp:details {"backgroundColor":"bw-surface","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-m","bottom":"var:preset|spacing|fluid-m","left":"var:preset|spacing|fluid-m","right":"var:preset|spacing|fluid-m"}},"border":{"radius":"var(--wp--custom--tokens--radius--m,12px)"}}} -->
-		<details class="wp-block-details has-bw-surface-background-color has-background" style="border-radius:var(--wp--custom--tokens--radius--m,12px);padding-top:var(--wp--preset--spacing--fluid-m);padding-right:var(--wp--preset--spacing--fluid-m);padding-bottom:var(--wp--preset--spacing--fluid-m);padding-left:var(--wp--preset--spacing--fluid-m)"><summary>Does BlockWind require Tailwind?</summary><p>No. Tailwind modules are optional and opt-in via Vite imports.</p></details>
-		<!-- /wp:details -->
+		<!-- wp:group {"layout":{"type":"constrained","contentSize":"48rem"},"style":{"spacing":{"blockGap":"var:preset|spacing|fluid-l"}}} -->
+		<div class="wp-block-group">
+			<!-- wp:heading {"textAlign":"center"} -->
+			<h2 class="wp-block-heading has-text-align-center">FAQ</h2>
+			<!-- /wp:heading -->
 
-		<!-- wp:details {"backgroundColor":"bw-surface","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-m","bottom":"var:preset|spacing|fluid-m","left":"var:preset|spacing|fluid-m","right":"var:preset|spacing|fluid-m"}},"border":{"radius":"var(--wp--custom--tokens--radius--m,12px)"}}} -->
-		<details class="wp-block-details has-bw-surface-background-color has-background" style="border-radius:var(--wp--custom--tokens--radius--m,12px);padding-top:var(--wp--preset--spacing--fluid-m);padding-right:var(--wp--preset--spacing--fluid-m);padding-bottom:var(--wp--preset--spacing--fluid-m);padding-left:var(--wp--preset--spacing--fluid-m)"><summary>Where do tokens live?</summary><p>In theme.json. Use WordPress presets first and only alias when needed.</p></details>
-		<!-- /wp:details -->
+			<!-- wp:details -->
+			<details class="wp-block-details">
+				<summary>What is BlockWind?</summary>
+				<!-- wp:paragraph -->
+				<p>A WordPress-first theme with a token and pattern-driven workflow.</p>
+				<!-- /wp:paragraph -->
+			</details>
+			<!-- /wp:details -->
 
-		<!-- wp:details {"backgroundColor":"bw-surface","style":{"spacing":{"padding":{"top":"var:preset|spacing|fluid-m","bottom":"var:preset|spacing|fluid-m","left":"var:preset|spacing|fluid-m","right":"var:preset|spacing|fluid-m"}},"border":{"radius":"var(--wp--custom--tokens--radius--m,12px)"}}} -->
-		<details class="wp-block-details has-bw-surface-background-color has-background" style="border-radius:var(--wp--custom--tokens--radius--m,12px);padding-top:var(--wp--preset--spacing--fluid-m);padding-right:var(--wp--preset--spacing--fluid-m);padding-bottom:var(--wp--preset--spacing--fluid-m);padding-left:var(--wp--preset--spacing--fluid-m)"><summary>How do I build pages quickly?</summary><p>Use section patterns and page layout patterns—then customize content in the editor.</p></details>
-		<!-- /wp:details -->
+			<!-- wp:details -->
+			<details class="wp-block-details">
+				<summary>Do I need Tailwind?</summary>
+				<!-- wp:paragraph -->
+				<p>No. Tailwind is optional and used only for reusable, non-token behaviors.</p>
+				<!-- /wp:paragraph -->
+			</details>
+			<!-- /wp:details -->
+
+			<!-- wp:details -->
+			<details class="wp-block-details">
+				<summary>Can I build full-bleed sections?</summary>
+				<!-- wp:paragraph -->
+				<p>Yes—use alignfull outer wrappers with inner flow gutters.</p>
+				<!-- /wp:paragraph -->
+			</details>
+			<!-- /wp:details -->
+		</div>
+		<!-- /wp:group -->
+
 	</div>
 	<!-- /wp:group -->
 </div>

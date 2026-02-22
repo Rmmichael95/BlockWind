@@ -10,6 +10,6 @@
   @apply absolute z-50 hidden;
   @apply border;
   @apply shadow-sm;
-  @apply rounded-[var(--wp--preset--radius--bw-md)];
+  @apply rounded-[var(--wp--preset--border-radius--bw-md)];
   @apply p-[var(--wp--preset--spacing--bw-xs)];
 }

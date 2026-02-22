@@ -12,6 +12,6 @@
   @apply right-[var(--wp--preset--spacing--bw-sm)];
   @apply w-10 h-10;
   @apply inline-flex items-center justify-center;
-  @apply rounded-[var(--wp--preset--radius--bw-md)];
+  @apply rounded-[var(--wp--preset--border-radius--bw-md)];
   @apply border;
 }

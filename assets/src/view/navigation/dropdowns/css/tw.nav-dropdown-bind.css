@@ -6,7 +6,7 @@
             - Uses theme.json vars for paint (source of truth).
    Dependencies:
      - theme.json: --wp--custom--bw-navigation--dropdown--*
-     - theme.json: --wp--preset--spacing--*, --wp--preset--radius--*
+     - theme.json: --wp--preset--spacing--*, --wp--preset--border-radius--*
    ========================================================== */
 
 @reference "../../tw.reference.css";
@@ -24,7 +24,7 @@
     @apply absolute z-50 hidden;
     @apply border;
     @apply shadow-sm;
-    @apply rounded-[var(--wp--preset--radius--bw-md)];
+    @apply rounded-[var(--wp--preset--border-radius--bw-md)];
     @apply p-[var(--wp--preset--spacing--bw-xs)];
 
     /* WP token-driven paint (theme.json) */
@@ -92,7 +92,7 @@
     @apply static w-full hidden;
     @apply border;
     @apply shadow-sm;
-    @apply rounded-[var(--wp--preset--radius--bw-md)];
+    @apply rounded-[var(--wp--preset--border-radius--bw-md)];
     @apply p-[var(--wp--preset--spacing--bw-xs)];
     @apply mt-[var(--wp--preset--spacing--bw-xs)];
 

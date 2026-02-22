@@ -574,7 +574,13 @@ add_action( 'enqueue_block_assets', __NAMESPACE__ . '\bw_enqueue_block_modules_f
 -----------------------------------------------------------------------------
  * Shortcodes
  * -------------------------------------------------------------------------- */
-
+/**
+ * Shortcode: [bw_year]
+ * Use in templates/patterns instead of PHP.
+ */
+/* add_shortcode('bw_year', function () { */
+/* 	return gmdate('Y'); */
+/* }); */
 /**
  * Shortcode: [current_year]
  */
