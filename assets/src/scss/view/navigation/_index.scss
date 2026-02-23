@@ -5,4 +5,5 @@
    ========================================================================== */
 
 @use "./core-navigation-base";
-@use "./offcanvas";
+@use "./core-navigation-desktop";
+@use "./core-navigation-mobile";

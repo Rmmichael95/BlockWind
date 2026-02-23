@@ -1,0 +1,122 @@
+/* ==========================================================================
+   Core Navigation: Mobile (ported + tokenized)
+   --------------------------------------------------------------------------
+   Responsibility:
+   - Modal/open-state layout + mobile submenu UX
+   - Scoped to header wrapper (.bw-header)
+   - Paint via header contract vars + theme.json custom vars
+   - Keep state/ARIA selectors here (Tailwind can't express these)
+   - NO fallbacks: unset vars should fail to inform devs
+   ========================================================================== */
+
+@use "../../prelude" as *;
+
+/* Modal/open state – scoped to header (nav watches header) */
+:root.has-modal-open
+  .bw-header
+  .wp-block-navigation__responsive-container.is-menu-open {
+  /* Only apply when WP is using the modal container */
+  &.has-modal-open {
+    padding: var(--wp--custom--bw-navigation--modal-padding);
+  }
+
+  .wp-block-navigation__responsive-container-content {
+    gap: var(--wp--custom--bw-navigation--modal-gap);
+  }
+
+  /* Full-width container and tight item gaps */
+  .wp-block-navigation__container {
+    width: 100%;
+    gap: var(--wp--custom--bw-navigation--modal-item-gap);
+  }
+
+  .wp-block-page-list {
+    width: 100%;
+  }
+
+  /* Hide submenus by default */
+  .wp-block-navigation .has-child .wp-block-navigation__submenu-container {
+    display: none;
+  }
+
+  /* Show submenu when expanded */
+  .wp-block-navigation-submenu__toggle[aria-expanded="true"]
+    ~ .wp-block-navigation__submenu-container {
+    display: flex;
+  }
+
+  /* Submenu container layout (indent + stacked) */
+  .wp-block-navigation .has-child .wp-block-navigation__submenu-container {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+
+    padding-block-start: var(--wp--custom--bw-navigation--submenu-padding-top);
+    padding-inline-start: var(--wp--custom--bw-navigation--submenu-indent);
+    gap: var(--wp--custom--bw-navigation--submenu-gap);
+  }
+
+  /* Large tap target for submenu icon/toggle */
+  .wp-block-navigation .has-child .wp-block-navigation__submenu-icon {
+    position: absolute;
+    inset-inline-end: 0;
+    top: var(--wp--custom--bw-navigation--submenu-icon-top);
+    z-index: 10;
+
+    width: var(--wp--custom--bw-navigation--toggle-hitarea-width);
+    padding-block: var(--wp--custom--bw-navigation--toggle-hitarea-padding-y);
+    padding-inline: 0;
+  }
+
+  /* Items: full width + relative positioning (except social links) */
+  .wp-block-navigation-item:not(.wp-social-link) {
+    width: 100%;
+    position: relative;
+  }
+
+  /* Links: full width, padding accounts for submenu icon hit area */
+  .wp-block-navigation-item__content {
+    display: block;
+    width: 100%;
+
+    font-size: var(--wp--custom--bw-navigation--item-font-size);
+
+    padding-block: var(--wp--custom--bw-navigation--item-padding-y);
+    padding-inline-start: var(--wp--custom--bw-navigation--item-padding-x);
+    padding-inline-end: var(--wp--custom--bw-navigation--item-padding-end);
+
+    border-radius: var(--wp--custom--bw-navigation--item-radius);
+    color: var(--bw-header-link);
+
+    -webkit-tap-highlight-color: var(
+      --wp--custom--bw-navigation--tap-highlight
+    );
+  }
+
+  /* Hover + current backgrounds */
+  .wp-block-navigation-item:hover > .wp-block-navigation-item__content {
+    background: var(--wp--custom--bw-navigation--hover-bg);
+  }
+
+  .current-menu-item > .wp-block-navigation-item__content,
+  .current_page_item > .wp-block-navigation-item__content,
+  .wp-block-navigation-item__content[aria-current="page"] {
+    background: var(--wp--custom--bw-navigation--active-bg);
+  }
+
+  /* Don’t highlight parent when hovering the submenu panel */
+  .wp-block-navigation-item:has(.wp-block-navigation__submenu-container:hover)
+    > .wp-block-navigation-item__content {
+    background: transparent;
+  }
+
+  /* Open/close buttons */
+  .wp-block-navigation__responsive-container-open,
+  .wp-block-navigation__responsive-container-close {
+    padding: var(--wp--custom--bw-navigation--toggle-btn-padding);
+    border-radius: var(--wp--custom--bw-navigation--toggle-btn-radius);
+
+    background: var(--wp--custom--bw-navigation--toggle-btn-bg);
+    color: var(--wp--custom--bw-navigation--toggle-btn-fg);
+  }
+}

@@ -3,9 +3,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "build:css": "vite build --emptyOutDir",
     "preview": "vite preview",
+    "build": "BW_BUILD_TARGET=theme vite build && BW_BUILD_TARGET=editor vite build",
+    "build:theme": "BW_BUILD_TARGET=theme vite build",
+    "build:editor": "BW_BUILD_TARGET=editor vite build",
     "build:blocks": "node scripts/blocks.mjs build",
     "build:block": "node scripts/blocks.mjs build --name",
     "dev:block": "node scripts/blocks.mjs start --name",

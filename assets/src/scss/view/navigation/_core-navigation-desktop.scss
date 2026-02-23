@@ -1,0 +1,109 @@
+/* ==========================================================================
+   Core Navigation: Desktop (ported + tokenized)
+   --------------------------------------------------------------------------
+   Responsibility:
+   - Desktop-only behavior and dropdown geometry
+   - Scoped to header wrapper (.bw-header)
+   - Paint via header contract vars + theme.json custom vars
+   - NO fallbacks: unset vars should fail to inform devs
+   ========================================================================== */
+
+@use "../../prelude" as *;
+
+/* Desktop nav is the "responsive container NOT open" state. */
+.bw-header .wp-block-navigation__responsive-container:not(.is-menu-open) {
+  /* Underline current item and hovered submenu toggle (Ollie parity) */
+  .current-menu-item > a,
+  .current_page_item > a {
+    text-decoration: underline;
+    text-decoration-thickness: var(
+      --wp--custom--bw-navigation--active-decoration-thickness
+    );
+    text-underline-offset: var(
+      --wp--custom--bw-navigation--active-decoration-offset
+    );
+    text-decoration-color: var(--bw-header-link);
+  }
+
+  .has-child button:hover {
+    text-decoration: underline;
+    text-decoration-thickness: var(
+      --wp--custom--bw-navigation--hover-decoration-thickness
+    );
+    text-underline-offset: var(
+      --wp--custom--bw-navigation--hover-decoration-offset
+    );
+    text-decoration-color: var(--bw-header-link);
+  }
+
+  /* Dropdown panel */
+  .wp-block-navigation__submenu-container {
+    /* Paint from header contract */
+    background: var(--bw-header-panel-surface);
+    color: var(--bw-header-text);
+
+    border: 0;
+    border-radius: var(--wp--custom--bw-navigation--dropdown-radius);
+    min-width: var(--wp--custom--bw-navigation--dropdown-min-width);
+    box-shadow: var(--bw-header-panel-shadow);
+    z-index: var(--wp--custom--bw-navigation--dropdown-z);
+
+    /* Align dropdown with parent */
+    margin-inline-start: var(
+      --wp--custom--bw-navigation--dropdown-offset-inline-start
+    );
+
+    font-size: var(--wp--custom--bw-navigation--dropdown-font-size);
+    line-height: var(--wp--custom--bw-navigation--dropdown-line-height);
+  }
+
+  /* Nested dropdown positioning (submenu of submenu) */
+  .wp-block-navigation__submenu-container
+    .wp-block-navigation__submenu-container {
+    top: 0;
+    left: 100%;
+    margin-inline-start: 0;
+  }
+
+  /* First/last child padding + rounding */
+  .wp-block-navigation__submenu-container li:first-child > a,
+  .wp-block-navigation__submenu-container li:first-child > button {
+    padding-block-start: var(
+      --wp--custom--bw-navigation--dropdown-edge-padding-top
+    );
+    border-top-left-radius: var(--wp--custom--bw-navigation--dropdown-radius);
+    border-top-right-radius: var(--wp--custom--bw-navigation--dropdown-radius);
+  }
+
+  .wp-block-navigation__submenu-container li:last-child > a,
+  .wp-block-navigation__submenu-container li:last-child > button {
+    padding-block-end: var(
+      --wp--custom--bw-navigation--dropdown-edge-padding-bottom
+    );
+    border-bottom-left-radius: var(
+      --wp--custom--bw-navigation--dropdown-radius
+    );
+    border-bottom-right-radius: var(
+      --wp--custom--bw-navigation--dropdown-radius
+    );
+  }
+
+  /* Submenu icon spacing in dropdowns */
+  .has-child
+    .wp-block-navigation__submenu-container
+    .wp-block-navigation__submenu-icon {
+    margin-inline-end: var(--wp--custom--bw-navigation--dropdown-icon-gap);
+  }
+
+  /* Dropdown item padding */
+  .wp-block-navigation__submenu-container a,
+  .wp-block-navigation__submenu-container
+    button.wp-block-navigation-submenu__toggle {
+    padding-block: var(
+      --wp--custom--bw-navigation--dropdown-item-padding-y
+    ) !important;
+    padding-inline: var(
+      --wp--custom--bw-navigation--dropdown-item-padding-x
+    ) !important;
+  }
+}

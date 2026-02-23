@@ -13,13 +13,15 @@
    - Focus-visible rings are applied using theme.json focus tokens.
    ========================================================================== */
 
-@use "../../tokens" as t;
+@use "../../prelude" as *;
 
 /* Open responsive (modal) menu state.
    WordPress commonly toggles :root.has-modal-open + .is-menu-open. */
-:root.has-modal-open .wp-block-navigation__responsive-container.is-menu-open {
-  overflow-y: t.$bw-nav-mobile-modal-overflow-y;
-  scrollbar-gutter: t.$bw-nav-mobile-modal-scrollbar-gutter;
+:root.has-modal-open
+  .bw-header
+  .wp-block-navigation__responsive-container.is-menu-open {
+  overflow-y: $bw-nav-mobile-modal-overflow-y;
+  scrollbar-gutter: $bw-nav-mobile-modal-scrollbar-gutter;
 
   /* Prevent shrink-to-fit jitter */
   .wp-block-navigation__container,
@@ -69,11 +71,11 @@
   .wp-block-navigation-submenu {
     .wp-block-navigation__submenu-icon svg,
     .wp-block-navigation-submenu-icon svg {
-      width: t.$bw-nav-submenu-chevron-size;
-      height: t.$bw-nav-submenu-chevron-size;
-      max-width: t.$bw-nav-submenu-chevron-size;
-      max-height: t.$bw-nav-submenu-chevron-size;
-      flex: 0 0 t.$bw-nav-submenu-chevron-size;
+      width: $bw-nav-submenu-chevron-size;
+      height: $bw-nav-submenu-chevron-size;
+      max-width: $bw-nav-submenu-chevron-size;
+      max-height: $bw-nav-submenu-chevron-size;
+      flex: 0 0 $bw-nav-submenu-chevron-size;
       margin: 0;
     }
   }
@@ -84,9 +86,9 @@
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    gap: t.$bw-nav-mobile-submenu-gap;
-    padding-top: t.$bw-nav-mobile-submenu-padding-top;
-    padding-left: t.$bw-nav-mobile-submenu-indent;
+    gap: $bw-nav-mobile-submenu-gap;
+    padding-top: $bw-nav-mobile-submenu-padding-top;
+    padding-left: $bw-nav-mobile-submenu-indent;
   }
 
   /* ------------------------------------------------------------------------
@@ -104,8 +106,8 @@
   .wp-block-navigation-item__content {
     display: block;
     width: 100%;
-    padding: t.$bw-nav-item-py t.$bw-nav-mobile-hit-area t.$bw-nav-item-py
-      t.$bw-nav-item-px;
+    padding: $bw-nav-item-py $bw-nav-mobile-hit-area $bw-nav-item-py
+      $bw-nav-item-px;
     text-decoration: inherit;
   }
 
@@ -114,10 +116,10 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: t.$bw-nav-mobile-hit-area;
+    width: $bw-nav-mobile-hit-area;
 
     height: auto; /* key: prevents growing with expanded <li> */
-    padding: t.$bw-nav-item-py 0; /* row rhythm */
+    padding: $bw-nav-item-py 0; /* row rhythm */
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -135,9 +137,9 @@
   .wp-block-navigation-submenu__toggle:focus-visible,
   .wp-block-navigation__responsive-container-open:focus-visible,
   .wp-block-navigation__responsive-container-close:focus-visible {
-    outline: t.$bw-focus-ring-width solid t.$bw-focus-ring-color;
-    outline-offset: t.$bw-focus-ring-offset;
-    border-radius: t.$bw-focus-ring-radius;
+    outline: $bw-focus-ring-width solid $bw-focus-ring-color;
+    outline-offset: $bw-focus-ring-offset;
+    border-radius: $bw-focus-ring-radius;
   }
 }
 
@@ -147,12 +149,12 @@
   .wp-block-navigation__responsive-container.is-menu-open {
   .wp-block-navigation__submenu-container {
     padding-left: 0;
-    padding-right: t.$bw-nav-mobile-submenu-indent;
+    padding-right: $bw-nav-mobile-submenu-indent;
   }
 
   .wp-block-navigation-item__content {
-    padding: t.$bw-nav-item-py t.$bw-nav-item-px t.$bw-nav-item-py
-      t.$bw-nav-mobile-hit-area;
+    padding: $bw-nav-item-py $bw-nav-item-px $bw-nav-item-py
+      $bw-nav-mobile-hit-area;
   }
 
   .wp-block-navigation-submenu__toggle {

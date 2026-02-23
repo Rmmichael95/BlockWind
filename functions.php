@@ -52,7 +52,8 @@ function blockwind_setup(): void {
 	$theme_rel  = 'assets/inc/theme.min.css';
 
 	if ( file_exists( get_theme_file_path( $editor_rel ) ) ) {
-		add_editor_style( $editor_rel );
+    blockwind_enqueue_editor_assets( $theme_rel );
+    blockwind_enqueue_editor_assets( $editor_rel );
 	} elseif ( file_exists( get_theme_file_path( $theme_rel ) ) ) {
 		add_editor_style( $theme_rel );
 	} else {

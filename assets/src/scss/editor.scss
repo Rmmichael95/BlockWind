@@ -1,7 +1,7 @@
 /* ==========================================================================
-   BlockWind SCSS: index.scss
+   BlockWind SCSS: editor.scss
    --------------------------------------------------------------------------
-   Role: Main SCSS aggregator.
+   Role: Main editor SCSS aggregator
    Tenants:
    - SCSS is OPTIONAL + ORGANIZATIONAL (not the source of truth).
    - Do NOT define new colors/spacing scales here.
@@ -12,5 +12,4 @@
 @use "./prelude" as *;
 
 @use "./base";
-@use "./components";
-@use "./view";
+@use "./editor/index";
