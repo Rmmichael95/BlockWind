@@ -1,0 +1,47 @@
+/* ==========================================================
+   MODULE: tw.nav-subtle.css
+   Purpose: Presentation-only “subtle” variant for Navigation items.
+            - Soft hover surface + slightly reduced emphasis.
+            - No submenu mechanics.
+            - No modal/desktop geometry changes.
+   Usage: Add class `bw-nav-subtle` to the Navigation block (same node as `site-nav`).
+   ========================================================== */
+
+@reference "../../tw.reference.css";
+
+/* Subtle hover surface (token-driven) */
+.bw-nav-subtle {
+  --wp--custom--bw-navigation--hover--background: color-mix(
+    in oklab,
+    var(--wp--custom--bw-ui--hover-surface, transparent) 65%,
+    transparent
+  );
+}
+
+/* Slightly reduce base opacity, restore on interaction */
+.bw-nav-subtle
+  .wp-block-navigation__container
+  :is(li.wp-block-navigation-item, li.wp-block-pages-list__item)
+  > :is(
+    a.wp-block-navigation-item__content,
+    a.wp-block-pages-list__item__link
+  ) {
+  @apply opacity-90;
+}
+
+.bw-nav-subtle
+  .wp-block-navigation__container
+  :is(li.wp-block-navigation-item, li.wp-block-pages-list__item)
+  > :is(
+    a.wp-block-navigation-item__content,
+    a.wp-block-pages-list__item__link
+  ):hover,
+.bw-nav-subtle
+  .wp-block-navigation__container
+  :is(li.wp-block-navigation-item, li.wp-block-pages-list__item)
+  > :is(
+    a.wp-block-navigation-item__content,
+    a.wp-block-pages-list__item__link
+  ):focus-visible {
+  @apply opacity-100;
+}

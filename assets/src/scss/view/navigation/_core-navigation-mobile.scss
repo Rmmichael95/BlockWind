@@ -3,68 +3,109 @@
    --------------------------------------------------------------------------
    Responsibility:
    - Modal/open-state layout + mobile submenu UX
-   - Scoped to header wrapper (.bw-header)
-   - Paint via header contract vars + theme.json custom vars
+   - Modal MUST style the overlay even if WP places it outside the header DOM
+   - Still “watches the header” by preferring header contract vars when present
+    and falling back to UI tokens when not
    - Keep state/ARIA selectors here (Tailwind can't express these)
    - NO fallbacks: unset vars should fail to inform devs
    ========================================================================== */
 
 @use "../../prelude" as *;
+/* Modal/open state
+   NOTE: WP may render/position the responsive container overlay outside header.
+   So we scope to the open overlay state, NOT header ancestry. */
+:root.has-modal-open .wp-block-navigation__responsive-container.is-menu-open {
+  /* ------------------------------------------------------------------------
+     Modal color contract
+     Prefer header vars when they exist in scope; otherwise fall back to UI tokens.
+     (This reconciles Step 2 “header owns contract” with Step 5 “modal must work”.)
+     --------------------------------------------------------------------- */
+  --bw-nav-modal-text: var(--bw-header-text, var(--wp--custom--bw-ui--text));
+  --bw-nav-modal-link: var(--bw-header-link, var(--wp--custom--bw-ui--link));
+  --bw-nav-modal-link-hover: var(
+    --bw-header-link-hover,
+    var(--wp--custom--bw-ui--link-hover)
+  );
 
-/* Modal/open state – scoped to header (nav watches header) */
-:root.has-modal-open
-  .bw-header
-  .wp-block-navigation__responsive-container.is-menu-open {
   /* Only apply when WP is using the modal container */
   &.has-modal-open {
-    padding: var(--wp--custom--bw-navigation--modal-padding);
+    padding: var(--wp--custom--bw-navigation--mobile--modal-padding);
   }
 
   .wp-block-navigation__responsive-container-content {
-    gap: var(--wp--custom--bw-navigation--modal-gap);
+    gap: var(--wp--custom--bw-navigation--mobile--modal-gap);
   }
 
   /* Full-width container and tight item gaps */
   .wp-block-navigation__container {
     width: 100%;
-    gap: var(--wp--custom--bw-navigation--modal-item-gap);
+    gap: var(--wp--custom--bw-navigation--mobile--modal-item-gap);
   }
 
   .wp-block-page-list {
     width: 100%;
   }
 
-  /* Hide submenus by default */
-  .wp-block-navigation .has-child .wp-block-navigation__submenu-container {
-    display: none;
-  }
-
-  /* Show submenu when expanded */
-  .wp-block-navigation-submenu__toggle[aria-expanded="true"]
-    ~ .wp-block-navigation__submenu-container {
-    display: flex;
-  }
-
   /* Submenu container layout (indent + stacked) */
   .wp-block-navigation .has-child .wp-block-navigation__submenu-container {
+    /* Core treats submenu containers like positioned dropdown panels in some overlay states.
+       In the mobile modal we want stacked flow layout. Force it. */
+    position: static !important;
+    inset: auto !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
     flex-direction: column;
     align-items: flex-start;
-    width: 100%;
 
-    padding-block-start: var(--wp--custom--bw-navigation--submenu-padding-top);
-    padding-inline-start: var(--wp--custom--bw-navigation--submenu-indent);
-    gap: var(--wp--custom--bw-navigation--submenu-gap);
+    padding-block-start: var(
+      --wp--custom--bw-navigation--mobile--submenu-padding-top
+    );
+    padding-inline-start: var(
+      --wp--custom--bw-navigation--mobile--submenu-indent
+    );
+    padding-inline-end: 0;
+    gap: var(--wp--custom--bw-navigation--mobile--submenu-gap);
+  }
+
+  /* Core hides submenu toggles in the overlay in some versions.
+     We need the toggle visible/clickable for modal submenu UX. */
+  .wp-block-navigation .has-child .wp-block-navigation__submenu-icon,
+  .wp-block-navigation .has-child .wp-block-navigation-submenu__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    /* keep it visually neutral; layout handled below */
+    background: transparent;
+    border: 0;
+    color: inherit;
+  }
+
+  /* Ensure SVG inherits currentColor */
+  .wp-block-navigation .has-child .wp-block-navigation__submenu-icon svg,
+  .wp-block-navigation .has-child .wp-block-navigation-submenu__toggle svg {
+    stroke: currentColor;
   }
 
   /* Large tap target for submenu icon/toggle */
   .wp-block-navigation .has-child .wp-block-navigation__submenu-icon {
     position: absolute;
     inset-inline-end: 0;
-    top: var(--wp--custom--bw-navigation--submenu-icon-top);
+    top: var(--wp--custom--bw-navigation--mobile--submenu-icon-top);
     z-index: 10;
 
-    width: var(--wp--custom--bw-navigation--toggle-hitarea-width);
-    padding-block: var(--wp--custom--bw-navigation--toggle-hitarea-padding-y);
+    width: var(--wp--custom--bw-navigation--mobile--submenu-hit-area);
+    padding-block: var(
+      --wp--custom--bw-navigation--mobile--toggle-hitarea-padding-y
+    );
     padding-inline: 0;
   }
 
@@ -79,29 +120,30 @@
     display: block;
     width: 100%;
 
-    font-size: var(--wp--custom--bw-navigation--item-font-size);
+    font-size: var(--wp--custom--bw-navigation--item--font-size);
 
-    padding-block: var(--wp--custom--bw-navigation--item-padding-y);
-    padding-inline-start: var(--wp--custom--bw-navigation--item-padding-x);
-    padding-inline-end: var(--wp--custom--bw-navigation--item-padding-end);
-
-    border-radius: var(--wp--custom--bw-navigation--item-radius);
-    color: var(--bw-header-link);
-
-    -webkit-tap-highlight-color: var(
-      --wp--custom--bw-navigation--tap-highlight
+    padding-block: var(--wp--custom--bw-navigation--item--padding-y);
+    padding-inline-start: var(--wp--custom--bw-navigation--item--padding-x);
+    padding-inline-end: calc(
+      var(--wp--custom--bw-navigation--item--padding-x) +
+        var(--wp--custom--bw-navigation--mobile--submenu-hit-area)
     );
+
+    border-radius: var(--wp--custom--bw-navigation--item--radius);
+    color: var(--bw-nav-modal-text);
+
+    -webkit-tap-highlight-color: transparent;
   }
 
   /* Hover + current backgrounds */
   .wp-block-navigation-item:hover > .wp-block-navigation-item__content {
-    background: var(--wp--custom--bw-navigation--hover-bg);
+    background: var(--wp--custom--bw-navigation--hover--background);
   }
 
   .current-menu-item > .wp-block-navigation-item__content,
   .current_page_item > .wp-block-navigation-item__content,
   .wp-block-navigation-item__content[aria-current="page"] {
-    background: var(--wp--custom--bw-navigation--active-bg);
+    background: var(--wp--custom--bw-navigation--active--background);
   }
 
   /* Don’t highlight parent when hovering the submenu panel */
@@ -113,10 +155,10 @@
   /* Open/close buttons */
   .wp-block-navigation__responsive-container-open,
   .wp-block-navigation__responsive-container-close {
-    padding: var(--wp--custom--bw-navigation--toggle-btn-padding);
-    border-radius: var(--wp--custom--bw-navigation--toggle-btn-radius);
+    padding: var(--wp--custom--bw-navigation--mobile--toggle-btn-padding);
+    border-radius: var(--wp--custom--bw-navigation--mobile--toggle-btn-radius);
 
-    background: var(--wp--custom--bw-navigation--toggle-btn-bg);
-    color: var(--wp--custom--bw-navigation--toggle-btn-fg);
+    background: var(--wp--custom--bw-navigation--mobile--toggle-btn-background);
+    color: var(--bw-nav-modal-link);
   }
 }

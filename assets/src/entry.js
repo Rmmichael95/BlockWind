@@ -19,6 +19,9 @@ import "./view/utils/scripts.js";
 // Offcanvas
 // import "./view/navigation/offcanvas/styles.js";
 // import "./view/navigation/offcanvas/scripts.js";
+//
+// Variants (presentation-only)
+import "./view/navigation/variants/styles.js";
 
 // Editor behavior (group variation)
 // import "./editor/variations/styles.js";

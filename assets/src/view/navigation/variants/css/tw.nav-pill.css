@@ -1,0 +1,29 @@
+/* ==========================================================
+   MODULE: tw.nav-pill.css
+   Purpose: Presentation-only “pill” variant for Navigation items.
+            - No submenu mechanics.
+            - No modal/desktop geometry changes.
+            - Overrides only paint + corner treatment.
+   Usage: Add class `bw-nav-pill` to the Navigation block (same node as `site-nav`).
+   ========================================================== */
+
+@reference "../../tw.reference.css";
+
+/* Prefer theme.json contracts; fall back to bw-ui hover surface if unset */
+.bw-nav-pill {
+  --wp--custom--bw-navigation--hover--background: var(
+    --wp--custom--bw-ui--hover-surface,
+    transparent
+  );
+}
+
+/* Make item links pill-shaped */
+.bw-nav-pill
+  .wp-block-navigation__container
+  :is(li.wp-block-navigation-item, li.wp-block-pages-list__item)
+  > :is(
+    a.wp-block-navigation-item__content,
+    a.wp-block-pages-list__item__link
+  ) {
+  @apply rounded-[var(--wp--preset--border-radius--bw-pill)];
+}

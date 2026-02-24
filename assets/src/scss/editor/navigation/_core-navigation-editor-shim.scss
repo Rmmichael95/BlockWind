@@ -1,0 +1,66 @@
+/* ==========================================================================
+   Core Navigation: Editor shim
+   --------------------------------------------------------------------------
+   Purpose:
+   - The block editor does not replicate front-end modal overlay states.
+   - Keep submenus usable while editing (no off-canvas flyouts).
+   - Do NOT attempt to emulate the front-end modal UX here.
+   - Editor-only scope: .editor-styles-wrapper
+   ========================================================================== */
+
+@use "../../prelude" as *;
+
+.editor-styles-wrapper {
+  /* Ensure dropdown/submenu panels don’t fly out off-canvas in editor */
+  .wp-block-navigation .wp-block-navigation__submenu-container {
+    position: static;
+    inset: auto;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+  }
+
+  /* Keep submenu toggles visible/clickable while editing */
+  .wp-block-navigation .has-child .wp-block-navigation__submenu-icon,
+  .wp-block-navigation .has-child .wp-block-navigation-submenu__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 0;
+    color: inherit; /* chevron matches text */
+  }
+
+  .wp-block-navigation .has-child .wp-block-navigation__submenu-icon svg,
+  .wp-block-navigation .has-child .wp-block-navigation-submenu__toggle svg {
+    stroke: currentColor;
+  }
+
+  /* Prefer behavior parity: show submenu when expanded */
+  .wp-block-navigation
+    .wp-block-navigation-item.has-child
+    > .wp-block-navigation-submenu__toggle[aria-expanded="true"]
+    + .wp-block-navigation__submenu-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Editor usability: if a submenu block is selected, keep its children visible.
+     (Editor commonly applies .is-selected to block wrappers.) */
+  .wp-block-navigation-submenu.is-selected
+    > .wp-block-navigation__submenu-container,
+  .wp-block-navigation-submenu.is-highlighted
+    > .wp-block-navigation__submenu-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Optional: hide responsive open/close controls in editor canvas
+     (they’re meaningful on the front end, but noisy in editor previews). */
+  .wp-block-navigation__responsive-container-open,
+  .wp-block-navigation__responsive-container-close {
+    display: none;
+  }
+}

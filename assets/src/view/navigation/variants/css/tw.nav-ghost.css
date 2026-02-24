@@ -1,0 +1,44 @@
+/* ==========================================================
+   MODULE: tw.nav-ghost.css
+   Purpose: Presentation-only “ghost” variant for Navigation items.
+            - No background on hover; uses decoration instead.
+            - No submenu mechanics.
+            - No modal/desktop geometry changes.
+   Usage: Add class `bw-nav-ghost` to the Navigation block (same node as `site-nav`).
+   ========================================================== */
+
+@reference "../../tw.reference.css";
+
+/* Ghost = no hover surface */
+.bw-nav-ghost {
+  --wp--custom--bw-navigation--hover--background: transparent;
+}
+
+/* Use tokenized hover decoration when available; default to underline */
+.bw-nav-ghost
+  .wp-block-navigation__container
+  :is(li.wp-block-navigation-item, li.wp-block-pages-list__item)
+  > :is(
+    a.wp-block-navigation-item__content,
+    a.wp-block-pages-list__item__link
+  ):hover,
+.bw-nav-ghost
+  .wp-block-navigation__container
+  :is(li.wp-block-navigation-item, li.wp-block-pages-list__item)
+  > :is(
+    a.wp-block-navigation-item__content,
+    a.wp-block-pages-list__item__link
+  ):focus-visible {
+  text-decoration: var(
+    --wp--custom--bw-navigation--text-decoration-hover,
+    underline
+  );
+  text-decoration-thickness: var(
+    --wp--custom--bw-navigation--hover--decoration-thickness,
+    currentColor
+  );
+  text-underline-offset: var(
+    --wp--custom--bw-navigation--hover--decoration-offset,
+    0.15em
+  );
+}

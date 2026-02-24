@@ -1,0 +1,8 @@
+/* ==========================================================
+   MODULE: view/navigation/tw.reference.css
+   Purpose: Local reference shim so navigation Tailwind modules
+            can use a short relative @reference path.
+            (Do not put tokens or styling here.)
+   ========================================================== */
+
+@import "../../core/tw.reference.css";

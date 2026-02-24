@@ -1,29 +1,29 @@
 /* ==========================================================================
-   BlockWind SCSS: Navigation (Core Mobile Modal Behavior)
+   Core Navigation: Base (state + accessibility only)
    --------------------------------------------------------------------------
-   Role: Base behavior + ergonomics for the core Navigation block when the
-         responsive (modal) menu is open.
+   Responsibility:
+   - Pure state mechanics + accessibility primitives shared across nav modes.
+   - NO paint (colors/shadows), NO geometry (dropdown offsets/min-width),
+     NO layout ergonomics (padding/gaps/indent) — those live in Desktop/Mobile.
    Scope:
-   - No wrapper assumptions (no .site-nav required).
    - Scoped to the open responsive container state only, to avoid impacting
      desktop dropdown behavior.
    What this file does:
-   - Submenu visibility is driven by aria-expanded (accessibility-aligned).
-   - Mobile tap targets reserve space for the submenu toggle hit area.
-   - Focus-visible rings are applied using theme.json focus tokens.
+   - Submenu visibility driven by aria-expanded (accessibility-aligned).
+   - Prevents shrink-to-fit jitter in modal containers.
+   - Clamps submenu chevron sizing to avoid SVG resize jitter.
+   - Applies focus-visible rings using token-driven focus vars.
    ========================================================================== */
 
 @use "../../prelude" as *;
 
 /* Open responsive (modal) menu state.
    WordPress commonly toggles :root.has-modal-open + .is-menu-open. */
-:root.has-modal-open
-  .bw-header
-  .wp-block-navigation__responsive-container.is-menu-open {
+:root.has-modal-open .wp-block-navigation__responsive-container.is-menu-open {
   overflow-y: $bw-nav-mobile-modal-overflow-y;
   scrollbar-gutter: $bw-nav-mobile-modal-scrollbar-gutter;
 
-  /* Prevent shrink-to-fit jitter */
+  /* Prevent horizontal shift / shrink-to-fit jitter */
   .wp-block-navigation__container,
   .wp-block-page-list {
     width: 100%;
@@ -36,38 +36,46 @@
   .wp-block-navigation-item__content {
     box-sizing: border-box;
   }
-  /* ------------------------------------------------------------------------
-     Prevent horizontal shift when submenus open:
-     keep the UL from shrink-wrapping under items-justified-* alignment.
-     --------------------------------------------------------------------- */
-
-  .wp-block-navigation__container,
-  .wp-block-page-list {
-    width: 100%;
-    max-width: 100%;
-    align-self: stretch;
-    box-sizing: border-box;
-  }
 
   /* ------------------------------------------------------------------------
-     Optional: Submenu show/hide driven by aria-expanded
+     Submenu show/hide driven by aria-expanded (behavior only)
      --------------------------------------------------------------------- */
-
-  .wp-block-navigation .has-child .wp-block-navigation__submenu-container {
+  /* Start hidden by default (modal only). Keep selector scoped and specific. */
+  .wp-block-navigation
+    .wp-block-navigation-item.has-child
+    > .wp-block-navigation__submenu-container {
     display: none;
   }
 
-  .wp-block-navigation-submenu__toggle[aria-expanded="true"]
+  /* WP markup can vary by version/theme. Support common patterns.
+     We stay inside the open overlay container so we can win without !important. */
+
+  /* Pattern A: toggle immediately precedes the submenu container */
+  .wp-block-navigation
+    .wp-block-navigation-item.has-child
+    > .wp-block-navigation-submenu__toggle[aria-expanded="true"]
+    + .wp-block-navigation__submenu-container {
+    display: flex;
+  }
+
+  /* Pattern B: submenu container is a general sibling */
+  .wp-block-navigation
+    .wp-block-navigation-item.has-child
+    > .wp-block-navigation-submenu__toggle[aria-expanded="true"]
     ~ .wp-block-navigation__submenu-container {
     display: flex;
   }
 
-  /* ------------------------------------------------------------------------
-     Core fix: Submenu chevron must not resize when aria-expanded changes.
-     WordPress may set svg to inherit sizing; we clamp to a token value.
-     --------------------------------------------------------------------- */
+  /* Pattern C: aria-expanded is on the submenu wrapper */
+  .wp-block-navigation
+    .wp-block-navigation-submenu[aria-expanded="true"]
+    > .wp-block-navigation__submenu-container {
+    display: flex;
+  }
 
-  /* Core fix: Submenu chevron constant size (token-driven) */
+  /* ------------------------------------------------------------------------
+     Chevron sizing stability
+     --------------------------------------------------------------------- */
   .wp-block-navigation-submenu {
     .wp-block-navigation__submenu-icon svg,
     .wp-block-navigation-submenu-icon svg {
@@ -80,59 +88,9 @@
     }
   }
 
-  /* Mobile submenu layout (minimal, ergonomic) */
-  .wp-block-navigation__submenu-container {
-    box-sizing: border-box;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    gap: $bw-nav-mobile-submenu-gap;
-    padding-top: $bw-nav-mobile-submenu-padding-top;
-    padding-left: $bw-nav-mobile-submenu-indent;
-  }
-
   /* ------------------------------------------------------------------------
-     Mobile tap targets + submenu toggle hit area
+     Focus-visible rings (token-driven)
      --------------------------------------------------------------------- */
-
-  /* Make navigation items full-width and position a toggle hit area. */
-  li.wp-block-navigation-item,
-  .wp-block-page-list li {
-    width: 100%;
-    position: relative;
-  }
-
-  /* Links become full-width tap targets, reserving space for the toggle. */
-  .wp-block-navigation-item__content {
-    display: block;
-    width: 100%;
-    padding: $bw-nav-item-py $bw-nav-mobile-hit-area $bw-nav-item-py
-      $bw-nav-item-px;
-    text-decoration: inherit;
-  }
-
-  /* Submenu toggle button: large hit area, pinned to the edge. */
-  .wp-block-navigation-submenu__toggle {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: $bw-nav-mobile-hit-area;
-
-    height: auto; /* key: prevents growing with expanded <li> */
-    padding: $bw-nav-item-py 0; /* row rhythm */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    z-index: 10;
-    background: transparent;
-    border: 0;
-  }
-
-  /* ------------------------------------------------------------------------
-     Optional: Focus-visible rings (token-driven)
-     --------------------------------------------------------------------- */
-
   .wp-block-navigation-item__content:focus-visible,
   .wp-block-navigation-submenu__toggle:focus-visible,
   .wp-block-navigation__responsive-container-open:focus-visible,
@@ -140,25 +98,5 @@
     outline: $bw-focus-ring-width solid $bw-focus-ring-color;
     outline-offset: $bw-focus-ring-offset;
     border-radius: $bw-focus-ring-radius;
-  }
-}
-
-/* RTL adjustments (must be scoped with :root as the ancestor of body) */
-:root.has-modal-open
-  body.rtl
-  .wp-block-navigation__responsive-container.is-menu-open {
-  .wp-block-navigation__submenu-container {
-    padding-left: 0;
-    padding-right: $bw-nav-mobile-submenu-indent;
-  }
-
-  .wp-block-navigation-item__content {
-    padding: $bw-nav-item-py $bw-nav-item-px $bw-nav-item-py
-      $bw-nav-mobile-hit-area;
-  }
-
-  .wp-block-navigation-submenu__toggle {
-    right: auto;
-    left: 0;
   }
 }
